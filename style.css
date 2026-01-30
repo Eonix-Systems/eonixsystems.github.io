@@ -20,33 +20,110 @@
     margin-right: auto;
 }
 
+/* =========================
+   GRID BACKGROUND
+   ========================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(0, 195, 255, 0.08) 1px,
+            transparent 2px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(0, 195, 255, 0.08) 1px,
+            transparent 1px
+        ),
+        radial-gradient(
+            rgba(0, 166, 255, 0.22),
+            transparent 60%
+        );
+
+    background-size:
+        40px 40px,
+        40px 40px,
+        auto;
+
+    background-position:
+        center,
+        center,
+        center;
+
+    opacity: 0.6;
+}
 
 /* =========================
    BODY
    ========================= */
 
 body {
-    background-color: #050607;
-    color: #e6e6e6;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
     font-family: system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    position: relative;
+    z-index: 1;
 }
+
+/* =========================
+   GLOBAL DEPTH & LIGHT
+   ========================= */
+
+.page-wrapper {
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.015),
+            transparent 30%
+        );
+}
+
 
 /* =========================
    NAVBAR ONLY
    ========================= */
 
-.nav-root {
-    height: 80px;
-    padding-left: 48px;
-    padding-right: 48px;
+:root {
+    --nav-height: 80px;
+    --bg-main: #050607;
+    --bg-soft: #0a0c0e;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    --text-primary: #f5f7fa;
+    --text-secondary: #b6c0ca;
+    --text-muted: #8b949e;
 
-    border-bottom: 1px solid #00a4ff;
+    --accent-blue: #00a4ff;
+    --accent-blue-soft: rgba(0, 164, 255, 0.35);
+    --accent-blue-glow: rgba(0, 164, 255, 0.55);
+
+    --border-subtle: rgba(255, 255, 255, 0.08);
 }
+
+
+.nav-root {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--nav-height);
+
+    background-color: #050607;
+    border-bottom: 1px solid #00a4ff;
+
+    z-index: 1000;
+
+    box-shadow:
+        0 1px 0 var(--accent-blue-soft),
+        0 6px 24px rgba(0, 164, 255, 0.08);
+}
+
 
 .nav-logo img {
     height: 60px;
@@ -65,9 +142,82 @@ body {
     color: #cad8e3;
 }
 
+
 .nav-link:hover {
     color: #00a4ff;
 }
+
+.nav-inner {
+    max-width: 1500px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: #ffffff;
+    margin: 5px 0;
+}
+
+.page-wrapper {
+    padding-top: var(--nav-height);
+    min-height: calc(100vh - var(--nav-height));
+}
+
+@media (max-width: 1024px) {
+
+    :root {
+        --nav-height: 64px;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: var(--nav-height);
+        left: 0;
+        width: 100%;
+
+        flex-direction: column;
+        background-color: #050607;
+
+        display: none;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .nav-link {
+        margin: 0;
+        padding: 16px 48px;
+        border-top: 1px solid rgba(255,255,255,0.08);
+        font-size: 0.95rem;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+}
+
 
 /* =========================
    NAVBAR ACTIVE STATE
@@ -206,6 +356,13 @@ body {
 }
 
 /* CTA */
+
+.home-cta:hover,
+.cta-global:hover {
+    text-shadow: 0 0 12px var(--accent-blue-soft);
+}
+
+
 .home-cta {
     display: inline-flex;
     align-items: center;
@@ -512,18 +669,15 @@ body {
 }
 
 /* =========================
-   CONTACT PAGE
+   CONTACT PAGE (FIXED)
    ========================= */
 
 .contact-root {
     padding-top: 120px;
-    padding-left: 48px;
-    padding-right: 48px;
-    max-width: 1200px;
 }
 
 .contact-title {
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: 500;
 }
 
@@ -531,17 +685,17 @@ body {
     margin-top: 24px;
     font-size: 1rem;
     color: #9aa4ad;
-    max-width: 720px;
+    max-width: 760px;
 }
 
 .contact-block {
-    margin-top: 56px;
+    margin-top: 64px;
 }
 
 .contact-block h2 {
     font-size: 1.1rem;
     font-weight: 500;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .contact-block a {
@@ -554,10 +708,6 @@ body {
     text-decoration: underline;
 }
 
-.contact-note {
-    margin-top: 80px;
-    max-width: 720px;
-}
 
 /* =========================
    FOOTER
@@ -569,15 +719,15 @@ body {
 }
 
 .footer-inner {
-    padding: 20px 40px;
-
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 20px 48px;
 
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
 }
+
 
 .footer-brand {
     font-size: 0.95rem;
@@ -602,12 +752,11 @@ body {
 }
 
 .footer-bottom {
-    padding: 20px 40px;
-
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 20px 48px;
 
     font-size: 0.75rem;
-    color: #6f7a82;
+    color: var(--text-muted);
 }
 

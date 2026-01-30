@@ -9,12 +9,14 @@
 </head>
 <body>
 
-    <!-- NAVBAR -->
-    <nav class="nav-root">
+<!-- NAVBAR -->
+<nav class="nav-root">
+    <div class="nav-inner">
         <div class="nav-logo">
             <img src="assets/EONIX SYSTEMS LOGO .png" alt="Eonix Systems logo">
         </div>
 
+        <!-- LINKS -->
         <div class="nav-links">
             <a class="nav-link nav-active" href="index.html">Home</a>
             <a class="nav-link" href="product.html">Product</a>
@@ -22,7 +24,18 @@
             <a class="nav-link" href="about.html">About</a>
             <a class="nav-link" href="contact.html">Contact</a>
         </div>
-    </nav>
+
+        <!-- HAMBURGER -->
+        <button class="nav-toggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- PAGE CONTENT WRAPPER -->
+<main class="page-wrapper">
 
     <!-- HERO -->
     <section class="home-root page-section">
@@ -46,7 +59,6 @@
 
     <!-- PRINCIPLES -->
     <section class="home-problem page-section reveal">
-
         <h2 class="home-section-title">
             Power is system-critical infrastructure.
         </h2>
@@ -65,7 +77,6 @@
 
     <!-- DIFFERENTIATION -->
     <section class="home-difference page-section reveal">
-
         <h2 class="home-section-title">
             Built with intent
         </h2>
@@ -99,7 +110,6 @@
 
     <!-- AUDIENCE -->
     <section class="home-audience page-section reveal">
-
         <h2 class="home-section-title">
             Built for engineers who value correctness
         </h2>
@@ -114,7 +124,6 @@
 
     <!-- CLOSE -->
     <section class="home-direction page-section reveal">
-
         <p class="home-direction-text">
             We are building toward a cohesive power ecosystem — where generation,
             protection, and telemetry are designed as a single system.
@@ -126,23 +135,27 @@
         </a>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="footer-root">
-        <div class="footer-inner">
-            <div class="footer-left">
-                <p class="footer-brand">Eonix Systems</p>
-            </div>
+</main>
 
-            <div class="footer-right">
-                <a class="footer-link" href="technical.html">Technical</a>
-                <a class="footer-link" href="contact.html">Contact</a>
-            </div>
+<!-- FOOTER -->
+<footer class="footer-root">
+    <div class="footer-inner">
+        <div class="footer-left">
+            <p class="footer-brand">Eonix Systems</p>
         </div>
 
-        <div class="footer-bottom">
-            <p>© 2026 Eonix Systems. All rights reserved.</p>
+        <div class="footer-right">
+            <a class="footer-link" href="technical.html">Technical</a>
+            <a class="footer-link" href="contact.html">Contact</a>
         </div>
-    </footer>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 Eonix Systems. All rights reserved.</p>
+    </div>
+</footer>
+
 <script src="js/scroll-reveal.js"></script>
+<script src="js/nav.js"></script>
 </body>
 </html>

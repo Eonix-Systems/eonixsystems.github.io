@@ -10,8 +10,9 @@
 </head>
 <body>
 
-    <!-- NAVBAR -->
-    <nav class="nav-root">
+<!-- NAVBAR -->
+<nav class="nav-root">
+    <div class="nav-inner">
         <div class="nav-logo">
             <img src="assets/EONIX SYSTEMS LOGO .png" alt="Eonix Systems logo">
         </div>
@@ -23,48 +24,62 @@
             <a class="nav-link" href="about.html">About</a>
             <a class="nav-link nav-active" href="contact.html">Contact</a>
         </div>
-    </nav>
 
-    <section class="contact-root">
-    <h1 class="contact-title">Contact Eonix Systems</h1>
-
-    <p class="contact-intro">
-        We work with engineers, researchers, and teams building smart hardware.
-        If you have a concrete use case, technical question, or collaboration
-        proposal, reach out using the details below.
-    </p>
-
-    <div class="contact-block">
-        <h2>Contact Details</h2>
-        <p>
-            <a href="mailto:rishabh@eonixsystems.com">
-                rishabh@eonixsystems.com
-            </a>
-        </p>
+        <button class="nav-toggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </div>
+</nav>
+
+<!-- PAGE WRAPPER -->
+<main class="page-wrapper">
+
+    <!-- CONTACT PAGE -->
+    <section class="contact-root page-section">
+
+        <h1 class="contact-title">Contact Eonix Systems</h1>
+
+        <p class="contact-intro">
+            We work with engineers, researchers, and teams building smart hardware.
+            If you have a concrete use case, technical question, or collaboration
+            proposal, reach out using the details below.
+        </p>
+
+        <div class="contact-block">
+            <h2>Contact Details</h2>
+            <p>
+                <a href="mailto:rishabh@eonixsystems.com">
+                    rishabh@eonixsystems.com
+                </a>
+            </p>
+        </div>
 
     </section>
 
+</main>
 
-    <!-- FOOTER -->
-    <footer class="footer-root">
-        <div class="footer-inner">
-            <div class="footer-left">
-                <p class="footer-brand">Eonix Systems</p>
-            </div>
-
-            <div class="footer-right">
-                <a class="footer-link" href="technical.html">Technical</a>
-                <a class="footer-link" href="contact.html">Contact</a>
-            </div>
+<!-- FOOTER -->
+<footer class="footer-root">
+    <div class="footer-inner">
+        <div class="footer-left">
+            <p class="footer-brand">Eonix Systems</p>
         </div>
 
-        <div class="footer-bottom">
-            <p>© 2026 Eonix Systems. All rights reserved.</p>
+        <div class="footer-right">
+            <a class="footer-link" href="technical.html">Technical</a>
+            <a class="footer-link" href="contact.html">Contact</a>
         </div>
+    </div>
 
-        
-    </footer>
+    <div class="footer-bottom">
+        <p>© 2026 Eonix Systems. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- JS -->
+<script src="js/nav.js"></script>
 
 </body>
 </html>
