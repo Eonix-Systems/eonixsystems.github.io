@@ -1,0 +1,50 @@
+.product-root {
+    padding-top: 80px;
+}
+
+.product-title {
+    font-size: 2.8rem;
+    font-weight: 500;
+}
+
+.product-intro {
+    margin-top: 24px;
+    font-size: 1.2rem;
+    color: #9aa4ad;
+    max-width: 640px;
+}
+
+.product-block {
+    margin-top: 64px;
+}
+
+.product-block h2 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+.product-list {
+    list-style: none;
+    padding-left: 0;
+    max-width: 720px;
+}
+
+.product-list li {
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    color: #cad8e3;
+    line-height: 1.6;
+}
+
+.product-list li::before {
+    content: "— ";
+    color: #00a4ff;
+}
+
+.product-note {
+    margin-top: 72px;
+    font-size: 0.9rem;
+    color: #6f7a82;
+    max-width: 720px;
+}

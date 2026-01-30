@@ -1,0 +1,74 @@
+/* =========================
+   CTA LINK GLOBAL
+   ========================= */
+
+.cta-global {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    text-decoration: none;
+    color: #00a4ff;
+    position: relative;
+}
+
+.cta-global::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: #00a4ff;
+    transition: width 0.25s ease;
+}
+
+.cta-global:hover::after {
+    width: 100%;
+}
+
+.cta-arrow {
+    transition: transform 0.25s ease;
+}
+
+/* =========================
+   SCROLL REVEAL
+   ========================= */
+
+.reveal {
+    --reveal-y: 32px;
+
+    opacity: 0;
+    transform: translateY(var(--reveal-y)) scale(0.95);
+    transition:
+        opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+/* =========================
+   KEYFRAMES
+   ========================= */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

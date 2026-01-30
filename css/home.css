@@ -1,0 +1,213 @@
+/* =========================
+   HOME — HERO
+   ========================= */
+
+.home-root {
+    padding-top: 160px;
+    position: relative;
+}
+
+.home-root::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(
+            600px 300px at 20% 20%,
+            rgba(0, 164, 255, 0.08),
+            transparent 60%
+        );
+    pointer-events: none;
+}
+
+.home-hero-inner {
+    animation: fadeUp 0.8s ease-out both;
+}
+
+.home-title {
+    font-size: 3rem;
+    font-weight: 500;
+    line-height: 1.15;
+    max-width: 900px;
+}
+
+.home-subtitle {
+    margin-top: 28px;
+    font-size: 1.05rem;
+    color: #9aa4ad;
+    max-width: 760px;
+}
+
+/* CTA */
+
+.home-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 48px;
+    font-size: 0.95rem;
+    text-decoration: none;
+    color: #00a4ff;
+    position: relative;
+}
+
+.home-cta::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: #00a4ff;
+    transition: width 0.25s ease;
+}
+
+.home-cta:hover::after {
+    width: 100%;
+}
+
+.home-cta:hover,
+.cta-global:hover {
+    text-shadow: 0 0 12px var(--accent-blue-soft);
+}
+
+.home-cta:hover .cta-arrow {
+    transform: translateX(4px);
+}
+
+/* =========================
+   HOME — SECTIONS
+   ========================= */
+
+.home-problem {
+    margin-top: 210px;
+}
+
+.home-section-title {
+    font-size: 1.7rem;
+    font-weight: 500;
+    max-width: 820px;
+}
+
+.home-section-text {
+    margin-top: 24px;
+    font-size: 0.95rem;
+    color: #9aa4ad;
+    max-width: 760px;
+}
+
+/* =========================
+   HOME — DIFFERENTIATION
+   ========================= */
+
+.home-difference {
+    margin-top: 160px;
+}
+
+.home-diff-list {
+    margin-top: 64px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.home-diff-item {
+    padding: 36px 32px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.03),
+        rgba(255, 255, 255, 0.01)
+    );
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.home-diff-item:hover {
+    transform: translateY(calc(var(--reveal-y) - 6px));
+    border-color: rgba(0, 164, 255, 0.4);
+
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.08),
+        0 12px 32px rgba(255, 255, 255, 0.06);
+}
+
+.home-diff-item h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 14px;
+    transition:
+        color 0.25s ease,
+        text-shadow 0.25s ease;
+}
+
+.home-diff-item:hover h3 {
+    color: var(--accent-blue);
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.35);
+}
+
+.home-diff-item p {
+    font-size: 0.9rem;
+    color: #9aa4ad;
+    line-height: 1.6;
+}
+
+/* =========================
+   HOME — AUDIENCE
+   ========================= */
+
+.home-audience {
+    margin-top: 160px;
+}
+
+.home-audience-list {
+    margin-top: 36px;
+    list-style: none;
+    padding-left: 0;
+}
+
+.home-audience-list li {
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+    color: #cad8e3;
+}
+
+.home-audience-list li::before {
+    content: "→ ";
+    color: #00a4ff;
+}
+
+/* =========================
+   HOME — CLOSE
+   ========================= */
+
+.home-direction {
+    margin-top: 180px;
+    margin-bottom: 200px;
+}
+
+.home-direction-text {
+    font-size: 1rem;
+    color: #cad8e3;
+    max-width: 760px;
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 1024px) {
+    .home-diff-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .home-diff-list {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
