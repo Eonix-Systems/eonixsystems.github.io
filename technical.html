@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical – Eonix Systems</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/EONIX SYSTEMS LOGO .png" type="image/png">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="nav-root">
+        <div class="nav-logo">
+            <img src="assets/EONIX SYSTEMS LOGO .png" alt="Eonix Systems logo">
+        </div>
+
+        <div class="nav-links">
+            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link" href="product.html">Product</a>
+            <a class="nav-link nav-active" href="technical.html">Technical</a>
+            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link" href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <!-- TECHNICAL PAGE -->
+    <section class="technical-root page-section">
+
+        <!-- HERO -->
+        <h1 class="technical-title">Technical Architecture</h1>
+
+        <p class="technical-intro">
+            The Eonix Smart PDS is engineered as a layered power architecture that
+            combines fast analog regulation, hardware-enforced protection, and
+            digitally supervised control and telemetry.
+        </p>
+
+        <p class="technical-intro">
+            All safety-critical behavior is guaranteed in hardware. Software
+            configures operating limits, aggregates telemetry, and provides
+            system-level visibility.
+        </p>
+
+        <!-- INPUT POWER ARCHITECTURE -->
+        <div class="technical-block">
+            <h2>Input Power Architecture</h2>
+
+            <p>
+                The system accepts a wide input voltage range to support common
+                battery packs, adapters, and industrial power sources.
+            </p>
+
+            <p>
+                Input voltage range: <strong>10 V to 25 V</strong>
+            </p>
+
+            <p>
+                Hardware under-voltage and over-voltage cutoffs are enforced at
+                the input stage. When input limits are violated, the system
+                disconnects loads deterministically to protect downstream
+                electronics.
+            </p>
+        </div>
+
+        <!-- PROTECTION MODEL -->
+        <div class="technical-block">
+            <h2>Protection & Fault Handling</h2>
+
+            <p>
+                Protection mechanisms operate independently of firmware execution
+                and communication state.
+            </p>
+
+            <p>
+                Each channel implements hardware-enforced over-current and
+                short-circuit protection. Faults are isolated at the channel
+                level and do not propagate across the system.
+            </p>
+
+            <p>
+                Protection events are latched, timestamped, and reported to the
+                supervisory controller for user visibility and diagnostics.
+            </p>
+        </div>
+
+        <!-- POWER REGULATION -->
+        <div class="technical-block">
+            <h2>Power Regulation & Channel Control</h2>
+
+            <p>
+                Output channels are designed around fast analog control loops
+                to ensure stable voltage and current regulation under dynamic
+                load conditions.
+            </p>
+
+            <p>
+                Where applicable, channels support programmable CC/CV behavior.
+                Current limiting is enforced in hardware, not via firmware polling.
+            </p>
+
+            <p>
+                Each channel can be individually enabled, disabled, and
+                configured within predefined safe operating boundaries.
+            </p>
+        </div>
+
+        <!-- TELEMETRY -->
+        <div class="technical-block">
+            <h2>Telemetry & Measurement</h2>
+
+            <p>
+                The system continuously measures voltage and current on the
+                input and on each output channel.
+            </p>
+
+            <p>
+                Telemetry data is sampled, aggregated, and made available to
+                the user in real time. Electrical state is never inferred —
+                it is directly measured.
+            </p>
+        </div>
+
+        <!-- CONNECTIVITY -->
+        <div class="technical-block">
+            <h2>Connectivity & User Interface</h2>
+
+            <p>
+                A wireless Bluetooth interface provides live access to system
+                telemetry and configuration from a mobile device.
+            </p>
+
+            <p>
+                Users can view real-time voltage and current data, enable or
+                disable channels, and receive immediate feedback on system
+                state and fault conditions.
+            </p>
+        </div>
+
+        <!-- LOGGING & ALERTS -->
+        <div class="technical-block">
+            <h2>Data Logging, Alerts & Visualization</h2>
+
+            <p>
+                Telemetry data can be logged over time to capture system behavior
+                during operation, testing, or fault events.
+            </p>
+
+            <p>
+                Logged data is visualized as time-series graphs. Protection
+                events and limit violations are explicitly marked on graphs
+                to correlate electrical behavior with system faults.
+            </p>
+
+            <p>
+                When a fault or abnormal condition occurs, the system generates
+                immediate alerts to the user through the connected interface.
+            </p>
+        </div>
+
+        <!-- NOTE -->
+        <div class="technical-note">
+            <p>
+                Detailed electrical limits, channel ratings, protection thresholds,
+                timing characteristics, and block diagrams will be published as
+                the platform completes validation and characterization.
+            </p>
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer-root">
+        <div class="footer-inner">
+            <div class="footer-left">
+                <p class="footer-brand">Eonix Systems</p>
+            </div>
+
+            <div class="footer-right">
+                <a class="footer-link" href="technical.html">Technical</a>
+                <a class="footer-link" href="contact.html">Contact</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 Eonix Systems. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
