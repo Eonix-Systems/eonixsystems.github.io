@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://eonixsystems.github.io/sitemap.xml
+Sitemap: https://eonixsystems.com/sitemap.xml
