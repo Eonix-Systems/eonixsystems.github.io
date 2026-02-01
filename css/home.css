@@ -2,197 +2,287 @@
    HOME — HERO
    ========================= */
 
-.home-root {
-    padding-top: 160px;
-    position: relative;
-}
+/* =========================
+   HOME — HERO & SECTIONS
+   ========================= */
 
-.home-root::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(
-            600px 300px at 20% 20%,
-            rgba(0, 164, 255, 0.08),
-            transparent 60%
-        );
-    pointer-events: none;
+.home-root {
+    /* Flexbox Centering Strategy (v2) */
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding-top: 0;
+    /* Let flexbox handle vertical alignment */
+    padding-bottom: 60px;
+
+    position: relative;
+    text-align: center;
 }
 
 .home-hero-inner {
-    animation: fadeUp 0.8s ease-out both;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
 }
 
+/* Standard spacing for sections */
+.page-section {
+    margin-bottom: 160px;
+    padding: 0 24px;
+}
+
+/* Updated Text Styles */
 .home-title {
-    font-size: 3rem;
-    font-weight: 500;
-    line-height: 1.15;
-    max-width: 900px;
+    font-size: 4.5rem;
+    /* Bigger */
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 32px;
+    background: linear-gradient(180deg, #fff, #a0a0a0);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* Stronger text glow */
+    text-shadow: 0 0 40px rgba(0, 164, 255, 0.25);
 }
 
 .home-subtitle {
-    margin-top: 28px;
-    font-size: 1.05rem;
-    color: #9aa4ad;
-    max-width: 760px;
+    font-size: 1.35rem;
+    /* Larger */
+    color: #b0b8c1;
+    /* Lighter/Cleaner */
+    max-width: 800px;
+    margin: 0 auto 64px;
+    font-weight: 400;
+    line-height: 1.6;
 }
 
-/* CTA */
+/* HERO ACTIONS */
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 40px;
+}
 
-.home-cta {
+/* Restore Original Blue Button "Blue Box" */
+.btn-primary {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    margin-top: 48px;
-    font-size: 0.95rem;
+    gap: 12px;
+    padding: 14px 32px;
+
+    /* Slightly more visible blue fill */
+    background: rgba(0, 164, 255, 0.15);
+    border: 1px solid var(--accent-primary);
+    color: var(--accent-primary);
+
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.3s ease;
     text-decoration: none;
-    color: #00a4ff;
+}
+
+.btn-primary:hover {
+    background: var(--accent-primary);
+    color: #000;
+    box-shadow: 0 0 25px var(--accent-glow);
+}
+
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 32px;
+    background: transparent;
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-secondary:hover {
+    border-color: var(--text-primary);
+    color: var(--text-primary);
+}
+
+
+/* CTA at bottom needs to be glowing and animated */
+.home-cta {
     position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 40px;
+    background: rgba(0, 164, 255, 0.05);
+    /* Very subtle fill */
+    border: 1px solid var(--accent-primary);
+    color: var(--accent-primary);
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    margin-top: 32px;
+    /* Ensure spacing */
+}
+
+.home-cta:hover {
+    background: rgba(0, 164, 255, 0.1);
+    box-shadow: 0 0 25px var(--accent-glow), inset 0 0 10px var(--accent-glow);
+    text-shadow: 0 0 8px var(--accent-primary);
 }
 
 .home-cta::after {
-    content: "";
+    content: '';
     position: absolute;
-    bottom: -4px;
+    bottom: 0;
     left: 0;
-    width: 0;
-    height: 1px;
-    background-color: #00a4ff;
-    transition: width 0.25s ease;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-primary);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s ease;
 }
 
 .home-cta:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* DIAGRAM */
+.hero-diagram-container {
+    width: 95%;
+    /* Responsive full width */
+    max-width: 1600px;
+    /* Much wider max-width */
+    height: 600px;
+    /* Taller to accomodate */
+
+    margin: 0 auto;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    /* Hide internal spill */
+    background: radial-gradient(circle at center, rgba(0, 164, 255, 0.05), transparent 70%);
+
+    /* Mobile Interaction */
+    touch-action: pan-x pan-y;
+}
+
+@media (max-width: 768px) {
+    .hero-diagram-container {
+        height: 400px;
+        overflow-x: auto;
+        /* Enable scroll if content is too wide */
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Ensure canvas is large enough to be readable even inside the scroll */
+    #systemCanvas {
+        min-width: 800px;
+        /* Force minimum width to prevent shrinking */
+        height: 100%;
+    }
+}
+
+#systemCanvas {
     width: 100%;
-}
-
-.home-cta:hover,
-.cta-global:hover {
-    text-shadow: 0 0 12px var(--accent-blue-soft);
-}
-
-.home-cta:hover .cta-arrow {
-    transform: translateX(4px);
+    height: 100%;
+    display: block;
 }
 
 /* =========================
    HOME — SECTIONS
    ========================= */
 
-.home-problem {
-    margin-top: 210px;
+.page-section {
+    margin-bottom: 160px;
+    padding: 0 24px;
 }
 
 .home-section-title {
-    font-size: 1.7rem;
-    font-weight: 500;
-    max-width: 820px;
+    font-size: 2.2rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 48px;
 }
 
 .home-section-text {
-    margin-top: 24px;
-    font-size: 0.95rem;
-    color: #9aa4ad;
-    max-width: 760px;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto 24px;
+    text-align: center;
+    line-height: 1.7;
 }
 
 /* =========================
-   HOME — DIFFERENTIATION
+   DIFFERENTIATION
    ========================= */
 
-.home-difference {
-    margin-top: 160px;
-}
-
 .home-diff-list {
-    margin-top: 64px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .home-diff-item {
-    padding: 36px 32px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    background: linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0.03),
-        rgba(255, 255, 255, 0.01)
-    );
-
-    transition:
-        transform 0.25s ease,
-        border-color 0.25s ease,
-        box-shadow 0.25s ease;
-}
-
-.home-diff-item:hover {
-    transform: translateY(calc(var(--reveal-y) - 6px));
-    border-color: rgba(0, 164, 255, 0.4);
-
-    box-shadow:
-        0 0 0 1px rgba(255, 255, 255, 0.08),
-        0 12px 32px rgba(255, 255, 255, 0.06);
+    padding: 40px;
+    border-radius: 8px;
+    text-align: left;
 }
 
 .home-diff-item h3 {
-    font-size: 1rem;
-    font-weight: 500;
-    margin-bottom: 14px;
-    transition:
-        color 0.25s ease,
-        text-shadow 0.25s ease;
-}
-
-.home-diff-item:hover h3 {
-    color: var(--accent-blue);
-    text-shadow: 0 0 12px rgba(255, 255, 255, 0.35);
+    font-size: 1.25rem;
+    margin-bottom: 16px;
+    color: var(--text-primary);
 }
 
 .home-diff-item p {
-    font-size: 0.9rem;
-    color: #9aa4ad;
-    line-height: 1.6;
-}
-
-/* =========================
-   HOME — AUDIENCE
-   ========================= */
-
-.home-audience {
-    margin-top: 160px;
-}
-
-.home-audience-list {
-    margin-top: 36px;
-    list-style: none;
-    padding-left: 0;
-}
-
-.home-audience-list li {
-    margin-bottom: 16px;
     font-size: 0.95rem;
-    color: #cad8e3;
-}
-
-.home-audience-list li::before {
-    content: "→ ";
-    color: #00a4ff;
+    color: var(--text-secondary);
 }
 
 /* =========================
-   HOME — CLOSE
+   AUDIENCE
    ========================= */
 
-.home-direction {
-    margin-top: 180px;
-    margin-bottom: 200px;
+.audience-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
-.home-direction-text {
-    font-size: 1rem;
-    color: #cad8e3;
-    max-width: 760px;
+.audience-item {
+    padding: 32px;
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.audience-item h4 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: var(--accent-primary);
+}
+
+.audience-item p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
 }
 
 /* =========================
@@ -200,14 +290,17 @@
    ========================= */
 
 @media (max-width: 1024px) {
-    .home-diff-list {
-        grid-template-columns: repeat(2, 1fr);
+    .home-title {
+        font-size: 2.5rem;
     }
-}
 
-@media (max-width: 640px) {
-    .home-diff-list {
+    .home-diff-list,
+    .audience-grid {
         grid-template-columns: 1fr;
-        gap: 24px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: center;
     }
 }

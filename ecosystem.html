@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Explore the Eonix Systems power ecosystem - modular, intelligent hardware modules for robotics, AGVs, and embedded systems with real-time telemetry and protection.">
+    <meta property="og:title" content="Power Ecosystem | Eonix Systems">
+    <meta property="og:description"
+        content="Modular, plug-and-play power architecture with intelligent protection and telemetry.">
+    <title>Ecosystem | Eonix Systems</title>
+
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/base.css?v=5">
+    <link rel="stylesheet" href="css/layout.css?v=5">
+    <link rel="stylesheet" href="css/nav.css?v=5">
+    <link rel="stylesheet" href="css/animations.css?v=5">
+    <link rel="stylesheet" href="css/footer.css?v=5">
+    <link rel="stylesheet" href="css/home.css?v=5">
+    <link rel="stylesheet" href="css/product.css?v=5">
+    <link rel="icon" href="assets/EONIX SYSTEMS LOGO .png" type="image/png">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="nav-root">
+        <div class="nav-inner">
+            <div class="nav-logo">
+                <img src="assets/EONIX SYSTEMS LOGO .png" alt="Eonix Systems logo">
+            </div>
+
+            <div class="nav-links">
+                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link nav-active" href="ecosystem.html">Ecosystem</a>
+                <a class="nav-link" href="product.html">Product</a>
+                <a class="nav-link" href="about.html">About</a>
+                <a class="nav-link" href="contact.html">Contact</a>
+            </div>
+
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="page-wrapper">
+
+        <!-- HERO -->
+        <section class="page-section" style="padding-top: 120px;">
+            <div class="home-hero-inner reveal">
+                <h1 class="home-title">
+                    The <span class="text-accent">Ecosystem</span>
+                </h1>
+                <p class="home-subtitle">
+                    A modular, plug-and-play architecture where every module is electrically independent,
+                    communicating, and safety-aware.
+                </p>
+            </div>
+
+            <!-- DIAGRAM CONTAINER -->
+            <!-- Added CSS filter to container for blur effect as requested, though canvas itself is clear -->
+            <div class="hero-diagram-container glow-hover glass-panel reveal reveal-scale" id="hero-diagram"
+                style="margin-bottom: 80px; backdrop-filter: blur(10px);">
+                <canvas id="systemCanvas"></canvas>
+                <div class="diagram-overlay"></div>
+
+                <!-- CONTROL BUTTONS -->
+                <div class="diagram-controls mode-ac" id="power-controls"
+                    style="z-index: 999; position: absolute; bottom: 24px; right: 24px;">
+                    <div class="toggle-indicator"></div>
+                    <button class="control-btn" onclick="setPowerMode('AC')">AC</button>
+                    <button class="control-btn" onclick="setPowerMode('DC')">DC</button>
+                </div>
+            </div>
+
+            <!-- ECOSYSTEM MODULES -->
+            <section class="product-block reveal">
+                <h2 class="text-accent ecosystem-modules-header">Ecosystem Modules</h2>
+                <div class="product-capabilities">
+                    <!-- LINKED CARD: PDS -->
+                    <div class="capability-card glow-hover" onclick="window.location.href='product.html?tab=pds'"
+                        style="cursor: pointer; border-color: var(--accent-primary);">
+                        <h3>Smart PDS</h3>
+                        <p>The central hub. 10-24V Input. Aggregates telemetry, enforces global protection, and acts as
+                            the communication gateway.</p>
+                    </div>
+
+                    <!-- LINKED CARD: AC-DC -->
+                    <div class="capability-card glow-hover" onclick="window.location.href='product.html?tab=acdc'"
+                        style="cursor: pointer;">
+                        <h3>AC-DC Module</h3>
+                        <p>Primary Power Stage. Delivers stabilized DC bus voltage to the PDS, featuring active
+                            telemetry and hardware-level fault monitoring.</p>
+                    </div>
+
+                    <!-- LINKED CARD: BMS -->
+                    <div class="capability-card glow-hover" onclick="window.location.href='product.html?tab=bms'"
+                        style="cursor: pointer;">
+                        <h3>Battery & BMS</h3>
+                        <p>Smart energy storage with integrated protection and state-of-charge reporting.</p>
+                    </div>
+
+                    <!-- LINKED CARD: SMART FLOW -->
+                    <div class="capability-card glow-hover" onclick="window.location.href='product.html?tab=flow'"
+                        style="cursor: pointer;">
+                        <h3>Smart Flow</h3>
+                        <p>Intelligent Source Arbitrator. Actively regulates output and manages instant failover to
+                            secondary sources, ensuring zero-downtime operation.</p>
+                    </div>
+                </div>
+            </section>
+
+        </section>
+
+    </main>
+
+    <footer class="footer-root">
+        <div class="footer-inner">
+            <div class="footer-left">
+                <p class="footer-brand">Eonix Systems</p>
+                <p class="footer-tagline">Power. Intelligent. Protected.</p>
+            </div>
+
+            <div class="footer-right">
+                <a class="footer-link" href="ecosystem.html">Ecosystem</a>
+                <a class="footer-link" href="product.html">Product</a>
+                <a class="footer-link" href="contact.html">Contact</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 Eonix Systems Pvt. Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/scroll-reveal.js?v=5"></script>
+    <script src="js/nav.js?v=5"></script>
+    <script src="js/diagram.js?v=5"></script>
+
+</body>
+
+</html>

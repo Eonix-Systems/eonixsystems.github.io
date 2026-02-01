@@ -3,38 +3,57 @@
 }
 
 .about-title {
-    font-size: 2.2rem;
+    font-size: 3rem;
     font-weight: 500;
-    color: #ffffff;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
 }
 
 .about-intro {
-    margin-top: 24px;
-    font-size: 1rem;
-    color: #b8b5b5;
-    max-width: 720px;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 800px;
+    line-height: 1.6;
+    margin-bottom: 64px;
 }
 
 .about-block {
-    margin-top: 64px;
-    max-width: 800px;
+    margin-top: 48px;
+    padding: 40px;
+    max-width: 900px;
+    border-radius: 16px;
+    border: 1px solid var(--border-subtle);
 }
 
 .about-block h2 {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 500;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
+    color: var(--text-primary);
 }
 
 .about-block p {
-    font-size: 0.95rem;
-    color: #b8b5b5;
-    line-height: 1.6;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 16px;
+}
+
+.about-block p:last-child {
+    margin-bottom: 0;
+}
+
+.about-block strong {
+    color: var(--text-primary);
+    font-weight: 600;
 }
 
 .about-note {
     margin-top: 80px;
     font-size: 0.95rem;
-    color: #6f7a82;
-    max-width: 720px;
+    color: var(--text-muted);
+    font-style: italic;
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 24px;
+    max-width: 900px;
 }

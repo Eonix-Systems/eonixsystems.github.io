@@ -1,74 +1,68 @@
 /* =========================
-   CTA LINK GLOBAL
+   SCROLL REVEAL — VARIANTS
    ========================= */
 
-.cta-global {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.95rem;
-    text-decoration: none;
-    color: #00a4ff;
-    position: relative;
-}
-
-.cta-global::after {
-    content: "";
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background-color: #00a4ff;
-    transition: width 0.25s ease;
-}
-
-.cta-global:hover::after {
-    width: 100%;
-}
-
-.cta-arrow {
-    transition: transform 0.25s ease;
-}
-
-/* =========================
-   SCROLL REVEAL
-   ========================= */
-
+/* Base reveal stays as-is */
 .reveal {
-    --reveal-y: 32px;
-
+    --reveal-y: 16px;
     opacity: 0;
-    transform: translateY(var(--reveal-y)) scale(0.95);
+    transform: translateY(var(--reveal-y));
     transition:
-        opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        opacity 0.45s ease-out,
+        transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 .reveal.is-visible {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
 }
 
+/* Fade + slide from left */
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-32px);
+}
+
+.reveal-left.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Fade + slide from right */
+.reveal-right {
+    opacity: 0;
+    transform: translateX(32px);
+}
+
+.reveal-right.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Scale + fade (good for cards) */
+.reveal-scale {
+    opacity: 0;
+    transform: scale(0.96);
+}
+
+.reveal-scale.is-visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Stagger helper (delay via CSS variable) */
+.reveal[data-delay] {
+    transition-delay: var(--delay, 0ms);
+}
+
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-    .reveal {
+    .reveal,
+    .reveal-left,
+    .reveal-right,
+    .reveal-scale {
         opacity: 1;
         transform: none;
         transition: none;
-    }
-}
-
-/* =========================
-   KEYFRAMES
-   ========================= */
-
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
     }
 }

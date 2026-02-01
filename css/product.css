@@ -1,18 +1,35 @@
+/* =========================
+   PRODUCT — ROOT
+   ========================= */
+
 .product-root {
+    max-width: 1400px;
     padding-top: 80px;
+}
+
+.product-hero {
+    max-width: 900px;
+    margin-top: 40px;
+    margin-bottom: 80px;
 }
 
 .product-title {
     font-size: 2.8rem;
     font-weight: 500;
+    max-width: 820px;
 }
 
 .product-intro {
     margin-top: 24px;
     font-size: 1.2rem;
     color: #9aa4ad;
-    max-width: 640px;
+    max-width: 720px;
 }
+
+
+/* =========================
+   PRODUCT — CONTENT BLOCKS
+   ========================= */
 
 .product-block {
     margin-top: 64px;
@@ -39,7 +56,7 @@
 
 .product-list li::before {
     content: "— ";
-    color: #00a4ff;
+    color: var(--accent-blue);
 }
 
 .product-note {
@@ -47,4 +64,346 @@
     font-size: 0.9rem;
     color: #6f7a82;
     max-width: 720px;
+}
+
+
+/* =========================
+   PRODUCT — CAPABILITIES
+   ========================= */
+
+.product-capabilities {
+    margin-top: 120px;
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 48px;
+}
+
+.capability-card {
+    position: relative;
+    padding: 36px 40px;
+    width: 100%;
+    min-height: 160px;
+    cursor: pointer;
+    /* All are links now */
+
+    border-radius: 16px;
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.03),
+            rgba(255, 255, 255, 0.01));
+
+    /* Default Blue Styling as requested */
+    border: 1px solid var(--accent-primary);
+    box-shadow: 0 0 15px rgba(0, 164, 255, 0.05);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease,
+        background 0.4s ease;
+}
+
+.capability-card::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+
+    background: radial-gradient(600px circle at 0% 0%,
+            rgba(0, 164, 255, 0.12),
+            transparent 40%);
+
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.capability-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(0, 164, 255, 0.4);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.6),
+        0 0 40px rgba(0, 164, 255, 0.25);
+}
+
+.capability-card:hover::before {
+    opacity: 1;
+}
+
+.capability-card h3 {
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.capability-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+    .product-capabilities {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
+
+
+/* =========================
+   PRODUCT — ARCHITECTURE
+   ========================= */
+
+.product-architecture {
+    margin-top: 160px;
+    position: relative;
+}
+
+.arch-wrapper {
+    position: relative;
+    width: 100%;
+    height: 600px;
+}
+
+
+/* =========================
+   SVG LAYER (LINES)
+   ========================= */
+
+.arch-svg {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+    display: block;
+
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* POWER LINES */
+
+.power-line {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.65);
+    stroke-width: 3.5;
+
+    stroke-dasharray: 14 8;
+    animation: power-flow 3s linear infinite;
+
+    filter: drop-shadow(0 0 6px rgba(0, 164, 255, 0.35));
+}
+
+/* DATA LINES */
+
+.data-line {
+    fill: none;
+    stroke: #ff3b3b;
+    stroke-width: 2;
+
+    stroke-dasharray: 5 6;
+    animation: data-flow 1.2s linear infinite;
+
+    filter: drop-shadow(0 0 6px rgba(255, 80, 80, 0.4));
+}
+
+@keyframes power-flow {
+    from {
+        stroke-dashoffset: 0;
+    }
+
+    to {
+        stroke-dashoffset: -40;
+    }
+}
+
+@keyframes data-flow {
+    from {
+        stroke-dashoffset: 0;
+    }
+
+    to {
+        stroke-dashoffset: -28;
+    }
+}
+
+.power-line,
+.data-line {
+    pointer-events: stroke;
+}
+
+
+/* =========================
+   ARCHITECTURE BLOCKS
+   ========================= */
+
+.arch-node {
+    position: absolute;
+    z-index: 2;
+
+    padding: 18px 22px;
+    border-radius: 12px;
+
+    background: rgba(10, 12, 14, 0.85);
+    border: 1px solid var(--border-subtle);
+
+    font-size: 0.85rem;
+    cursor: pointer;
+
+    /* 🔧 ALIGNMENT FIX */
+    transform: translate(-50%, -50%);
+
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.06),
+        0 0 18px rgba(0, 164, 255, 0.08);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.arch-node:hover {
+    transform: translate(-50%, -56%);
+    border-color: var(--accent-blue);
+    box-shadow:
+        0 12px 32px rgba(0, 0, 0, 0.6),
+        0 0 24px var(--accent-blue-soft);
+}
+
+
+/* =========================
+   TOOLTIP
+   ========================= */
+
+.arch-tooltip {
+    position: fixed;
+    z-index: 10000;
+    pointer-events: none;
+
+    max-width: 220px;
+    padding: 12px 14px;
+
+    background: #0a0c0e;
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+
+    backdrop-filter: blur(6px);
+
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.hero-network-bg {
+    position: absolute;
+    inset: -20% -30% -20% 40%;
+    z-index: 0;
+
+    background-image: url("../assets/network.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1200px;
+
+    opacity: 0.25;
+    filter: blur(0.2px);
+
+    animation: network-drift 40s linear infinite;
+    pointer-events: none;
+}
+
+.product-hero {
+    position: relative;
+}
+
+.product-hero>* {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes network-drift {
+    from {
+        transform: rotate(0deg) scale(1);
+    }
+
+    to {
+        transform: rotate(360deg) scale(1.05);
+    }
+}
+
+/* DIAGRAM CONTROLS */
+.diagram-controls {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    display: flex;
+    z-index: 999;
+
+    /* Container Style */
+    background: rgba(10, 12, 14, 0.95);
+    padding: 4px;
+    border-radius: 30px;
+    /* Pill shape */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    width: 160px;
+    /* Fixed width for stability */
+    height: 44px;
+    position: relative;
+    /* For absolute indicator */
+}
+
+/* The Sliding Blue Indicator */
+.toggle-indicator {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: calc(50% - 4px);
+    height: calc(100% - 8px);
+    background: var(--accent-primary, #00a4ff);
+    border-radius: 24px;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 0 15px rgba(0, 164, 255, 0.4);
+    z-index: 1;
+}
+
+/* State: DC Mode Position */
+.diagram-controls.mode-dc .toggle-indicator {
+    transform: translateX(100%);
+    /* Slides to the right */
+}
+
+/* Button Text Layer */
+.control-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    z-index: 2;
+    /* Text above indicator */
+    cursor: pointer;
+    transition: color 0.3s;
+    border-radius: 24px;
+}
+
+/* Text becomes white when active */
+.mode-ac .control-btn:first-of-type,
+.mode-dc .control-btn:last-of-type {
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.control-btn:hover {
+    color: #fff;
 }

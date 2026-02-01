@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Smart PDS, AC-DC modules, and intelligent power components for robotics and embedded systems. Industrial-grade protection with real-time telemetry.">
+    <meta property="og:title" content="Products | Eonix Systems">
+    <meta property="og:description"
+        content="Explore our industrial-grade power distribution modules with hardware-first safety and system telemetry.">
+    <title>Product | Eonix Systems</title>
+
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/base.css?v=5">
+    <link rel="stylesheet" href="css/layout.css?v=5">
+    <link rel="stylesheet" href="css/nav.css?v=5">
+    <link rel="stylesheet" href="css/animations.css?v=5">
+    <link rel="stylesheet" href="css/footer.css?v=5">
+    <link rel="stylesheet" href="css/product.css?v=5">
+    <link rel="stylesheet" href="css/home.css?v=5">
+    <link rel="icon" href="assets/EONIX SYSTEMS LOGO .png" type="image/png">
+
+    <style>
+        /* Custom Tab Styles for Product Page */
+        .tabs-header {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 48px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 16px 24px;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            position: relative;
+            font-family: 'Outfit', sans-serif;
+            transition: color 0.2s ease;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .tab-btn.active {
+            color: var(--accent-primary);
+            font-weight: 500;
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent-primary);
+            box-shadow: 0 -2px 10px var(--accent-glow);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="nav-root">
+        <div class="nav-inner">
+            <div class="nav-logo">
+                <img src="assets/EONIX SYSTEMS LOGO .png" alt="Eonix Systems logo">
+            </div>
+
+            <div class="nav-links">
+                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link" href="ecosystem.html">Ecosystem</a>
+                <a class="nav-link nav-active" href="product.html">Product</a>
+                <a class="nav-link" href="about.html">About</a>
+                <a class="nav-link" href="contact.html">Contact</a>
+            </div>
+
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="page-wrapper">
+
+        <!-- HERO -->
+        <section class="product-root page-section">
+            <div class="product-hero reveal">
+                <h1 class="product-title">
+                    Hardware <span class="text-accent">Products</span>
+                </h1>
+                <p class="product-intro">
+                    Industrial-grade power protection and distribution modules.
+                </p>
+            </div>
+
+            <!-- TABS -->
+            <div class="tabs-container reveal">
+                <div class="tabs-header">
+                    <button class="tab-btn active" onclick="openTab(event, 'pds-tab')">Smart PDS</button>
+                    <button class="tab-btn" onclick="openTab(event, 'acdc-tab')">AC-DC Module</button>
+                    <button class="tab-btn" onclick="openTab(event, 'flow-tab')">Smart Flow</button>
+                    <button class="tab-btn" onclick="openTab(event, 'bms-tab')">Smart BMS</button>
+                </div>
+
+                <!-- TAB CONTENT: SMART PDS -->
+                <div id="pds-tab" class="tab-content active">
+
+                    <h2 style="font-size: 1.8rem; margin-bottom: 24px;">Smart Power Distribution System</h2>
+                    <p class="product-intro" style="max-width: 800px; font-size: 1rem; margin-bottom: 48px;">
+                        The brain of the ecosystem. It handles source arbitration, protection, and telemetry
+                        distribution.
+                        Built for robotics, AGVs, and critical embedded systems.
+                    </p>
+
+                    <!-- SPECS GRID -->
+                    <div class="home-diff-list" style="margin-bottom: 64px;">
+                        <div class="home-diff-item glass-panel">
+                            <h3>Input Specs</h3>
+                            <p><strong>Voltage:</strong> 10V – 24V</p>
+                            <p><strong>Current:</strong> 30A Max</p>
+                            <p><strong>Protection:</strong> Reverse Polarity, UVLO (10V), OVLO (25V)</p>
+                        </div>
+
+                        <div class="home-diff-item glass-panel">
+                            <h3>Output Capabilities</h3>
+                            <p><strong>Pass-Through:</strong> 20A (High Current)</p>
+                            <p><strong>Programmable:</strong> 20A Buck (CC/CV)</p>
+                            <p><strong>Logic:</strong> 5V & 3.3V (5A each)</p>
+                        </div>
+
+                        <div class="home-diff-item glass-panel">
+                            <h3>Safety & Control</h3>
+                            <p>Hardware-enforced OCP & SCP. Analog regulation loops. Digital telemetry via BLE/UART.</p>
+                        </div>
+                    </div>
+
+                    <!-- DEEP DIVE SPECS (Imported from old Technical Page) -->
+                    <div class="technical-block">
+                        <h2>Advanced Protection Architecture</h2>
+                        <p>
+                            Protection is layered. Global input protection safeguards the bus, while per-channel fast
+                            OCP
+                            isolates faults preventing system-wide brownouts.
+                        </p>
+                        <div class="spec-list" style="margin-top: 24px; color: var(--text-secondary);">
+                            <p>• <strong>Instant Switchover:</strong> AC to Battery with zero brownout.</p>
+                            <p>• <strong>Hardware First:</strong> Safety limits cannot be overridden by software.</p>
+                            <p>• <strong>Reverse Protection:</strong> Output isolation prevents backfeeding.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- TAB CONTENT: AC-DC MODULE -->
+                <div id="acdc-tab" class="tab-content">
+                    <h2 style="font-size: 1.8rem; margin-bottom: 24px;">AC-DC Power Module</h2>
+                    <p class="product-intro">Content coming soon.</p>
+                </div>
+
+                <!-- TAB CONTENT: SMART FLOW -->
+                <div id="flow-tab" class="tab-content">
+                    <h2 style="font-size: 1.8rem; margin-bottom: 24px;">Smart Flow Arbitrator</h2>
+                    <p class="product-intro">Content coming soon.</p>
+                </div>
+
+                <!-- TAB CONTENT: SMART BMS -->
+                <div id="bms-tab" class="tab-content">
+                    <h2 style="font-size: 1.8rem; margin-bottom: 24px;">Smart BMS</h2>
+                    <p class="product-intro">Content coming soon.</p>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="footer-root">
+        <div class="footer-inner">
+            <div class="footer-left">
+                <p class="footer-brand">Eonix Systems</p>
+                <p class="footer-tagline">Power. Intelligent. Protected.</p>
+            </div>
+
+            <div class="footer-right">
+                <a class="footer-link" href="ecosystem.html">Ecosystem</a>
+                <a class="footer-link" href="product.html">Product</a>
+                <a class="footer-link" href="contact.html">Contact</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 Eonix Systems Pvt. Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/scroll-reveal.js?v=5"></script>
+    <script src="js/nav.js?v=5"></script>
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById(tabName).classList.add("active");
+
+            if (evt) evt.currentTarget.className += " active";
+            else {
+                // If called manually (via URL), find the button and activate it
+                const buttons = document.getElementsByClassName("tab-btn");
+                if (tabName === 'pds-tab') buttons[0].className += " active";
+                if (tabName === 'acdc-tab') buttons[1].className += " active";
+                if (tabName === 'flow-tab') buttons[2].className += " active";
+                if (tabName === 'bms-tab') buttons[3].className += " active";
+            }
+        }
+
+        // Deep Linking Logic
+        document.addEventListener("DOMContentLoaded", () => {
+            const params = new URLSearchParams(window.location.search);
+            const tab = params.get('tab');
+            if (tab === 'pds') openTab(null, 'pds-tab');
+            else if (tab === 'acdc') openTab(null, 'acdc-tab');
+            else if (tab === 'flow') openTab(null, 'flow-tab');
+            else if (tab === 'bms') openTab(null, 'bms-tab');
+        });
+    </script>
+
+</body>
+
+</html>

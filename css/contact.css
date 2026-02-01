@@ -3,33 +3,41 @@
 }
 
 .contact-title {
-    font-size: 2.2rem;
+    font-size: 3rem;
     font-weight: 500;
+    letter-spacing: -0.02em;
 }
 
 .contact-intro {
     margin-top: 24px;
-    font-size: 1rem;
-    color: #9aa4ad;
-    max-width: 760px;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 800px;
+    line-height: 1.6;
 }
 
 .contact-block {
     margin-top: 64px;
+    padding: 40px;
+    max-width: 700px;
+    border-radius: 16px;
+    border: 1px solid var(--border-subtle);
 }
 
 .contact-block h2 {
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     font-weight: 500;
-    margin-bottom: 10px;
+    margin-bottom: 16px;
+    color: var(--text-primary);
 }
 
-.contact-block a {
-    font-size: 0.95rem;
-    text-decoration: none;
-    color: #00a4ff;
+.contact-block p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
 }
 
-.contact-block a:hover {
-    text-decoration: underline;
+.contact-actions {
+    display: flex;
+    gap: 16px;
 }
