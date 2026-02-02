@@ -37,6 +37,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const GRID_SIZE = 40;
 
+    // REFERENCE WIDTH for scaling calculations
+    const REF_WIDTH = 1600;
+
+    function getScale() {
+        return Math.min(canvas.width / REF_WIDTH, 1.0);
+    }
+
+    // Helper: Distance between two points
+    function dist(p1, p2) {
+        return Math.hypot(p2.x - p1.x, p2.y - p1.y);
+    }
+
     // NODES CONFIGURATION
     const NODES = [
         { id: "AC_IN", x: 0.1, y: 0.4, label: "AC SUPPLY", type: "source", w: 120 },
@@ -142,11 +154,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const mx = e.clientX - rect.left;
         const my = e.clientY - rect.top;
 
+        const s = getScale();
         let found = null;
         NODES.forEach(node => {
             const pos = getNodePos(node);
-            const w = node.w;
-            const h = 40;
+            const w = (node.w || 100) * s; // Scale detection width
+            const h = 42 * s;
+            // Larger interaction area for touch/small screens
             if (Math.abs(mx - pos.x) < w / 2 + 10 && Math.abs(my - pos.y) < h / 2 + 10) {
                 found = node;
             }
@@ -168,6 +182,10 @@ document.addEventListener("DOMContentLoaded", () => {
         tip.className = "diagram-tooltip glass-panel";
         tip.textContent = text;
         const pos = getNodePos(hoveredNode);
+
+        const s = getScale();
+        const nodeW = (hoveredNode.w || 100) * s;
+
         Object.assign(tip.style, {
             position: "absolute",
             padding: "8px 12px",
@@ -180,10 +198,10 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         if (pos.x > canvas.width * 0.7) {
-            tip.style.right = (canvas.width - pos.x + hoveredNode.w / 2 + 15) + "px";
+            tip.style.right = (canvas.width - pos.x + nodeW / 2 + 15) + "px";
             tip.style.top = (pos.y - 20) + "px";
         } else {
-            tip.style.left = (pos.x + hoveredNode.w / 2 + 15) + "px";
+            tip.style.left = (pos.x + nodeW / 2 + 15) + "px";
             tip.style.top = (pos.y - 20) + "px";
         }
         overlay.appendChild(tip);
@@ -259,28 +277,45 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function drawMotor(ctx, x, y, w) {
+        // 'w' passed here is already scaled by baseW * s
+        // But the original function used 'w' as diameter of motor roughly
+        // Original node.w for Motor was 60. 
+        // So w here is 60 * scale.
+
         ctx.beginPath(); ctx.arc(x, y, w / 2, 0, Math.PI * 2);
-        ctx.fillStyle = "#111"; ctx.strokeStyle = "#888"; ctx.lineWidth = 2;
+        ctx.fillStyle = "#111"; ctx.strokeStyle = "#888"; ctx.lineWidth = 2 * getScale();
         ctx.fill(); ctx.stroke();
         const angle = time * 0.005;
         ctx.save(); ctx.translate(x, y); ctx.rotate(angle);
         ctx.fillStyle = "#ccc"; ctx.beginPath();
+
+        // Scale inner parts too
+        const bladeW = 8 * getScale();
+        const bladeH = w / 2.2;
+
         for (let i = 0; i < 3; i++) {
-            ctx.rotate((Math.PI * 2) / 3); ctx.rect(-4, -w / 3, 8, w / 2.2);
+            ctx.rotate((Math.PI * 2) / 3); ctx.rect(-bladeW / 2, -w / 3, bladeW, bladeH);
         }
         ctx.fill(); ctx.restore();
-        ctx.beginPath(); ctx.arc(x, y, 6, 0, Math.PI * 2); ctx.fillStyle = "#fff"; ctx.fill();
-        ctx.fillStyle = "#fff"; ctx.font = "12px Inter"; ctx.fillText("Motor", x, y + w / 2 + 15);
+        ctx.beginPath(); ctx.arc(x, y, 6 * getScale(), 0, Math.PI * 2); ctx.fillStyle = "#fff"; ctx.fill();
+
+        ctx.fillStyle = "#fff";
+        ctx.font = `${Math.max(8, 12 * getScale())}px Inter`;
+        ctx.fillText("Motor", x, y + w / 2 + 15 * getScale());
     }
 
     function drawLED(ctx, x, y, w) {
+        // w is 50 * scale
         const pulse = (Math.sin(time * 0.003) + 1) / 2;
         const glowOpacity = 0.2 + pulse * 2.0;
-        ctx.shadowBlur = 15; ctx.shadowColor = `rgba(255, 255, 255, ${glowOpacity})`;
+        ctx.shadowBlur = 15 * getScale(); ctx.shadowColor = `rgba(255, 255, 255, ${glowOpacity})`;
         ctx.beginPath(); ctx.arc(x, y, w / 3.5, 0, Math.PI * 2); ctx.fillStyle = "#ffffff"; ctx.fill();
         ctx.shadowBlur = 0;
-        ctx.beginPath(); ctx.arc(x, y, w / 2.8, 0, Math.PI * 2); ctx.strokeStyle = "#444"; ctx.lineWidth = 1.5; ctx.stroke();
-        ctx.fillStyle = "#fff"; ctx.font = "12px Inter"; ctx.fillText("LED", x, y + w / 2 + 15);
+        ctx.beginPath(); ctx.arc(x, y, w / 2.8, 0, Math.PI * 2); ctx.strokeStyle = "#444"; ctx.lineWidth = 1.5 * getScale(); ctx.stroke();
+
+        ctx.fillStyle = "#fff";
+        ctx.font = `${Math.max(8, 12 * getScale())}px Inter`;
+        ctx.fillText("LED", x, y + w / 2 + 15 * getScale());
     }
 
     // State Animation Values (0.0 to 1.0)
@@ -302,13 +337,21 @@ document.addEventListener("DOMContentLoaded", () => {
             dcAnim = Math.min(dcAnim + SPEED, 1.0);
         }
 
+        const s = getScale();
+
         // Draw Grid
-        ctx.strokeStyle = "rgba(255, 255, 255, 0.03)"; ctx.lineWidth = 1;
-        for (let x = 0; x <= canvas.width; x += GRID_SIZE) {
-            ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
-        }
-        for (let y = 0; y <= canvas.height; y += GRID_SIZE) {
-            ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.03)";
+        ctx.lineWidth = 1 * s;
+        const scaledGrid = GRID_SIZE * s;
+
+        // Optimized grid: if too small, don't draw potentially infinite lines or too dense
+        if (scaledGrid > 5) {
+            for (let x = 0; x <= canvas.width; x += scaledGrid) {
+                ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
+            }
+            for (let y = 0; y <= canvas.height; y += scaledGrid) {
+                ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
+            }
         }
 
         LINKS_DEF.forEach(link => {
@@ -330,32 +373,48 @@ document.addEventListener("DOMContentLoaded", () => {
 
         NODES.forEach(node => {
             const pos = getNodePos(node);
-            if (node.type === "visual-motor") { drawMotor(ctx, pos.x, pos.y, node.w); return; }
-            if (node.type === "visual-led") { drawLED(ctx, pos.x, pos.y, node.w); return; }
+            const baseW = node.w || 100;
+            const w = baseW * s;
+            const h = 42 * s;
 
-            const w = node.w || 100;
-            const h = 42;
+            if (node.type === "visual-motor") { drawMotor(ctx, pos.x, pos.y, w); return; }
+            if (node.type === "visual-led") { drawLED(ctx, pos.x, pos.y, w); return; }
+
             const isHover = (hoveredNode === node);
             ctx.fillStyle = "#0a0c0e";
             ctx.strokeStyle = isHover ? "#00a4ff" : "rgba(255, 255, 255, 0.2)";
-            ctx.lineWidth = isHover ? 2 : 1;
-            if (isHover) { ctx.shadowColor = "#00a4ff"; ctx.shadowBlur = 10; }
-            else { ctx.shadowBlur = 0; }
-            const r = 6;
+            ctx.lineWidth = (isHover ? 2 : 1) * s;
+
+            if (isHover) {
+                ctx.shadowColor = "#00a4ff";
+                ctx.shadowBlur = 10 * s;
+            } else {
+                ctx.shadowBlur = 0;
+            }
+
+            const r = 6 * s;
             ctx.beginPath(); ctx.roundRect(pos.x - w / 2, pos.y - h / 2, w, h, r);
             ctx.fill(); ctx.stroke();
 
             ctx.fillStyle = "#fff";
-            ctx.font = "12px Inter";
+            ctx.font = `${Math.max(8, 12 * s)}px Inter`; // Reduced min from 10 to 8
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
             ctx.shadowBlur = 0;
 
-            if (Array.isArray(node.label)) {
-                ctx.fillText(node.label[0], pos.x, pos.y - 7);
-                ctx.fillText(node.label[1], pos.x, pos.y + 7);
-            } else {
-                ctx.fillText(node.label, pos.x, pos.y);
+            // On very small screens, only show essential labels
+            const showAllLabels = canvas.width >= 500;
+            const essentialNodes = ["AC_IN", "PDS", "LED", "MOTOR"];
+
+            if (showAllLabels || essentialNodes.includes(node.id)) {
+                if (Array.isArray(node.label)) {
+                    // Multiline text spacing
+                    const spacing = 7 * s;
+                    ctx.fillText(node.label[0], pos.x, pos.y - spacing);
+                    ctx.fillText(node.label[1], pos.x, pos.y + spacing);
+                } else {
+                    ctx.fillText(node.label, pos.x, pos.y);
+                }
             }
         });
 
@@ -364,25 +423,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     draw();
 
-    // Helper: Distance between two points
-    function dist(p1, p2) { return Math.hypot(p2.x - p1.x, p2.y - p1.y); }
-
     function drawLine(start, end, link, offset = 0, progress = 1.0) {
         ctx.beginPath();
+        const s = getScale();
 
         // WAVE TYPE (AC Input)
         if (link.type === 'wave') {
             ctx.strokeStyle = "rgba(255, 255, 255, 0.8)";
-            ctx.lineWidth = 2;
+            ctx.lineWidth = 2 * s;
             ctx.setLineDash([]);
 
             const d = dist(start, end);
             const visibleDist = d * progress;
             const angle = Math.atan2(end.y - start.y, end.x - start.x);
 
-            for (let i = 0; i <= visibleDist; i += 2) {
+            const step = 2 * s;
+            const amp = 5 * s;
+
+            for (let i = 0; i <= visibleDist; i += step) {
                 const x = i;
-                const y = Math.sin(i * 0.1 - time * 0.005) * 5;
+                const y = Math.sin(i * (0.1 / s) - time * 0.005) * amp;
                 const rx = start.x + x * Math.cos(angle) - y * Math.sin(angle);
                 const ry = start.y + x * Math.sin(angle) + y * Math.cos(angle);
                 if (i === 0) ctx.moveTo(rx, ry);
@@ -398,8 +458,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Apply Offset
         if (offset !== 0) {
-            if (Math.abs(ex - sx) > Math.abs(ey - sy)) { sy += offset; ey += offset; }
-            else { sx += offset; ex += offset; }
+            const scaledOffset = offset * s;
+            if (Math.abs(ex - sx) > Math.abs(ey - sy)) { sy += scaledOffset; ey += scaledOffset; }
+            else { sx += scaledOffset; ex += scaledOffset; }
         }
 
         // Construct full path segments
@@ -408,7 +469,8 @@ document.addEventListener("DOMContentLoaded", () => {
             link.points.forEach(pt => {
                 let px = pt[0] * canvas.width;
                 let py = pt[1] * canvas.height;
-                if (offset !== 0 && Math.abs(ex - sx) > Math.abs(ey - sy)) py += offset;
+                // Apply offset to waypoints too
+                if (offset !== 0 && Math.abs(ex - sx) > Math.abs(ey - sy)) py += (offset * s);
                 points.push({ x: px, y: py });
             });
         }
@@ -447,14 +509,14 @@ document.addEventListener("DOMContentLoaded", () => {
         // Styling
         if (link.type === "power") {
             ctx.strokeStyle = "rgba(255, 255, 255, 0.75)";
-            ctx.lineWidth = 3;
-            ctx.setLineDash([12, 12]);
+            ctx.lineWidth = 3 * s;
+            ctx.setLineDash([12 * s, 12 * s]);
             const direction = link.dir || 1;
             ctx.lineDashOffset = -time * 0.01 * direction;
         } else {
             ctx.strokeStyle = `rgba(255, 59, 59, 0.9)`;
-            ctx.lineWidth = 2;
-            ctx.setLineDash([5, 5]);
+            ctx.lineWidth = 2 * s;
+            ctx.setLineDash([5 * s, 5 * s]);
             const speed = 0.025;
             ctx.lineDashOffset = -time * speed * (link.dir || 1);
         }

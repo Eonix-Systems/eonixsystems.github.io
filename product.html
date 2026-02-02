@@ -32,6 +32,9 @@
             gap: 24px;
             margin-bottom: 48px;
             border-bottom: 1px solid var(--border-subtle);
+            overflow-x: auto;
+            /* Allow horizontal scroll on mobile */
+            -webkit-overflow-scrolling: touch;
         }
 
         .tab-btn {
@@ -44,6 +47,10 @@
             position: relative;
             font-family: 'Outfit', sans-serif;
             transition: color 0.2s ease;
+            white-space: nowrap;
+            /* Prevent text wrapping */
+            flex-shrink: 0;
+            /* Prevent buttons from shrinking */
         }
 
         .tab-btn:hover {
@@ -84,6 +91,31 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .tabs-header {
+                gap: 8px;
+                margin-bottom: 24px;
+                padding-bottom: 0;
+            }
+
+            .tab-btn {
+                padding: 10px 12px;
+                font-size: 0.85rem;
+            }
+
+            .product-title {
+                font-size: 1.8rem !important;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .tab-btn {
+                padding: 8px 10px;
+                font-size: 0.8rem;
             }
         }
     </style>

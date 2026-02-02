@@ -104,12 +104,21 @@
         --nav-height: 64px;
     }
 
+    .nav-inner {
+        padding: 0 24px;
+        /* Reduce padding on mobile */
+    }
+
     .nav-links {
         position: absolute;
         top: var(--nav-height);
         left: 0;
         width: 100%;
         gap: 0;
+        max-height: calc(100vh - var(--nav-height));
+        /* Prevent overflow */
+        overflow-y: auto;
+        /* Allow scrolling if many items */
 
         flex-direction: column;
         background-color: var(--bg-main);
@@ -124,9 +133,16 @@
 
     .nav-link {
         width: 100%;
-        padding: 20px 48px;
+        padding: 20px 24px;
+        /* Match nav-inner padding */
         border-top: 1px solid var(--border-subtle);
         color: var(--text-primary);
+    }
+
+    /* Fix active state underline on mobile */
+    .nav-active::after {
+        display: none;
+        /* Hide the underline on mobile */
     }
 
     .nav-toggle {

@@ -407,3 +407,62 @@
 .control-btn:hover {
     color: #fff;
 }
+
+/* =========================
+   RESPONSIVE - COMPREHENSIVE
+   ========================= */
+
+@media (max-width: 768px) {
+    .product-root {
+        padding-top: 40px;
+    }
+
+    .product-title {
+        font-size: 2rem;
+    }
+
+    .product-intro {
+        font-size: 1rem;
+    }
+
+    .product-hero {
+        margin-bottom: 40px;
+    }
+
+    /* Make spec grids stack on mobile */
+    .home-diff-list {
+        grid-template-columns: 1fr !important;
+        gap: 16px;
+    }
+
+    .home-diff-item {
+        padding: 24px;
+    }
+
+    .home-diff-item h3 {
+        font-size: 1.1rem;
+    }
+
+    .home-diff-item p {
+        font-size: 0.9rem;
+    }
+
+    /* Capability cards */
+    .product-capabilities {
+        margin-top: 60px;
+        gap: 20px;
+    }
+
+    .capability-card {
+        padding: 24px;
+        min-height: auto;
+    }
+
+    .capability-card h3 {
+        font-size: 1rem;
+    }
+
+    .capability-card p {
+        font-size: 0.85rem;
+    }
+}

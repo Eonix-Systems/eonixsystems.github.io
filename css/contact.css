@@ -41,3 +41,50 @@
     display: flex;
     gap: 16px;
 }
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .contact-root {
+        padding-top: 80px;
+    }
+
+    .contact-title {
+        font-size: 2rem;
+        word-break: break-word;
+    }
+
+    .contact-intro {
+        font-size: 1rem;
+    }
+
+    .contact-block {
+        padding: 24px;
+        margin-top: 48px;
+    }
+
+    .contact-block h2 {
+        font-size: 1.2rem;
+    }
+
+    .contact-block p {
+        font-size: 0.95rem;
+    }
+
+    .contact-actions {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 375px) {
+    .contact-title {
+        font-size: 1.7rem;
+    }
+
+    .contact-intro {
+        font-size: 0.95rem;
+    }
+
+    .contact-block {
+        padding: 20px;
+    }
+}
