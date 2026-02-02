@@ -137,7 +137,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // DC Mode: Discharging (Battery -> BMS -> Smart Flow)
         { from: "BAT", to: "BMS", type: "power", dir: 1, modes: ['DC'] }, // OUT of Battery
-        { from: "BMS", to: "ORING", type: "power", points: [[0.5, 0.65]], dir: 1, modes: ['DC'] },
+        // BMS is at y:0.68. Original was point y:0.65 (diagonal). Fixed to 0.68 (horizontal).
+        { from: "BMS", to: "ORING", type: "power", points: [[0.5, 0.68]], dir: 1, modes: ['DC'] },
 
         // === OUTPUTS ===
         { from: "PDS", to: "LED", type: "power" },
@@ -156,12 +157,9 @@ document.addEventListener("DOMContentLoaded", () => {
             from: "BMS",
             to: "ORING",
             type: "data",
-            // Waypoints: [Start Offset], [Corner], [Vertical Up]
-            // EQUIDISTANT FIX: 
-            // Power Line corners are (0.5, 0.65).
-            // Y-Gap: 0.02 (0.65 -> 0.67) ~21px on 1080p
-            // X-Gap: 0.01 (0.50 -> 0.51) ~19px on 1080p (Accounts for aspect ratio)
-            points: [[0.3, 0.67], [0.51, 0.67], [0.51, 0.4]],
+            // RESTORED: Original Data Path Routing ("Equidistant Fix" style)
+            // Adjusted to y=0.695 (Gap 0.015) to visually match X-Gap (0.01) due to aspect ratio (~1.5)
+            points: [[0.3, 0.695], [0.51, 0.695], [0.51, 0.4]],
             dir: 1,
             modes: ['DC']
         },
@@ -188,8 +186,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Interaction
     canvas.addEventListener("mousemove", (e) => {
         const rect = canvas.getBoundingClientRect();
-        const mx = e.clientX - rect.left;
-        const my = e.clientY - rect.top;
+        const dpr = window.devicePixelRatio || 1;
+        const mx = (e.clientX - rect.left) * dpr;
+        const my = (e.clientY - rect.top) * dpr;
 
         const s = getScale();
         let found = null;
@@ -216,30 +215,42 @@ document.addEventListener("DOMContentLoaded", () => {
         const text = TOOLTIPS[hoveredNode.id] || (Array.isArray(hoveredNode.label) ? hoveredNode.label.join(" ") : hoveredNode.label);
 
         const tip = document.createElement("div");
-        tip.className = "diagram-tooltip glass-panel";
+        tip.className = "diagram-tooltip"; // Removed glass-panel for solid look
         tip.textContent = text;
         const pos = getNodePos(hoveredNode);
 
         const s = getScale();
         const nodeW = (hoveredNode.w || 100) * s;
+        const dpr = window.devicePixelRatio || 1;
+
+        // Convert Canvas Coordinates (Physical) to CSS Coordinates (Logical)
+        const cssX = pos.x / dpr;
+        const cssY = pos.y / dpr;
+        const cssNodeW = nodeW / dpr;
+        const cssCanvasW = canvas.width / dpr;
 
         Object.assign(tip.style, {
             position: "absolute",
             padding: "8px 12px",
             borderRadius: "4px",
             fontSize: "0.85rem",
-            color: "#fff",
+            backgroundColor: "#080a0c", // Solid Dark Background
+            border: "1px solid rgba(0, 164, 255, 0.3)", // Subtle blue border
+            color: "#00a4ff", // Blue Text
             pointerEvents: "none",
             zIndex: "100",
             whiteSpace: "nowrap"
         });
 
+        // Position tooltip close to node (Reduced gap to 8px)
         if (pos.x > canvas.width * 0.7) {
-            tip.style.right = (canvas.width - pos.x + nodeW / 2 + 15) + "px";
-            tip.style.top = (pos.y - 20) + "px";
+            // Right side: align to left of node
+            tip.style.right = (cssCanvasW - cssX + cssNodeW / 2 + 8) + "px";
+            tip.style.top = (cssY - 20) + "px";
         } else {
-            tip.style.left = (pos.x + nodeW / 2 + 15) + "px";
-            tip.style.top = (pos.y - 20) + "px";
+            // Left/Center: align to right of node
+            tip.style.left = (cssX + cssNodeW / 2 + 8) + "px";
+            tip.style.top = (cssY - 20) + "px";
         }
         overlay.appendChild(tip);
     }
