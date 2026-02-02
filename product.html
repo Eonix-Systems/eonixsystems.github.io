@@ -249,7 +249,50 @@
                 <!-- TAB CONTENT: SMART FLOW -->
                 <div id="flow-tab" class="tab-content">
                     <h2 style="font-size: 1.8rem; margin-bottom: 24px;">Smart Flow Arbitrator</h2>
-                    <p class="product-intro">Content coming soon.</p>
+                    <p class="product-intro" style="max-width: 800px; font-size: 1rem; margin-bottom: 48px;">
+                        Intelligent power path controller ensuring seamless redundancy. It acts as an active arbitrator
+                        between multiple power sources, prioritizing stability and efficiency using Ideal Diode OR-ing
+                        technology.
+                    </p>
+
+                    <div class="home-diff-list" style="margin-bottom: 64px;">
+                        <div class="home-diff-item glass-panel glow-hover">
+                            <h3>Architecture</h3>
+                            <p><strong>Topology:</strong> Active Ideal Diode OR-ing</p>
+                            <p><strong>Redundancy:</strong> N+1 Source Redundancy</p>
+                            <p><strong>Switching:</strong> Zero-Cross / Seamless</p>
+                        </div>
+
+                        <div class="home-diff-item glass-panel glow-hover">
+                            <h3>Performance</h3>
+                            <p><strong>Efficiency:</strong> >99% (vs 85% Schottky)</p>
+                            <p><strong>Voltage Drop:</strong> &lt;20mV @ 20A</p>
+                            <p><strong>Thermal:</strong> Cool-running / Passive</p>
+                        </div>
+
+                        <div class="home-diff-item glass-panel glow-hover">
+                            <h3>Intelligent Control</h3>
+                            <p>Automatic source selection based on voltage levels, priority assignment, and health
+                                status.</p>
+                        </div>
+                    </div>
+
+                    <div class="technical-block">
+                        <h2>Why Active OR-ing?</h2>
+                        <p>
+                            Traditional passive diodes burn power as heat (Vf ~0.7V). Our Active OR-ing controller uses
+                            N-Channel MOSFETs to reduce voltage drop to near zero, enabling high-current redundancy
+                            without the thermal penalty.
+                        </p>
+                        <div class="spec-list" style="margin-top: 24px; color: var(--text-secondary);">
+                            <p>• <strong>Reverse Current Blocking:</strong> Prevents battery backfeeding into weak
+                                sources.</p>
+                            <p>• <strong>Source Prioritization:</strong> Intelligently drain auxiliary batteries before
+                                main packs.</p>
+                            <p>• <strong>Oscillation Dampening:</strong> Hysteresis prevents rapid switching between
+                                similar sources.</p>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- TAB CONTENT: SMART BMS -->
