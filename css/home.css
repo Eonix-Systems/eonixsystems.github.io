@@ -163,30 +163,89 @@
 .hero-diagram-container {
     width: 95%;
     max-width: 1600px;
-    height: 500px;
-    /* Fixed height for desktop */
-
     margin: 0 auto;
     border-radius: 16px;
     position: relative;
-    overflow: hidden;
     background: radial-gradient(circle at center, rgba(0, 164, 255, 0.05), transparent 70%);
-    touch-action: pan-x pan-y;
+
+    /* Desktop Default */
+    height: auto;
+    aspect-ratio: 16/9;
+    /* UNIVERSAL SCROLL BEHAVIOR */
+    /* If JS forces canvas > container, allow scroll */
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    /* Scrollbar Styling (Global) */
+    scrollbar-width: auto;
+    scrollbar-color: var(--accent-primary) rgba(255, 255, 255, 0.1);
+}
+
+/* Webkit Scrollbar (Global) */
+.hero-diagram-container::-webkit-scrollbar {
+    height: 8px;
+    display: block;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.hero-diagram-container::-webkit-scrollbar-thumb {
+    background-color: var(--accent-primary);
+    border-radius: 10px;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.hero-diagram-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
 }
 
 @media (max-width: 768px) {
     .hero-diagram-container {
-        height: 350px;
-        /* Smaller fixed height for mobile */
         width: 100%;
+        height: 550px;
+        aspect-ratio: auto;
+        /* Disable aspect ratio to use fixed height */
+
+        /* SCROLLING MAGIC */
+        overflow-x: scroll !important;
+        /* Force scrollbar */
+        overflow-y: hidden;
+        white-space: nowrap;
+
+        /* Enable Native Momentum Scroll */
+        -webkit-overflow-scrolling: touch;
+
+        /* Ensure border radius doesn't clip scrollbar */
         border-radius: 8px;
-        margin-left: 0;
-        margin-right: 0;
+        margin-bottom: 40px;
+
+        /* Visual Scrollbar styling */
+        scrollbar-width: auto;
+        scrollbar-color: var(--accent-primary) rgba(255, 255, 255, 0.1);
+    }
+
+    /* Webkit Scrollbar (Chrome/Edge/Safari) */
+    .hero-diagram-container::-webkit-scrollbar {
+        height: 8px;
+        display: block;
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .hero-diagram-container::-webkit-scrollbar-thumb {
+        background-color: var(--accent-primary);
+        border-radius: 10px;
+        border: 2px solid rgba(0, 0, 0, 0.2);
+        /* Contrast safety */
+    }
+
+    .hero-diagram-container::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.05);
     }
 
     #systemCanvas {
-        width: 100%;
-        height: 100%;
+        display: block;
+        width: auto;
+        min-width: 1000px;
+        /* Synchronized with JS logic */
     }
 }
 
@@ -303,8 +362,8 @@
 
 @media (max-width: 768px) {
     .hero-diagram-container {
-        height: 250px;
-        /* Even smaller for mobile */
+        height: 450px;
+        /* Increased significantly for visibility */
         width: 100%;
         border-radius: 8px;
         margin-left: 0;
@@ -323,5 +382,13 @@
 
     .home-subtitle {
         font-size: 1rem;
+    }
+
+    /* Floating controls on scrollable diagram */
+    #power-controls {
+        position: sticky !important;
+        left: 16px !important;
+        bottom: 16px !important;
+        margin-right: auto;
     }
 }

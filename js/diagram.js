@@ -29,19 +29,52 @@ document.addEventListener("DOMContentLoaded", () => {
     // Resize
     function resize() {
         const parent = canvas.parentElement;
-        canvas.width = parent.clientWidth;
-        canvas.height = parent.clientHeight;
+        const isMobile = window.innerWidth <= 768;
+        const dpr = window.devicePixelRatio || 1;
+
+        // Universal Sizing Logic
+        // We ensure the diagram never shrinks below 1000px logical width
+        // This guarantees readability on all devices (Mobile, Tablet, Small Desktop)
+
+        let displayWidth = Math.max(parent.clientWidth, 1000);
+        let displayHeight;
+
+        // Height Logic
+        if (displayWidth > parent.clientWidth) {
+            // If we are scrolling (canvas > container), use fixed height
+            displayHeight = 550;
+        } else {
+            // If fitting (desktop), match container height (controlled by aspect-ratio 16/9)
+            displayHeight = parent.clientHeight;
+        }
+
+        // Apply Styles to force layout
+        canvas.style.width = displayWidth + 'px';
+        canvas.style.height = displayHeight + 'px';
+
+        // HiDPI / Retina Scaling
+        canvas.width = displayWidth * dpr;
+        canvas.height = displayHeight * dpr;
+
+        // Reset Transform & Scale
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        // No ctx.scale(dpr, dpr) needed as getScale() uses canvas.width
     }
     window.addEventListener("resize", resize);
     resize();
 
-    const GRID_SIZE = 40;
+    // Optimized grid size
+    const GRID_SIZE = 50; // Larger grid for cleaner look
 
     // REFERENCE WIDTH for scaling calculations
-    const REF_WIDTH = 1600;
+    // Lowered to 1200 so it starts "zoomed in" more on desktop, 
+    // and shrinking creates a better ratio on mobile.
+    const REF_WIDTH = 1200;
 
     function getScale() {
-        return Math.min(canvas.width / REF_WIDTH, 1.0);
+        // Pure proportional scaling.
+        // If screen is 400px, scale = 400/1200 = 0.33
+        return canvas.width / REF_WIDTH;
     }
 
     // Helper: Distance between two points
@@ -51,22 +84,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // NODES CONFIGURATION
     const NODES = [
-        { id: "AC_IN", x: 0.1, y: 0.4, label: "AC SUPPLY", type: "source", w: 120 },
+        { id: "AC_IN", x: 0.08, y: 0.4, label: "AC SUPPLY", type: "source", w: 120 },
 
         // Multiline: "AC to DC" (top), "Converter" (bottom)
-        { id: "ACDC", x: 0.3, y: 0.4, label: ["AC to DC", "Converter"], type: "hub", w: 120 },
+        // Moved Left (0.3 -> 0.28)
+        { id: "ACDC", x: 0.28, y: 0.4, label: ["AC to DC", "Converter"], type: "hub", w: 120 },
 
         { id: "ORING", x: 0.5, y: 0.4, label: "SMART FLOW", type: "hub", w: 100 },
 
         // Multiline: "SMART POWER" (top), "HUB" (bottom)
-        { id: "PDS", x: 0.75, y: 0.4, label: ["SMART POWER", "HUB"], type: "hub", w: 140 },
+        { id: "PDS", x: 0.72, y: 0.4, label: ["SMART POWER", "HUB"], type: "hub", w: 140 },
 
-        { id: "OS", x: 0.75, y: 0.15, label: "User Interface", type: "load", w: 120 },
-        { id: "LED", x: 0.93, y: 0.4, label: "LED", type: "visual-led", w: 50 },
-        { id: "MOTOR", x: 0.75, y: 0.65, label: "Motor", type: "visual-motor", w: 60 },
+        { id: "OS", x: 0.72, y: 0.15, label: "User Interface", type: "load", w: 120 },
 
-        { id: "BMS", x: 0.3, y: 0.65, label: "BMS", type: "hub", w: 80 },
-        { id: "BAT", x: 0.3, y: 0.85, label: "Battery", type: "source", w: 80 },
+        { id: "LED", x: 0.95, y: 0.4, label: "LED", type: "visual-led", w: 50 },
+
+        { id: "MOTOR", x: 0.72, y: 0.65, label: "Motor", type: "visual-motor", w: 60 },
+
+        // Moved BMS down slightly (0.65 -> 0.68) to prevent overlap with Converter line
+        { id: "BMS", x: 0.28, y: 0.68, label: "BMS", type: "hub", w: 80 },
+        { id: "BAT", x: 0.28, y: 0.88, label: "Battery", type: "source", w: 80 },
     ];
 
     const TOOLTIPS = {
@@ -397,13 +434,13 @@ document.addEventListener("DOMContentLoaded", () => {
             ctx.fill(); ctx.stroke();
 
             ctx.fillStyle = "#fff";
-            ctx.font = `${Math.max(8, 12 * s)}px Inter`; // Reduced min from 10 to 8
+            ctx.font = `${Math.max(10, 14 * s)}px Inter`; // Increased for better visibility
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
             ctx.shadowBlur = 0;
 
             // On very small screens, only show essential labels
-            const showAllLabels = canvas.width >= 500;
+            const showAllLabels = canvas.width >= 600; // Increased threshold
             const essentialNodes = ["AC_IN", "PDS", "LED", "MOTOR"];
 
             if (showAllLabels || essentialNodes.includes(node.id)) {

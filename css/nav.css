@@ -139,10 +139,21 @@
         color: var(--text-primary);
     }
 
-    /* Fix active state underline on mobile */
+    /* Fix active state on mobile */
     .nav-active::after {
         display: none;
-        /* Hide the underline on mobile */
+    }
+
+    /* Add contained background highlight instead */
+    .nav-active {
+        background-color: rgba(0, 164, 255, 0.1);
+        color: var(--accent-primary);
+        border-radius: 4px;
+        /* Make it look like a button item */
+        width: calc(100% - 48px);
+        /* Account for padding */
+        margin-left: 24px;
+        /* Center it */
     }
 
     .nav-toggle {
