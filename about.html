@@ -30,7 +30,7 @@
     <nav class="nav-root">
         <div class="nav-inner">
             <div class="nav-logo">
-                <img src="assets/EONIX SYSTEMS LOGO .png" alt="Eonix Systems logo">
+                <img src="assets/EONIX%20SYSTEMS%20LOGO.png" alt="Eonix Systems logo">
             </div>
 
             <div class="nav-links">
@@ -52,45 +52,133 @@
     <main class="page-wrapper">
 
         <!-- ABOUT HERO -->
-        <section class="about-root page-section reveal">
+        <section class="about-hero page-section reveal">
             <h1 class="about-title">Built for <span class="text-accent">Builders</span>.</h1>
             <p class="about-intro">
                 Eonix Systems is an engineering-first hardware company. We prioritize correctness,
                 hardware safety, and clarity over convenience or feature count.
             </p>
+        </section>
 
-            <!-- VISION BLOCKS -->
-            <div class="about-block glass-panel glow-hover reveal reveal-scale">
-                <h2>The Problem</h2>
-                <p>
-                    Engineers building real machines — robots, drones, industrial automation — serve two masters:
-                    <strong>Safety</strong> and <strong>Complexity</strong>.
+        <!-- OUR STORY -->
+        <section class="page-section reveal">
+            <div class="content-block">
+                <span class="section-label">Our Story</span>
+                <h2 class="section-title">Where Eonix Began</h2>
+                <div class="story-text">
+                    <p>
+                        Eonix Systems did not start as a business idea.
+                        It started as a recurring engineering problem.
+                    </p>
+                    <p>
+                        While building robots and embedded systems, one issue kept appearing across projects:
+                        power was always an afterthought. Engineers would spend months designing control systems,
+                        sensors, and software, but the electrical backbone—the power distribution—was often
+                        improvised at the last moment.
+                    </p>
+                    <p>
+                        It was usually a collection of regulators, fuses, and wires with no visibility,
+                        no telemetry, and limited protection. When something failed, there was no clear
+                        answer why. Debugging meant probing rails manually, replacing burnt components,
+                        and hoping the next iteration would survive.
+                    </p>
+                    <p>
+                        This pattern repeated across robotics labs, university teams, and industrial prototypes.
+                        The conclusion became obvious: power infrastructure had not evolved at the same pace
+                        as the machines it powered.
+                    </p>
+                    <p class="highlight-text">
+                        Eonix Systems was founded to fix that.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CORE IDEA -->
+        <section class="page-section reveal">
+            <div class="content-block">
+                <span class="section-label">The Core Idea</span>
+                <h2 class="section-title">Power Infrastructure Should Be Intelligent</h2>
+                <div class="pcb-trace pcb-trace-left"></div>
+                <p class="section-subtitle">
+                    Modern machines are intelligent. Their power systems are not.
+                    At Eonix, we believe power systems should behave like the rest of the machine:
                 </p>
-                <p>
-                    Existing power solutions are either "dumb" components (regulators, fuses) that hide state,
-                    or expensive lab equipment that cannot be embedded. This leaves a gap where critical infrastructure
-                    is treated as an afterthought.
+
+                <div class="core-grid">
+                    <div class="core-card glass-panel glow-hover reveal reveal-scale" style="--delay: 0ms">
+                        <h3>Monitor</h3>
+                        <p>Real-time telemetry for voltage, current, and health.</p>
+                    </div>
+                    <div class="core-card glass-panel glow-hover reveal reveal-scale" style="--delay: 150ms">
+                        <h3>Protect</h3>
+                        <p>Hardware-level safeguards that trigger before damage occurs.</p>
+                    </div>
+                    <div class="core-card glass-panel glow-hover reveal reveal-scale" style="--delay: 300ms">
+                        <h3>Communicate</h3>
+                        <p>Active reporting of state and faults to the main controller.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHAT WE'RE BUILDING -->
+        <section class="page-section reveal">
+            <div class="content-block">
+                <span class="section-label">What We’re Building</span>
+                <h2 class="section-title">The Electrical Backbone for Autonomous Machines</h2>
+                <div class="building-content">
+                    <p>
+                        Eonix Systems is building a modular ecosystem of smart power infrastructure designed
+                        specifically for embedded and robotic systems. Each module is:
+                    </p>
+                    <ul class="feature-list">
+                        <li>Electrically safe by design</li>
+                        <li>Fully instrumented with real-time telemetry</li>
+                        <li>Configurable through software</li>
+                        <li>Built to operate as part of a larger system</li>
+                    </ul>
+                    <p style="margin-top: 24px;">
+                        The goal is simple: When engineers build machines, power should just work—safely,
+                        predictably, and transparently.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PHILOSOPHY -->
+        <section class="page-section reveal">
+            <div class="content-block">
+                <span class="section-label">Engineering Philosophy</span>
+                <h2 class="section-title">Built the Hard Way, On Purpose</h2>
+                <div class="pcb-trace pcb-trace-right"></div>
+                <div class="philosophy-grid">
+                    <div class="philosophy-item reveal reveal-left" style="--delay: 0ms">
+                        <span class="check-icon">✓</span>
+                        <p>Hardware safety over feature count</p>
+                    </div>
+                    <div class="philosophy-item reveal reveal-left" style="--delay: 150ms">
+                        <span class="check-icon">✓</span>
+                        <p>Deterministic behavior over convenience</p>
+                    </div>
+                    <div class="philosophy-item reveal reveal-left" style="--delay: 300ms">
+                        <span class="check-icon">✓</span>
+                        <p>Clear electrical architecture over marketing claims</p>
+                    </div>
+                </div>
+                <p class="philosophy-outro">
+                    Every product is designed with layered protections, real telemetry, and predictable failure modes.
+                    If something goes wrong, the system should explain why—not fail silently.
                 </p>
             </div>
+        </section>
 
-            <div class="about-block glass-panel glow-hover reveal reveal-scale" style="--delay: 150ms">
-                <h2>Our Vision</h2>
-                <p>
-                    We believe power infrastructure should be **intelligent infrastructure**.
-                    It should self-diagnose, self-protect, and communicate.
-                </p>
-                <p>
-                    Our goal is to build the standard electrical backbone for the next generation of
-                    autonomous hardware — from university rovers to industrial AMRs.
-                </p>
+        <!-- FOOTER NOTE -->
+        <section class="page-section reveal">
+            <div class="about-footer-note">
+                <p>Designed and engineered for real machines.</p>
+                <p>Built for the engineers who power them.</p>
             </div>
-
-            <div class="about-note">
-                <p>
-                    Designed and Engineered in India. Built for the global engineering community.
-                </p>
-            </div>
-
         </section>
 
     </main>

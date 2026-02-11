@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Smart PDS, AC-DC modules, and intelligent power components for robotics and embedded systems. Industrial-grade protection with real-time telemetry.">
+        content="Eonix Core, Eonix ARC, and intelligent power components for robotics and embedded systems. Industrial-grade protection with real-time telemetry.">
     <meta property="og:title" content="Products | Eonix Systems">
     <meta property="og:description"
         content="Explore our industrial-grade power distribution modules with hardware-first safety and system telemetry.">
@@ -16,13 +16,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/base.css?v=5">
-    <link rel="stylesheet" href="css/layout.css?v=5">
-    <link rel="stylesheet" href="css/nav.css?v=5">
-    <link rel="stylesheet" href="css/animations.css?v=5">
-    <link rel="stylesheet" href="css/footer.css?v=5">
-    <link rel="stylesheet" href="css/product.css?v=5">
-    <link rel="stylesheet" href="css/home.css?v=5">
+    <link rel="stylesheet" href="css/base.css?v=8">
+    <link rel="stylesheet" href="css/layout.css?v=8">
+    <link rel="stylesheet" href="css/nav.css?v=8">
+    <link rel="stylesheet" href="css/animations.css?v=8">
+    <link rel="stylesheet" href="css/footer.css?v=8">
+    <link rel="stylesheet" href="css/product.css?v=8">
+    <link rel="stylesheet" href="css/home.css?v=8">
     <link rel="icon" href="assets/EONIX SYSTEMS LOGO .png" type="image/png">
 
     <style>
@@ -33,8 +33,27 @@
             margin-bottom: 48px;
             border-bottom: 1px solid var(--border-subtle);
             overflow-x: auto;
+            overflow-y: hidden;
+            /* Prevent vertical scroll */
             /* Allow horizontal scroll on mobile */
             -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-primary) rgba(255, 255, 255, 0.05);
+        }
+
+        /* Custom Scrollbar for Tabs */
+        .tabs-header::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .tabs-header::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 2px;
+        }
+
+        .tabs-header::-webkit-scrollbar-thumb {
+            background: var(--accent-primary);
+            border-radius: 2px;
         }
 
         .tab-btn {
@@ -75,11 +94,14 @@
 
         .tab-content {
             display: none;
-            animation: fadeIn 0.4s ease;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .tab-content.active {
             display: block;
+            opacity: 1;
+            animation: fadeIn 0.4s ease forwards;
         }
 
         @keyframes fadeIn {
@@ -127,7 +149,7 @@
     <nav class="nav-root">
         <div class="nav-inner">
             <div class="nav-logo">
-                <img src="assets/EONIX SYSTEMS LOGO .png" alt="Eonix Systems logo">
+                <img src="assets/EONIX%20SYSTEMS%20LOGO.png" alt="Eonix Systems logo">
             </div>
 
             <div class="nav-links">
@@ -150,7 +172,7 @@
 
         <!-- HERO -->
         <section class="product-root page-section">
-            <div class="product-hero reveal">
+            <div class="product-hero">
                 <h1 class="product-title">
                     Hardware <span class="text-accent">Products</span>
                 </h1>
@@ -160,58 +182,142 @@
             </div>
 
             <!-- TABS -->
-            <div class="tabs-container reveal">
+            <div class="tabs-container">
                 <div class="tabs-header">
-                    <button class="tab-btn active" onclick="openTab(event, 'pds-tab')">Smart PDS</button>
-                    <button class="tab-btn" onclick="openTab(event, 'acdc-tab')">AC-DC Module</button>
-                    <button class="tab-btn" onclick="openTab(event, 'flow-tab')">Smart Flow</button>
-                    <button class="tab-btn" onclick="openTab(event, 'bms-tab')">Smart BMS</button>
+                    <button class="tab-btn active" onclick="openTab(event, 'pds-tab')">Eonix Core</button>
+                    <button class="tab-btn" onclick="openTab(event, 'acdc-tab')">Eonix ARC</button>
+                    <button class="tab-btn" onclick="openTab(event, 'flow-tab')">Eonix Flow</button>
+                    <button class="tab-btn" onclick="openTab(event, 'bms-tab')">Eonix Cell</button>
                 </div>
 
-                <!-- TAB CONTENT: SMART PDS -->
+                <!-- TAB CONTENT: EONIX CORE -->
                 <div id="pds-tab" class="tab-content active">
 
-                    <h2 style="font-size: 1.8rem; margin-bottom: 24px;">Smart Power Distribution System</h2>
-                    <p class="product-intro" style="max-width: 800px; font-size: 1rem; margin-bottom: 48px;">
-                        The brain of the ecosystem. It handles source arbitration, protection, and telemetry
-                        distribution.
-                        Built for robotics, AGVs, and critical embedded systems.
-                    </p>
+                    <!-- HERO INTRO -->
+                    <div style="margin-bottom: 64px;">
+                        <h2 style="font-size: 2.2rem; margin-bottom: 24px;">Eonix Core</h2>
+                        <p class="product-intro" style="max-width: 800px; font-size: 1.2rem; line-height: 1.6;">
+                            The central brain of the power ecosystem. Eonix Core handles source arbitration, global
+                            protection,
+                            and telemetry distribution for the entire machine. It turns raw power into intelligent
+                            infrastructure.
+                        </p>
+                    </div>
 
-                    <!-- SPECS GRID -->
-                    <div class="home-diff-list" style="margin-bottom: 64px;">
-                        <div class="home-diff-item glass-panel">
-                            <h3>Input Specs</h3>
-                            <p><strong>Voltage:</strong> 10V – 24V</p>
-                            <p><strong>Current:</strong> 30A Max</p>
-                            <p><strong>Protection:</strong> Reverse Polarity, UVLO (10V), OVLO (25V)</p>
+                    <!-- 1. CORE CAPABILITIES (3-Col Flagship) -->
+                    <div class="core-grid-3">
+                        <div class="flagship-card glass-panel glow-hover">
+                            <h3>Centralized Backbone</h3>
+                            <p>Multi-rail distribution from a single protected input. Pass-through high current,
+                                programmable regulation, and logic rails all in one hub.</p>
                         </div>
-
-                        <div class="home-diff-item glass-panel">
-                            <h3>Output Capabilities</h3>
-                            <p><strong>Pass-Through:</strong> 20A (High Current)</p>
-                            <p><strong>Programmable:</strong> 20A Buck (CC/CV)</p>
-                            <p><strong>Logic:</strong> 5V & 3.3V (5A each)</p>
+                        <div class="flagship-card glass-panel glow-hover">
+                            <h3>Hardware Protection</h3>
+                            <p>Input reverse polarity down to –35V, system-level UVLO/OVLO, and hardware-latching OCP.
+                                Safety is physical, not just code.</p>
                         </div>
-
-                        <div class="home-diff-item glass-panel">
-                            <h3>Safety & Control</h3>
-                            <p>Hardware-enforced OCP & SCP. Analog regulation loops. Digital telemetry via BLE/UART.</p>
+                        <div class="flagship-card glass-panel glow-hover">
+                            <h3>Full-System Telemetry</h3>
+                            <p>Real-time voltage, current, and power monitoring on all rails. Instant fault alerts via
+                                hardware pins and digital interrupts.</p>
                         </div>
                     </div>
 
-                    <!-- DEEP DIVE SPECS (Imported from old Technical Page) -->
-                    <div class="technical-block">
-                        <h2>Advanced Protection Architecture</h2>
-                        <p>
-                            Protection is layered. Global input protection safeguards the bus, while per-channel fast
-                            OCP
-                            isolates faults preventing system-wide brownouts.
+                    <!-- 2. SYSTEM ARCHITECTURE -->
+                    <div class="system-arch-block">
+                        <h3 style="font-size: 1.6rem; margin-bottom: 24px;">System Architecture</h3>
+                        <p style="max-width: 700px; margin: 0 auto; color: var(--text-secondary); font-size: 1.1rem;">
+                            Eonix Core sits at the center of the power chain. <br><br>
+                            <span style="color: var(--accent-primary);">AC Input (Arc)</span> →
+                            <span style="color: var(--accent-primary);">Battery (Cell)</span> →
+                            <span style="color: var(--accent-primary);">Eonix Flow (Arbitration)</span> →
+                            <strong>Eonix Core</strong>
                         </p>
-                        <div class="spec-list" style="margin-top: 24px; color: var(--text-secondary);">
-                            <p>• <strong>Instant Switchover:</strong> AC to Battery with zero brownout.</p>
-                            <p>• <strong>Hardware First:</strong> Safety limits cannot be overridden by software.</p>
-                            <p>• <strong>Reverse Protection:</strong> Output isolation prevents backfeeding.</p>
+                        <p style="margin-top: 24px; color: var(--text-secondary);">
+                            It manages all downstream rails, ensuring faults are isolated and never propagate back to
+                            the source.
+                        </p>
+                    </div>
+
+                    <!-- 3. PROTECTION ARCHITECTURE (3 Layers) -->
+                    <div class="product-block">
+                        <h2 style="font-size: 1.8rem; margin-bottom: 32px;">Protection Architecture</h2>
+                        <div class="core-grid-3">
+                            <div class="home-diff-item glass-panel">
+                                <h4 style="color: var(--accent-primary); margin-bottom: 12px;">Layer 1: Input</h4>
+                                <ul class="product-list">
+                                    <li>Reverse Polarity (–35V)</li>
+                                    <li>UVLO (10V) / OVLO (26V)</li>
+                                    <li>Abs Max Input: 35V</li>
+                                </ul>
+                            </div>
+                            <div class="home-diff-item glass-panel">
+                                <h4 style="color: var(--accent-primary); margin-bottom: 12px;">Layer 2: Rail-Level</h4>
+                                <ul class="product-list">
+                                    <li>Adjustable Current Limits</li>
+                                    <li>Latching OCP Shutdown</li>
+                                    <li>Short-Circuit Detection</li>
+                                </ul>
+                            </div>
+                            <div class="home-diff-item glass-panel">
+                                <h4 style="color: var(--accent-primary); margin-bottom: 12px;">Layer 3: Isolation</h4>
+                                <ul class="product-list">
+                                    <li>Channel Fault Isolation</li>
+                                    <li>Zero Cross-Rail Noise</li>
+                                    <li>Hardware Alert Signaling</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. PROGRAMMABLE RAIL & MECHANICAL (2-Col) -->
+                    <div class="core-grid-2">
+                        <div class="technical-block">
+                            <h2 style="margin-bottom: 24px;">Programmable CC/CV Rail</h2>
+                            <p style="margin-bottom: 24px; color: var(--text-secondary);">
+                                Designed for subsystems requiring controlled power, such as sensitive sensors or battery
+                                charging.
+                            </p>
+                            <ul class="product-list">
+                                <li><strong>Modes:</strong> Constant Voltage (CV) or Constant Current (CC)</li>
+                                <li><strong>Range:</strong> 0.8V to (Vin – 1V)</li>
+                                <li><strong>Current:</strong> Up to 15A Continuous</li>
+                                <li><strong>Safety:</strong> Programmable Cutoff & Hardware SCP</li>
+                            </ul>
+                        </div>
+
+                        <div class="technical-block">
+                            <h2 style="margin-bottom: 24px;">Mechanical & Thermal</h2>
+                            <ul class="product-list">
+                                <li><strong>Cooling:</strong> Active (Integrated Mini Fan)</li>
+                                <li><strong>Size:</strong> 60mm x 50mm x 12mm</li>
+                                <li><strong>Mounting:</strong> M3 Standoffs (30.5mm Pattern)</li>
+                                <li><strong>Interface:</strong> JST-GH Locking Connectors</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 5. KEY SPECS STRIP -->
+                    <div class="specs-strip">
+                        <div class="spec-item">
+                            <h4>Input</h4>
+                            <p>10V – 26V</p>
+                        </div>
+                        <div class="spec-item">
+                            <h4>Power</h4>
+                            <p>750W Max</p>
+                        </div>
+                        <div class="spec-item">
+                            <h4>Current</h4>
+                            <p>30A Continuous</p>
+                        </div>
+                        <div class="spec-item">
+                            <h4>Protection</h4>
+                            <p>–35V Reverse</p>
+                        </div>
+                        <div class="spec-item">
+                            <h4>Telemetry</h4>
+                            <p>INA226 (I²C)</p>
                         </div>
                     </div>
 
@@ -219,86 +325,272 @@
 
                 <!-- TAB CONTENT: AC-DC MODULE -->
                 <div id="acdc-tab" class="tab-content">
-                    <h2 style="font-size: 1.8rem; margin-bottom: 24px;">AC-DC Power Module</h2>
-                    <p class="product-intro" style="max-width: 800px; font-size: 1rem; margin-bottom: 48px;">
-                        This is a smart AC - DC converter module that steps down AC to a smooth regulated DC output.
-                    </p>
 
-                    <div class="home-diff-list" style="margin-bottom: 64px;">
-                        <div class="home-diff-item glass-panel glow-hover">
-                            <h3>Input Specs</h3>
-                            <p><strong>Voltage:</strong> 90V – 265V AC</p>
-                            <p><strong>Frequency:</strong> 50/60Hz</p>
-                            <p><strong>Protection:</strong> Surge & Inrush Limiting</p>
+                    <!-- HERO INTRO -->
+                    <div style="margin-bottom: 64px;">
+                        <h2 style="font-size: 2.2rem; margin-bottom: 24px;">Eonix ARC</h2>
+                        <p class="product-intro" style="max-width: 800px; font-size: 1.2rem; line-height: 1.6;">
+                            The high-efficiency AC-to-DC power stage. Eonix ARC steps down mains voltage (90V–265V) to a
+                            stable, regulated DC output (5V–24V), delivering clean energy to the entire ecosystem.
+                        </p>
+                    </div>
+
+                    <!-- 1. CORE CAPABILITIES (3-Col Flagship) -->
+                    <div class="core-grid-3">
+                        <div class="flagship-card glass-panel glow-hover">
+                            <h3>Wide Input Range</h3>
+                            <p>Universal AC input (90V–265V) compatible with global standards. Seamlessly converts to a
+                                regulated breakdown of 5V to 24V DC.</p>
                         </div>
-
-                        <div class="home-diff-item glass-panel glow-hover">
-                            <h3>Output Capabilities</h3>
-                            <p><strong>Voltage:</strong> 24V DC Regulated</p>
-                            <p><strong>Current:</strong> 10A Continuous</p>
-                            <p><strong>Ripple:</strong> &lt;50mV p-p</p>
+                        <div class="flagship-card glass-panel glow-hover">
+                            <h3>Smart Integration</h3>
+                            <p>Connects directly to Eonix Core (Smart PDS) via a dedicated cable interface. Enables
+                                unified telemetry, alerts, and system-level control.</p>
                         </div>
-
-                        <div class="home-diff-item glass-panel glow-hover">
-                            <h3>Smart Features</h3>
-                            <p>Active Power Factor Correction (PFC), High Efficiency (>92%), and Galvanic Isolation.</p>
+                        <div class="flagship-card glass-panel glow-hover">
+                            <h3>Industrial Safety</h3>
+                            <p>Built-in surge protection, inrush current limiting, and galvanic isolation ensure mains
+                                noise never reaches your sensitive electronics.</p>
                         </div>
                     </div>
+
+                    <!-- 2. SYSTEM ARCHITECTURE / CONNECTIVITY -->
+                    <div class="system-arch-block">
+                        <h3 style="font-size: 1.6rem; margin-bottom: 24px;">Seamless Communication</h3>
+                        <p style="max-width: 700px; margin: 0 auto; color: var(--text-secondary); font-size: 1.1rem;">
+                            Eonix ARC isn't just a power supply; it's a smart node. <br><br>
+                            Through its <span style="color: var(--accent-primary);">Digital Link Cable</span>, it
+                            communicates output status,
+                            temperature, and load metrics directly to the <strong>Eonix Core</strong>.
+                        </p>
+                        <p style="margin-top: 24px; color: var(--text-secondary);">
+                            This allows the main PDS to monitor AC health and gracefully handle power transitions.
+                        </p>
+                    </div>
+
+                    <!-- 3. PROTECTION SPECS -->
+                    <div class="product-block">
+                        <h2 style="font-size: 1.8rem; margin-bottom: 32px;">Protection & Telemetry</h2>
+                        <div class="core-grid-3">
+                            <div class="home-diff-item glass-panel">
+                                <h4 style="color: var(--accent-primary); margin-bottom: 12px;">Input Protection</h4>
+                                <ul class="product-list">
+                                    <li>Surge suppression (MOV)</li>
+                                    <li>Controlled inrush limiting</li>
+                                    <li>Input fuse protection</li>
+                                    <li>Integrated EMI filtering</li>
+                                    <li>Reinforced galvanic isolation</li>
+                                </ul>
+                            </div>
+                            <div class="home-diff-item glass-panel">
+                                <h4 style="color: var(--accent-primary); margin-bottom: 12px;">Output Stability</h4>
+                                <ul class="product-list">
+                                    <li>Regulated 5V–24V DC</li>
+                                    <li>Low Ripple (<50mV)< /li>
+                                    <li>Short-circuit protected</li>
+                                </ul>
+                            </div>
+                            <div class="home-diff-item glass-panel">
+                                <h4 style="color: var(--accent-primary); margin-bottom: 12px;">Smart Telemetry</h4>
+                                <ul class="product-list">
+                                    <li>Real-time Efficiency Monitoring</li>
+                                    <li>Thermal Shutdown Alerts</li>
+                                    <li>AC Mains Status Flag</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. KEY SPECS STRIP -->
+                    <div class="specs-strip">
+                        <div class="spec-item">
+                            <h4>AC Input</h4>
+                            <p>90V – 265V</p>
+                        </div>
+                        <div class="spec-item">
+                            <h4>DC Output</h4>
+                            <p>5V – 24V</p>
+                        </div>
+                        <div class="spec-item">
+                            <h4>Power</h4>
+                            <p>500W Max</p>
+                        </div>
+                        <div class="spec-item">
+                            <h4>Efficiency</h4>
+                            <p>> 92%</p>
+                        </div>
+                        <div class="spec-item">
+                            <h4>Interface</h4>
+                            <p>Unified Link</p>
+                        </div>
+                    </div>
+
                 </div>
 
                 <!-- TAB CONTENT: SMART FLOW -->
                 <div id="flow-tab" class="tab-content">
-                    <h2 style="font-size: 1.8rem; margin-bottom: 24px;">Smart Flow Arbitrator</h2>
-                    <p class="product-intro" style="max-width: 800px; font-size: 1rem; margin-bottom: 48px;">
-                        Intelligent power path controller ensuring seamless redundancy. It acts as an active arbitrator
-                        between multiple power sources, prioritizing stability and efficiency using Ideal Diode OR-ing
-                        technology.
-                    </p>
 
-                    <div class="home-diff-list" style="margin-bottom: 64px;">
-                        <div class="home-diff-item glass-panel glow-hover">
+                    <!-- HERO INTRO -->
+                    <div style="margin-bottom: 64px;">
+                        <h2 style="font-size: 2.2rem; margin-bottom: 24px;">Eonix Flow</h2>
+                        <p class="product-intro" style="max-width: 800px; font-size: 1.2rem; line-height: 1.6;">
+                            Eonix Flow is the intelligent power path controller of the Eonix ecosystem. It actively
+                            manages
+                            multiple power sources using ideal diode OR-ing, ensuring seamless transitions,
+                            reverse-current
+                            protection, and uninterrupted system operation.
+                        </p>
+                    </div>
+
+                    <!-- 1. CORE CAPABILITIES (3-Col Flagship) -->
+                    <div class="core-grid-3">
+                        <div class="flagship-card glass-panel glow-hover">
                             <h3>Architecture</h3>
-                            <p><strong>Topology:</strong> Active Ideal Diode OR-ing</p>
-                            <p><strong>Redundancy:</strong> N+1 Source Redundancy</p>
-                            <p><strong>Switching:</strong> Zero-Cross / Seamless</p>
+                            <p><strong>Topology:</strong> Active ideal diode OR-ing</p>
+                            <p><strong>Redundancy:</strong> N+1 source redundancy</p>
+                            <p><strong>Switching:</strong> Seamless, zero-interruption transfer</p>
                         </div>
-
-                        <div class="home-diff-item glass-panel glow-hover">
+                        <div class="flagship-card glass-panel glow-hover">
                             <h3>Performance</h3>
-                            <p><strong>Efficiency:</strong> >99% (vs 85% Schottky)</p>
-                            <p><strong>Voltage Drop:</strong> &lt;20mV @ 20A</p>
-                            <p><strong>Thermal:</strong> Cool-running / Passive</p>
+                            <p><strong>Efficiency:</strong> >99% power path efficiency</p>
+                            <p><strong>Voltage Drop:</strong>
+                                <20 mV @ 20 A</p>
+                                    <p><strong>Thermal:</strong> Low-loss, passive operation</p>
                         </div>
-
-                        <div class="home-diff-item glass-panel glow-hover">
+                        <div class="flagship-card glass-panel glow-hover">
                             <h3>Intelligent Control</h3>
-                            <p>Automatic source selection based on voltage levels, priority assignment, and health
-                                status.</p>
+                            <p><strong>Features:</strong> Automatic source prioritization, Reverse current blocking, and
+                                Health-aware power arbitration.</p>
                         </div>
                     </div>
 
+                    <!-- 2. TECHNICAL EXPLANATION -->
                     <div class="technical-block">
-                        <h2>Why Active OR-ing?</h2>
-                        <p>
-                            Traditional passive diodes burn power as heat (Vf ~0.7V). Our Active OR-ing controller uses
-                            N-Channel MOSFETs to reduce voltage drop to near zero, enabling high-current redundancy
-                            without the thermal penalty.
+                        <h2 style="margin-bottom: 24px;">Why Active OR-ing?</h2>
+                        <p style="margin-bottom: 24px; color: var(--text-secondary); max-width: 800px;">
+                            Traditional passive diodes waste power as heat due to forward voltage drop. Eonix Flow
+                            replaces these
+                            with active MOSFET-based ideal diode controllers, reducing losses to near zero and enabling
+                            high-current redundancy without thermal penalties.
                         </p>
-                        <div class="spec-list" style="margin-top: 24px; color: var(--text-secondary);">
+                        <div class="spec-list" style="margin-top: 24px;">
                             <p>• <strong>Reverse Current Blocking:</strong> Prevents battery backfeeding into weak
                                 sources.</p>
                             <p>• <strong>Source Prioritization:</strong> Intelligently drain auxiliary batteries before
                                 main packs.</p>
-                            <p>• <strong>Oscillation Dampening:</strong> Hysteresis prevents rapid switching between
+                            <p>• <strong>Stable Switching:</strong> Built-in hysteresis prevents oscillation between
                                 similar sources.</p>
+                            <p>• <strong>Smart Protection:</strong> Integrated Reverse Polarity and Load Dump protection
+                                for rugged environments.</p>
                         </div>
                     </div>
+
+                    <!-- 3. KEY SPECS STRIP -->
+                    <div class="specs-strip">
+                        <div class="spec-item">
+                            <h4>Input Sources</h4>
+                            <p>Dual DC Inputs</p>
+                        </div>
+                        <div class="spec-item">
+                            <h4>Voltage Range</h4>
+                            <p>10V – 30V</p>
+                        </div>
+                        <div class="spec-item">
+                            <h4>Current Rating</h4>
+                            <p>30A per path</p>
+                        </div>
+                        <div class="spec-item">
+                            <h4>Efficiency</h4>
+                            <p>> 99%</p>
+                        </div>
+                        <div class="spec-item">
+                            <h4>Control Link</h4>
+                            <p>Unified Digital Link</p>
+                        </div>
+                    </div>
+
                 </div>
 
                 <!-- TAB CONTENT: SMART BMS -->
                 <div id="bms-tab" class="tab-content">
-                    <h2 style="font-size: 1.8rem; margin-bottom: 24px;">Smart BMS</h2>
-                    <p class="product-intro">Content coming soon.</p>
+
+                    <!-- HERO INTRO -->
+                    <div style="margin-bottom: 64px;">
+                        <h2 style="font-size: 2.2rem; margin-bottom: 24px;">Eonix Cell</h2>
+                        <p class="product-intro" style="max-width: 800px; font-size: 1.2rem; line-height: 1.6;">
+                            Eonix Cell is the intelligent battery management module of the Eonix ecosystem. It monitors,
+                            protects,
+                            and controls connected battery packs, enabling safe charging, controlled discharging, and
+                            real-time
+                            visibility into state-of-charge, health, and system status.
+                        </p>
+                    </div>
+
+                    <!-- 1. CORE CAPABILITIES (3-Col Flagship) -->
+                    <div class="core-grid-3">
+                        <div class="flagship-card glass-panel glow-hover">
+                            <h3>Battery Management</h3>
+                            <p><strong>Features:</strong> Multi-cell battery monitoring, Controlled charge/discharge
+                                paths, and <strong>Active Cell Balancing</strong> for extended pack life.</p>
+                        </div>
+                        <div class="flagship-card glass-panel glow-hover">
+                            <h3>Real-Time Insights</h3>
+                            <p><strong>Telemetry:</strong> State-of-charge (SoC) estimation, State-of-health (SoH)
+                                tracking, plus Voltage, Current, and Temperature monitoring.</p>
+                        </div>
+                        <div class="flagship-card glass-panel glow-hover">
+                            <h3>Smart Power Control</h3>
+                            <p><strong>Control:</strong> On-demand charge or discharge control, Automatic source/load
+                                coordination, and Fault detection with isolation.</p>
+                        </div>
+                    </div>
+
+                    <!-- 2. TECHNICAL EXPLANATION -->
+                    <div class="technical-block">
+                        <h2 style="margin-bottom: 24px;">Intelligent Battery Integration</h2>
+                        <p style="margin-bottom: 24px; color: var(--text-secondary); max-width: 800px;">
+                            Eonix Cell transforms battery packs into active, intelligent power nodes. Instead of acting
+                            as passive
+                            energy storage, the module continuously monitors cell conditions, calculates
+                            state-of-charge, and
+                            coordinates power flow based on system demands.
+                        </p>
+                        <div class="spec-list" style="margin-top: 24px;">
+                            <p>• <strong>Active Protection:</strong> Hardware-enforced over-current, over-voltage, and
+                                under-voltage safeguards.</p>
+                            <p>• <strong>Accurate SoC Tracking:</strong> Real-time charge estimation based on current
+                                integration and voltage models.</p>
+                            <p>• <strong>Health Monitoring:</strong> Tracks temperature, cycle behavior, and battery
+                                condition over time.</p>
+                            <p>• <strong>Smart Safety:</strong> Integrated Thermal Management and Deep Discharge
+                                Prevention.</p>
+                        </div>
+                    </div>
+
+                    <!-- 3. KEY SPECS STRIP -->
+                    <div class="specs-strip">
+                        <div class="spec-item">
+                            <h4>Battery Type</h4>
+                            <p>Li-ion / LiFePO₄</p>
+                        </div>
+                        <div class="spec-item">
+                            <h4>Configuration</h4>
+                            <p>3S – 8S</p>
+                        </div>
+                        <div class="spec-item">
+                            <h4>Current Rating</h4>
+                            <p>30A Continuous</p>
+                        </div>
+                        <div class="spec-item">
+                            <h4>Telemetry</h4>
+                            <p>SoC, SoH, V, I, T</p>
+                        </div>
+                        <div class="spec-item">
+                            <h4>Interface</h4>
+                            <p>Unified Digital Link</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -325,8 +617,8 @@
         </div>
     </footer>
 
-    <script src="js/scroll-reveal.js?v=5"></script>
-    <script src="js/nav.js?v=5"></script>
+    <script src="js/scroll-reveal.js?v=8"></script>
+    <script src="js/nav.js?v=8"></script>
     <script>
         function openTab(evt, tabName) {
             var i, tabcontent, tablinks;
@@ -339,17 +631,24 @@
             for (i = 0; i < tablinks.length; i++) {
                 tablinks[i].className = tablinks[i].className.replace(" active", "");
             }
-            document.getElementById(tabName).style.display = "block";
-            document.getElementById(tabName).classList.add("active");
+
+            var selectedTab = document.getElementById(tabName);
+            if (selectedTab) {
+                selectedTab.style.display = "block";
+                // Small delay to allow display:block to apply before adding active class for animation
+                setTimeout(() => {
+                    selectedTab.classList.add("active");
+                }, 10);
+            }
 
             if (evt) evt.currentTarget.className += " active";
             else {
                 // If called manually (via URL), find the button and activate it
                 const buttons = document.getElementsByClassName("tab-btn");
-                if (tabName === 'pds-tab') buttons[0].className += " active";
-                if (tabName === 'acdc-tab') buttons[1].className += " active";
-                if (tabName === 'flow-tab') buttons[2].className += " active";
-                if (tabName === 'bms-tab') buttons[3].className += " active";
+                if (tabName === 'pds-tab' && buttons[0]) buttons[0].className += " active";
+                if (tabName === 'acdc-tab' && buttons[1]) buttons[1].className += " active";
+                if (tabName === 'flow-tab' && buttons[2]) buttons[2].className += " active";
+                if (tabName === 'bms-tab' && buttons[3]) buttons[3].className += " active";
             }
         }
 

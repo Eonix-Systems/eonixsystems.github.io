@@ -466,3 +466,115 @@
         font-size: 0.85rem;
     }
 }
+
+/* =========================
+   EONIX CORE - FLAGSHIP REVAMP
+   ========================= */
+
+.core-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-bottom: 80px;
+}
+
+.core-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-bottom: 64px;
+}
+
+.flagship-card {
+    padding: 48px 40px;
+    background: rgba(10, 12, 14, 0.6);
+    border: 1px solid rgba(0, 164, 255, 0.2);
+    border-radius: 12px;
+    box-shadow: 0 0 25px rgba(0, 164, 255, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.flagship-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 164, 255, 0.5);
+    box-shadow: 0 10px 40px rgba(0, 164, 255, 0.15);
+}
+
+.flagship-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0, 164, 255, 0.4);
+}
+
+.flagship-card p {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+}
+
+.system-arch-block {
+    margin: 80px 0;
+    padding: 64px;
+    background: linear-gradient(180deg, rgba(0, 164, 255, 0.03) 0%, rgba(0, 164, 255, 0.08) 100%);
+    border-radius: 16px;
+    border: 1px solid rgba(0, 164, 255, 0.15);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.system-arch-block h3 {
+    color: #fff;
+    text-shadow: 0 0 15px rgba(0, 164, 255, 0.3);
+}
+
+.technical-block h2 {
+    color: var(--accent-primary);
+}
+
+.specs-strip {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 64px;
+    padding: 48px 0;
+    margin: 64px 0;
+    border-top: 1px solid rgba(0, 164, 255, 0.1);
+    border-bottom: 1px solid rgba(0, 164, 255, 0.1);
+    background: rgba(0, 164, 255, 0.02);
+}
+
+.spec-item {
+    text-align: center;
+}
+
+.spec-item h4 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--accent-primary);
+    margin-bottom: 12px;
+}
+
+.spec-item p {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #fff;
+}
+
+@media (max-width: 900px) {
+
+    .core-grid-3,
+    .core-grid-2 {
+        grid-template-columns: 1fr;
+    }
+
+    .system-arch-block {
+        padding: 32px;
+    }
+
+    .specs-strip {
+        gap: 32px;
+    }
+}

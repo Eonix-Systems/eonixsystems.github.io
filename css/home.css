@@ -114,6 +114,14 @@
 
 
 /* CTA at bottom needs to be glowing and animated */
+.home-direction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
 .home-cta {
     position: relative;
     display: inline-flex;
@@ -201,7 +209,8 @@
 @media (max-width: 768px) {
     .hero-diagram-container {
         width: 100%;
-        height: 550px;
+        height: 750px !important;
+        min-height: 750px;
         aspect-ratio: auto;
         /* Disable aspect ratio to use fixed height */
 

@@ -42,7 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // Height Logic
         if (displayWidth > parent.clientWidth) {
             // If we are scrolling (canvas > container), use fixed height
-            displayHeight = 550;
+            // Increased to 750px to absolutely ensure Battery (bottom node) is visible
+            displayHeight = 750;
         } else {
             // If fitting (desktop), match container height (controlled by aspect-ratio 16/9)
             displayHeight = parent.clientHeight;
@@ -84,26 +85,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // NODES CONFIGURATION
     const NODES = [
-        { id: "AC_IN", x: 0.08, y: 0.4, label: "AC SUPPLY", type: "source", w: 120 },
+        { id: "AC_IN", x: 0.08, y: 0.35, label: "AC SUPPLY", type: "source", w: 120 },
 
-        // Multiline: "AC to DC" (top), "Converter" (bottom)
-        // Moved Left (0.3 -> 0.28)
-        { id: "ACDC", x: 0.28, y: 0.4, label: ["AC to DC", "Converter"], type: "hub", w: 120 },
+        // Multiline: "Eonix ARC" (top), "Converter" (bottom)
+        // Moved UP (0.4 -> 0.35)
+        { id: "ACDC", x: 0.28, y: 0.35, label: ["Eonix ARC", "Converter"], type: "hub", w: 120 },
 
-        { id: "ORING", x: 0.5, y: 0.4, label: "SMART FLOW", type: "hub", w: 100 },
+        { id: "ORING", x: 0.5, y: 0.35, label: "EONIX FLOW", type: "hub", w: 100 },
 
-        // Multiline: "SMART POWER" (top), "HUB" (bottom)
-        { id: "PDS", x: 0.72, y: 0.4, label: ["SMART POWER", "HUB"], type: "hub", w: 140 },
+        // Multiline: "EONIX" (top), "CORE" (bottom)
+        { id: "PDS", x: 0.72, y: 0.35, label: ["EONIX", "CORE"], type: "hub", w: 140 },
 
         { id: "OS", x: 0.72, y: 0.15, label: "User Interface", type: "load", w: 120 },
 
-        { id: "LED", x: 0.95, y: 0.4, label: "LED", type: "visual-led", w: 50 },
+        { id: "LED", x: 0.95, y: 0.35, label: "LED", type: "visual-led", w: 50 },
 
-        { id: "MOTOR", x: 0.72, y: 0.65, label: "Motor", type: "visual-motor", w: 60 },
+        { id: "MOTOR", x: 0.72, y: 0.60, label: "Motor", type: "visual-motor", w: 60 },
 
-        // Moved BMS down slightly (0.65 -> 0.68) to prevent overlap with Converter line
-        { id: "BMS", x: 0.28, y: 0.68, label: "BMS", type: "hub", w: 80 },
-        { id: "BAT", x: 0.28, y: 0.88, label: "Battery", type: "source", w: 80 },
+        // Compacted further to ensure visibility
+        // Eonix Cell moved to 0.55 (Up from 0.60)
+        { id: "BMS", x: 0.28, y: 0.55, label: "Eonix Cell", type: "hub", w: 80 },
+        // Battery moved to 0.70 (Up from 0.75) -> This puts it at ~525px on 750px height
+        { id: "BAT", x: 0.28, y: 0.70, label: "Battery", type: "source", w: 80 },
     ];
 
     const TOOLTIPS = {
@@ -137,8 +140,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // DC Mode: Discharging (Battery -> BMS -> Smart Flow)
         { from: "BAT", to: "BMS", type: "power", dir: 1, modes: ['DC'] }, // OUT of Battery
-        // BMS is at y:0.68. Original was point y:0.65 (diagonal). Fixed to 0.68 (horizontal).
-        { from: "BMS", to: "ORING", type: "power", points: [[0.5, 0.68]], dir: 1, modes: ['DC'] },
+        // BMS is at y:0.55.
+        { from: "BMS", to: "ORING", type: "power", points: [[0.5, 0.55]], dir: 1, modes: ['DC'] },
 
         // === OUTPUTS ===
         { from: "PDS", to: "LED", type: "power" },
@@ -157,9 +160,8 @@ document.addEventListener("DOMContentLoaded", () => {
             from: "BMS",
             to: "ORING",
             type: "data",
-            // RESTORED: Original Data Path Routing ("Equidistant Fix" style)
-            // Adjusted to y=0.695 (Gap 0.015) to visually match X-Gap (0.01) due to aspect ratio (~1.5)
-            points: [[0.3, 0.695], [0.51, 0.695], [0.51, 0.4]],
+            // Adjusted to y=0.565 (Gap 0.015 relative to node at 0.55)
+            points: [[0.3, 0.565], [0.51, 0.565], [0.51, 0.35]],
             dir: 1,
             modes: ['DC']
         },
@@ -445,19 +447,22 @@ document.addEventListener("DOMContentLoaded", () => {
             ctx.fill(); ctx.stroke();
 
             ctx.fillStyle = "#fff";
-            ctx.font = `${Math.max(10, 14 * s)}px Inter`; // Increased for better visibility
+            // Reduced font size slightly for better spacing (was 15 * s)
+            ctx.font = `${Math.max(10, 13 * s)}px Inter`;
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
             ctx.shadowBlur = 0;
+            // Attempt to loosen spacing (Canvas API support varies, but usually ignored if not supported)
+            if (ctx.letterSpacing) ctx.letterSpacing = "0.5px";
 
             // On very small screens, only show essential labels
-            const showAllLabels = canvas.width >= 600; // Increased threshold
+            const showAllLabels = canvas.width >= 600;
             const essentialNodes = ["AC_IN", "PDS", "LED", "MOTOR"];
 
             if (showAllLabels || essentialNodes.includes(node.id)) {
                 if (Array.isArray(node.label)) {
-                    // Multiline text spacing
-                    const spacing = 7 * s;
+                    // Multiline text spacing - INCREASED from 7 to 10 for better breathing room
+                    const spacing = 10 * s;
                     ctx.fillText(node.label[0], pos.x, pos.y - spacing);
                     ctx.fillText(node.label[1], pos.x, pos.y + spacing);
                 } else {
