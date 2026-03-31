@@ -119,7 +119,6 @@
 /* ── RIGHT PANE: STICKY DIAGRAM ── */
 .interactive-diagram {
     position: relative;
-    height: 100%;
 }
 
 .sticky-wrapper {
