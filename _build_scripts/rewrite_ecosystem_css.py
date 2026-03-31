@@ -1,31 +1,6 @@
-/* =============================================================================
-   ECOSYSTEM.CSS — Interactive Architecture Explorer (ecosystem.html)
-   =============================================================================
-   Styles the scroll-driven, split-screen architecture diagram on ecosystem.html.
+css_file = r'd:/eonix_systems/Development/eonix_systems_website/css/ecosystem.css'
 
-   HOW THE SCROLL-SPY DIAGRAM WORKS:
-   - Left side (.interactive-steps): 4 sections, each "min-height: 85vh" to force scroll time
-   - Right side (.interactive-diagram): Contains the sticky canvas diagram
-   - As the user scrolls through each left-side step, IntersectionObserver
-     (defined in inline <script> at bottom of ecosystem.html) updates
-     window.activeDiagramStep (1–4), which diagram.js reads to animate the canvas
-
-   ⚠️ CRITICAL BUG FIX — DO NOT REVERT:
-   The .interactive-diagram element must NOT have "height: 100%" set on it.
-   When height:100% was present, the browser calculated the sticky element's
-   scroll track as 0px tall (because the parent grid column collapsed), making
-   position:sticky fail silently. This was removed and the fix is permanent.
-
-   KEY COMPONENTS:
-   1. .interactive-split — 35/65 CSS Grid (left steps / right diagram)
-   2. .arch-scroll-step — Each scrollable content section on the left
-   3. .sticky-wrapper — Contains the diagram + progress rail (position: sticky)
-   4. .sticky-progress-rail — Vertical progress bar showing scroll position
-   5. .data-flow-container — The "How the System Operates" pipeline below the diagram
-   6. .why-card — The 3-column "Problem / Solution / Result" grid
-   ============================================================================= */
-
-/* =========================
+new_css = """/* =========================
    ECOSYSTEM — ADVANCED INTERACTIVE ARCHITECTURE
    ========================= */
 
@@ -50,7 +25,7 @@
 
 .interactive-split {
     display: grid;
-    grid-template-columns: 35fr 65fr;
+    grid-template-columns: 1fr 1.2fr;
     gap: 64px;
     max-width: 1400px;
     margin: 0 auto;
@@ -173,12 +148,6 @@
     background: var(--accent-primary);
     box-shadow: 0 0 10px var(--accent-glow);
     transition: height 0.1s linear;
-}
-
-.hero-diagram-container {
-    width: 100%; 
-    max-width: 100%;
-    transition: transform 0.3s ease;
 }
 
 /* =========================
@@ -359,9 +328,30 @@
         position: relative;
     }
 
-    .arch-layer-title { font-size: 2.2rem; }
-    .flow-pipeline { flex-direction: column; gap: 8px; }
-    .flow-arrow { transform: rotate(90deg); margin: 8px 0; }
-    .flow-animate-arrow { animation: none; }
-    .why-grid { grid-template-columns: 1fr; }
+    .arch-layer-title {
+        font-size: 2.2rem;
+    }
+
+    .flow-pipeline {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .flow-arrow {
+        transform: rotate(90deg);
+        margin: 8px 0;
+    }
+
+    .flow-animate-arrow {
+        animation: none;
+    }
+
+    .why-grid {
+        grid-template-columns: 1fr;
+    }
 }
+"""
+
+with open(css_file, 'w', encoding='utf-8') as f:
+    f.write(new_css)
+print("Updated ecosystem.css")

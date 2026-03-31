@@ -1,31 +1,8 @@
-/* =========================
+css_file = r'd:/eonix_systems/Development/eonix_systems_website/css/product.css'
+
+new_css = """/* =========================
    HARDWARE AS A SYSTEM (PRODUCT VIEW)
    ========================= */
-
-/* =============================================================================
-   PRODUCT.CSS — System Experience Explorer (product.html)
-   =============================================================================
-   Styles the interactive "System Explorer" on product.html.
-
-   KEY COMPONENTS:
-   1. SEGMENTED CONTROL BAR (.seg-control) — iOS-style tab switcher
-      - The sliding indicator (.seg-indicator) is positioned via JavaScript
-      - switchSysTab() in the inline <script> at the bottom of product.html controls it
-
-   2. SYSTEM SPLIT VIEW (.system-split) — 60/40 grid layout
-      - Left: Canvas diagram (sticky, stays fixed while right scrolls)
-      - Right: Tab content panels (.sys-content, active = visible)
-
-   3. FEATURE BLOCKS (.f-block) — Info cards with an accent left border
-
-   4. WHY ROWS (.why-row) — Before/After comparison blocks
-
-   IMPORTANT — STICKY DIAGRAM:
-   The canvas diagram uses "position: sticky" within .system-pane-left.
-   For sticky to work, the parent column must NOT have overflow:hidden
-   and must NOT have an explicit height set. If the diagram stops sticking,
-   check for any height or overflow overrides on .system-pane-left or .system-split.
-   ============================================================================= */
 
 /* -- SEGMENTED CONTROL BAR -- */
 .seg-control-container {
@@ -102,7 +79,6 @@
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 32px;
-    align-items: center; /* Vertically center right pane against the diagram */
 }
 
 /* LEFT PANE */
@@ -113,10 +89,7 @@
 
 /* RIGHT PANE CONTENT */
 .system-pane-right {
-    min-height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    min-height: 80vh;
 }
 
 .sys-content {
@@ -338,7 +311,6 @@
 
 .why-bad, .why-good {
     flex: 1;
-    text-align: left;
 }
 
 .why-bad h4 { font-size: 1.3rem; margin-bottom: 12px; color: #ff4a4a; }
@@ -397,3 +369,8 @@
         margin: 8px 0;
     }
 }
+"""
+
+with open(css_file, 'w', encoding='utf-8') as f:
+    f.write(new_css)
+print("Updated product.css")

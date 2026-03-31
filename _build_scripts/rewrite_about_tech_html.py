@@ -1,7 +1,8 @@
-<!doctype html>
+html_file = r'd:/eonix_systems/Development/eonix_systems_website/about.html'
+
+tech_html = """<!doctype html>
 <html lang="en">
   <head>
-    <link rel="icon" href="assets/EONIX SYSTEMS LOGO.png" type="image/png">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
@@ -22,14 +23,14 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="css/base.css?v=500" />
-    <link rel="stylesheet" href="css/layout.css?v=500" />
-    <link rel="stylesheet" href="css/nav.css?v=500" />
-    <link rel="stylesheet" href="css/animations.css?v=500" />
-    <link rel="stylesheet" href="css/footer.css?v=500" />
-    <link rel="stylesheet" href="css/about.css?v=500" />
-    <link rel="stylesheet" href="css/home.css?v=500" />
-    
+    <link rel="stylesheet" href="css/base.css?v=30" />
+    <link rel="stylesheet" href="css/layout.css?v=30" />
+    <link rel="stylesheet" href="css/nav.css?v=30" />
+    <link rel="stylesheet" href="css/animations.css?v=30" />
+    <link rel="stylesheet" href="css/footer.css?v=30" />
+    <link rel="stylesheet" href="css/about.css?v=30" />
+    <link rel="stylesheet" href="css/home.css?v=30" />
+    <link rel="icon" href="assets/EONIX SYSTEMS LOGO .png" type="image/png" />
   </head>
 
   <body>
@@ -39,7 +40,11 @@
     <!-- NAVBAR -->
     <nav class="nav-root">
       <div class="nav-inner">
-        <a class="nav-logo" href="index.html"><img src="assets/EONIX SYSTEMS LOGO.png" alt="Eonix Systems logo"></a>
+        <div class="nav-logo">
+          <a href="index.html">
+            <img src="assets/EONIX%20SYSTEMS%20LOGO.png" alt="Eonix Systems logo" />
+          </a>
+        </div>
         <div class="nav-links">
           <a class="nav-link" href="index.html">Home</a>
           <a class="nav-link" href="ecosystem.html">Ecosystem</a>
@@ -260,10 +265,10 @@
         
         <h2 class="home-title" style="font-size: 3.5rem; margin-bottom: 40px; text-shadow: 0 0 30px rgba(0,229,255,0.2);">Build Systems That Actually Work</h2>
         <div class="hero-actions" style="justify-content: center;">
-            <a href="ecosystem.html" class="btn-primary">
-              Explore Ecosystem <span class="btn-arrow">→</span>
+            <a href="ecosystem.html" class="btn btn-primary btn-glow">
+              Explore Ecosystem <span class="arrow">→</span>
             </a>
-            <a href="product.html" class="btn-secondary">
+            <a href="product.html" class="btn btn-secondary">
               View Products
             </a>
         </div>
@@ -290,10 +295,12 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="js/scroll-reveal.js?v=500"></script>
-    <script src="js/nav.js?v=500"></script>
+    <script src="js/scroll-reveal.js?v=30"></script>
+    <script src="js/nav.js?v=30"></script>
   </body>
 </html>
+"""
 
-
-
+with open(html_file, 'w', encoding='utf-8') as f:
+    f.write(tech_html)
+print("Updated about.html with tech symmetrical grid")

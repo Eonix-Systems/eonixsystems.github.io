@@ -1,72 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
+import re
 
-<head>
-    <link rel="icon" href="assets/EONIX SYSTEMS LOGO.png" type="image/png">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Explore the Eonix Systems power ecosystem - modular, intelligent hardware modules for robotics, AGVs, and embedded systems with real-time telemetry and protection.">
-    <meta property="og:title" content="Power Ecosystem | Eonix Systems">
-    <meta property="og:description"
-        content="Modular, plug-and-play power architecture with intelligent protection and telemetry.">
-    <title>Ecosystem | Eonix Systems</title>
+html_file = r'd:/eonix_systems/Development/eonix_systems_website/ecosystem.html'
+with open(html_file, 'r', encoding='utf-8') as f:
+    content = f.read()
 
-    <!-- Preconnect for Performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/base.css?v=500">
-    <link rel="stylesheet" href="css/layout.css?v=500">
-    <link rel="stylesheet" href="css/nav.css?v=500">
-    <link rel="stylesheet" href="css/animations.css?v=500">
-    <link rel="stylesheet" href="css/footer.css?v=500">
-    <link rel="stylesheet" href="css/home.css?v=500">
-    <link rel="stylesheet" href="css/product.css?v=500">
-    <link rel="icon" href="assets/EONIX SYSTEMS LOGO.png" type="image/png">
-    <link rel="stylesheet" href="css/ecosystem.css?v=500">
-</head>
-
-<body>
-
-    <!-- NAVBAR -->
-    <nav class="nav-root">
-        <div class="nav-inner">
-            <a class="nav-logo" href="index.html">
-                <img src="assets/EONIX SYSTEMS LOGO.png" alt="Eonix Systems logo">
-            </a>
-
-            <div class="nav-links">
-                <a class="nav-link" href="index.html">Home</a>
-                <a class="nav-link nav-active" href="ecosystem.html">Ecosystem</a>
-                <a class="nav-link" href="product.html">Product</a>
-                <a class="nav-link" href="about.html">About</a>
-                <a class="nav-link" href="contact.html">Contact</a>
-            </div>
-
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </nav>
-
-    <main class="page-wrapper" style="overflow: visible;">
+new_main = """<main class="page-wrapper" style="overflow: visible;">
 
         <!-- HERO SECTION -->
-        <section class="home-root page-section hero-animated-grid"
-            style="padding-top: 140px; min-height: 50vh; padding-bottom: 0px;">
+        <section class="home-root page-section hero-animated-grid" style="padding-top: 140px; min-height: 50vh; padding-bottom: 0px;">
             <div class="home-hero-inner reveal reveal-scale">
                 <h1 class="home-title" style="margin-bottom: 24px;">
                     <span class="text-accent glow-text">System Architecture</span>,<br />
                     Not Modules.
                 </h1>
                 <p class="home-subtitle" style="max-width: 900px; margin-bottom: 40px;">
-                    Eonix is built as a layered embedded <span class="text-accent"
-                        style="text-shadow: 0 0 8px var(--accent-glow);">system</span> — where power, communication,
-                    sensing, and actuation are engineered to operate together with predictable behavior.
+                    Eonix is built as a layered embedded <span class="text-accent" style="text-shadow: 0 0 8px var(--accent-glow);">system</span> — where power, communication, sensing, and actuation are engineered to operate together with predictable behavior.
                 </p>
             </div>
         </section>
@@ -75,18 +23,17 @@
         <section class="page-section architecture-interactive">
             <!-- Subtle ambient spotlight for depth -->
             <div class="interactive-ambient-glow" id="ambientGlow"></div>
-
+            
             <div class="interactive-split">
-
+                
                 <!-- LEFT CONTENT: Scrolling Steps -->
                 <div class="interactive-steps" id="scroll-steps-container">
-
+                    
                     <div class="arch-scroll-step" data-step="1">
                         <div class="arch-label text-accent">CONTROL LAYER</div>
                         <h3 class="arch-layer-title">System Brain</h3>
                         <p class="arch-layer-desc">
-                            The motherboard acts as the central controller, coordinating all modules and maintaining
-                            system state.
+                            The motherboard acts as the central controller, coordinating all modules and maintaining system state.
                         </p>
                         <ul class="arch-key-points">
                             <li data-target="MB">Centralized control architecture</li>
@@ -95,13 +42,12 @@
                             <li data-target="MCU">Optional external MCU integration</li>
                         </ul>
                     </div>
-
+                    
                     <div class="arch-scroll-step" data-step="2">
                         <div class="arch-label text-accent">COMMUNICATION LAYER</div>
                         <h3 class="arch-layer-title">Unified Interface — Deterministic Communication</h3>
                         <p class="arch-layer-desc">
-                            All modules communicate through a structured interface — no conflicts, no collisions, no
-                            unpredictability.
+                            All modules communicate through a structured interface — no conflicts, no collisions, no unpredictability.
                         </p>
                         <ul class="arch-key-points">
                             <li data-target="CAN">Multi-node communication</li>
@@ -110,13 +56,12 @@
                             <li data-target="CAN">No I2C/SPI chaos</li>
                         </ul>
                     </div>
-
+                    
                     <div class="arch-scroll-step" data-step="3">
                         <div class="arch-label text-accent">POWER LAYER</div>
                         <h3 class="arch-layer-title">Programmable Power — Controlled Energy Flow</h3>
                         <p class="arch-layer-desc">
-                            Power is regulated, monitored, and protected in hardware — ensuring stable operation under
-                            real loads.
+                            Power is regulated, monitored, and protected in hardware — ensuring stable operation under real loads.
                         </p>
                         <ul class="arch-key-points">
                             <li data-target="PWR">CC/CV programmable outputs</li>
@@ -125,13 +70,12 @@
                             <li data-target="DRV">Stable under dynamic loads</li>
                         </ul>
                     </div>
-
+                    
                     <div class="arch-scroll-step" data-step="4">
                         <div class="arch-label text-accent">EXECUTION LAYER</div>
                         <h3 class="arch-layer-title">Sensing and Actuation</h3>
                         <p class="arch-layer-desc">
-                            Sensors provide structured input, while drivers convert electrical power into controlled
-                            physical output.
+                            Sensors provide structured input, while drivers convert electrical power into controlled physical output.
                         </p>
                         <ul class="arch-key-points">
                             <li data-target="TEMP">Sensor abstraction (no raw protocols)</li>
@@ -150,9 +94,8 @@
                         <div class="sticky-progress-rail">
                             <div class="sticky-progress-fill" id="diagramProgressFill"></div>
                         </div>
-
-                        <div class="hero-diagram-container glass-panel"
-                            style="width: 100%; border: 1px solid rgba(0, 229, 255, 0.2); transform: scale(0.95); transform-origin: top center;">
+                        
+                        <div class="hero-diagram-container glass-panel" style="width: 100%; border: 1px solid rgba(0, 229, 255, 0.2); transform: scale(0.95); transform-origin: top center;">
                             <canvas id="systemCanvas"></canvas>
                             <div class="diagram-overlay"></div>
                         </div>
@@ -165,7 +108,7 @@
         <!-- DATA FLOW SECTION -->
         <section class="page-section data-flow-section reveal" style="margin-top: -10vh;">
             <h2 class="home-section-title">How the System Operates</h2>
-
+            
             <div class="data-flow-container glass-panel reveal reveal-scale">
                 <div class="flow-pipeline-wrapper">
                     <div class="flow-pipeline">
@@ -223,8 +166,7 @@
                 A System That Scales Without Breaking
             </h2>
             <p class="home-section-text" style="max-width: 700px; margin-bottom: 2rem; color: var(--text-secondary);">
-                Eonix enforces structure across power, communication, and control — enabling systems that remain stable
-                as complexity increases.
+                Eonix enforces structure across power, communication, and control — enabling systems that remain stable as complexity increases.
             </p>
 
             <div class="hero-actions">
@@ -239,54 +181,20 @@
             </div>
         </section>
 
-    </main>
+    </main>"""
 
-    <footer class="footer-root">
-        <div class="footer-inner">
-            <div class="footer-left">
-                <p class="footer-brand">Eonix Systems</p>
-                <p class="footer-tagline">Power. Intelligent. Protected.</p>
-            </div>
+# Replace main
+new_content = re.sub(r'<main class="page-wrapper(?:[^>]*)">.*?</main>', new_main, content, flags=re.DOTALL)
 
-            <div class="footer-right">
-                <a class="footer-link" href="ecosystem.html">Ecosystem</a>
-                <a class="footer-link" href="product.html">Product</a>
-                <a class="footer-link" href="contact.html">Contact</a>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>© 2026 Eonix Systems Pvt. Ltd. All rights reserved.</p>
-            <div class="footer-social">
-                <a href="https://www.instagram.com/eonixsystems/" class="social-icon" aria-label="Instagram"
-                    target="_blank">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                    </svg>
-                </a>
-                <a href="https://www.linkedin.com/company/eonix-systems/?viewAsMember=true" class="social-icon"
-                    aria-label="LinkedIn" target="_blank">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </footer>
-
-    <script src="js/scroll-reveal.js?v=500"></script>
-    <script src="js/nav.js?v=500"></script>
-    <script src="js/diagram.js?v=500"></script>
-
-
+# Add inline scroll trigger JS specifically for the new feature before closing body tag
+# The scroll logic calculates intersection
+scroll_script = """
     <!-- Scroll Step Logic -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const steps = document.querySelectorAll('.arch-scroll-step');
             window.activeDiagramStep = 0; // Global for diagram.js override
-
+            
             // Interaction logic for intersection
             const obsv = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -294,10 +202,10 @@
                         // Re-activate
                         steps.forEach(s => s.classList.remove('active'));
                         entry.target.classList.add('active');
-
+                        
                         // Set global target for diagram animation lerp loop
                         window.activeDiagramStep = parseInt(entry.target.getAttribute('data-step') || 0);
-
+                        
                         // Shift ambient background
                         const amb = document.getElementById('ambientGlow');
                         if (amb) amb.style.top = (window.activeDiagramStep * 20) + "%";
@@ -308,9 +216,9 @@
                 rootMargin: '-40% 0px -40% 0px', // Trigger exactly as it hits screen center
                 threshold: 0
             });
-
+            
             steps.forEach(step => obsv.observe(step));
-
+            
             // Progress rail logic
             const container = document.getElementById('scroll-steps-container');
             const fill = document.getElementById('diagramProgressFill');
@@ -318,12 +226,12 @@
                 window.addEventListener('scroll', () => {
                     const rect = container.getBoundingClientRect();
                     const winH = window.innerHeight;
-                    const scrolledThrough = (winH / 2 - rect.top) / rect.height;
+                    const scrolledThrough = (winH/2 - rect.top) / rect.height;
                     const p = Math.max(0, Math.min(1, scrolledThrough));
                     fill.style.height = (p * 100) + "%";
                 });
             }
-
+            
             // Bullet Hover Triggers override
             const bullets = document.querySelectorAll('.arch-key-points li');
             bullets.forEach(b => {
@@ -332,10 +240,11 @@
             });
         });
     </script>
-</body>
+</body>"""
 
-</html>
+new_content = re.sub(r'</body>', scroll_script, new_content)
 
+with open(html_file, 'w', encoding='utf-8') as f:
+    f.write(new_content)
 
-
-
+print("Updated ecosystem.html with advanced scrolling logic.")

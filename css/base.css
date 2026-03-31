@@ -1,3 +1,22 @@
+/* =============================================================================
+   BASE.CSS — Global Design System Foundation
+   =============================================================================
+   ⭐ THIS IS THE MOST IMPORTANT CSS FILE. Read this before editing anything else.
+
+   This file defines:
+   1. CSS Custom Properties (variables) — the ENTIRE color palette, spacing, etc.
+   2. Global resets and typography defaults
+   3. The background grid (tech aesthetic)
+   4. Shared utility classes (.glass-panel, .text-gradient, etc.)
+
+   IMPORTANT: Do NOT hardcode colors in page-specific CSS files.
+   Always use the variables defined in :root {} here.
+   To change the color theme, only edit this file.
+
+   CSS Load Order (every page loads these in sequence):
+   base.css → layout.css → nav.css → animations.css → footer.css → [page].css
+   ============================================================================= */
+
 /* =========================
    GLOBAL RESET
    ========================= */

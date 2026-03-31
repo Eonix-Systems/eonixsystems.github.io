@@ -1,3 +1,29 @@
+/* =============================================================================
+   ANIMATIONS.CSS — Scroll Reveal & Motion System
+   =============================================================================
+   Defines all animation classes used across the site.
+
+   HOW SCROLL REVEAL WORKS:
+   1. Add class "reveal" to any element you want to fade in on scroll
+   2. js/scroll-reveal.js watches for these elements using IntersectionObserver
+   3. When the element enters the viewport, ".is-visible" is added automatically
+   4. The CSS transition here does the actual animation
+
+   REVEAL VARIANTS:
+   .reveal             → Fades up (default)
+   .reveal-left        → Slides in from left
+   .reveal-right       → Slides in from right
+   .reveal-scale       → Scales up from 96%
+
+   STAGGERED DELAY:
+   Add style="--delay: 200ms;" to stagger multiple elements in a sequence.
+   Works because .reveal[data-delay] uses var(--delay) as transition-delay.
+
+   HERO ANIMATED GRID:
+   The .hero-animated-grid class adds a slowly moving cyan grid overlay.
+   Used on Hero sections in index.html and ecosystem.html.
+   ============================================================================= */
+
 /* =========================
    SCROLL REVEAL — VARIANTS
    ========================= */

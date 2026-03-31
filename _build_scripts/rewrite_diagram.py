@@ -1,50 +1,9 @@
-/* =============================================================================
-   DIAGRAM.JS — Canvas-Based System Architecture Visualizer
-   =============================================================================
-   This is the most complex file in the project. It renders a real-time animated
-   diagram of the Eonix hardware ecosystem using the HTML5 Canvas API.
+js_file = r'd:/eonix_systems/Development/eonix_systems_website/js/diagram.js'
 
-   USED ON: ecosystem.html AND product.html (both have <canvas id="systemCanvas">)
-
-   HOW IT WORKS — HIGH LEVEL:
-   1. On DOMContentLoaded, it finds the canvas and sizes it to its container
-   2. It defines NODES (boxes like Motherboard, CAN Bus, Sensors) with x/y positions
-   3. It defines CONNECTIONS (lines between nodes)
-   4. A requestAnimationFrame loop runs 60fps, redrawing the canvas each frame
-   5. Each frame, it reads window.activeDiagramStep (1–4) to know what to highlight
-   6. It uses LERP (linear interpolation) to smoothly animate between states
-
-   GLOBAL STATE VARIABLES (set by the page, read by this file):
-   - window.activeDiagramStep (number 1–4): Which architecture layer is active.
-     Set by IntersectionObserver in ecosystem.html inline script (scroll-driven)
-     or by switchSysTab() in product.html inline script (tab-driven)
-   - window.forceHoverNodeId (string | null): Node ID to force-highlight.
-     Set when user hovers over .arch-key-points bullet points in ecosystem.html.
-
-   NODE IDs (used by forceHoverNodeId and CONNECTIONS):
-   "APP"  → Desktop Application box
-   "MCU"  → User MCU (Arduino etc.)
-   "MB"   → Eonix Motherboard (central node)
-   "CAN"  → CAN Bus bar (horizontal communication backbone)
-   "TEMP" → Temperature Sensor module
-   "IMU"  → IMU Sensor module
-   "DIST" → Distance/LiDAR module
-   "DRV"  → Motor Driver module
-   "MOT"  → Motor (physical load)
-   "PWR"  → Power Module
-   "BAT"  → Battery
-
-   STEP HIGHLIGHTING MAP:
-   Step 1 (CONTROL)       → Highlights: APP, MCU, MB
-   Step 2 (COMMUNICATION) → Highlights: CAN, all connected modules
-   Step 3 (POWER)         → Highlights: PWR, BAT, their connections
-   Step 4 (EXECUTION)     → Highlights: TEMP, IMU, DIST, DRV, MOT
-
-   CANVAS COORDINATE SYSTEM:
-   - All x/y values are NORMALIZED (0.0 to 1.0) relative to canvas size
-   - cx(x) and cy(y) convert normalized coords to actual canvas pixels
-   - S() returns a scale factor for responsive text/element sizing
-   ============================================================================= */
+new_js = """/* =========================
+   EONIX ADVANCED INTERACTIVE DIAGRAM ENGINE
+   Transforms static canvas into a stateful, lerp-driven system visualizer.
+   ========================= */
 
 document.addEventListener("DOMContentLoaded", () => {
     const canvas = document.getElementById("systemCanvas");
@@ -70,9 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function resize() {
         const parent = canvas.parentElement;
         const dpr = window.devicePixelRatio || 1;
-        const displayWidth = parent.clientWidth; // Exactly fit container
-        // Limit the height strictly to 75% of the user's screen height so it never leaks off the bottom edge
-        const displayHeight = Math.min(750, window.innerHeight * 0.75);
+        const displayWidth = Math.max(parent.clientWidth, 900); // Prevent shrinking too small
+        const displayHeight = 650;
         canvas.style.width = displayWidth + "px";
         canvas.style.height = displayHeight + "px";
         canvas.width = displayWidth * dpr;
@@ -88,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function cx(x) { return x * canvas.width; }
     function cy(y) { return y * canvas.height; }
 
-    const Y_TOP = 0.15, Y_MB = 0.35, Y_CAN = 0.52, Y_MODS = 0.70, Y_PWR = 0.70, Y_BAT = 0.85;
+    const Y_TOP = 0.10, Y_MB = 0.30, Y_CAN = 0.50, Y_MODS = 0.72, Y_PWR = 0.72, Y_BAT = 0.90;
     const X_TEMP = 0.10, X_IMU = 0.22, X_DIST = 0.34, X_DRV = 0.74, X_MOT = 0.90;
     const X_MB = 0.50, X_MCU = 0.80, X_PWR = 0.50;
 
@@ -129,13 +87,8 @@ document.addEventListener("DOMContentLoaded", () => {
     canvas.addEventListener("mousemove", e => {
         const rect = canvas.getBoundingClientRect();
         const dpr = window.devicePixelRatio || 1;
-        
-        // Transform-safe mapping (accounts for CSS scaling)
-        const scaleX = canvas.width / rect.width;
-        const scaleY = canvas.height / rect.height;
-        const mx = (e.clientX - rect.left) * scaleX;
-        const my = (e.clientY - rect.top) * scaleY;
-        
+        const mx = (e.clientX - rect.left) * dpr;
+        const my = (e.clientY - rect.top) * dpr;
         const s = S();
         let found = null;
         for (const nd of NODES) {
@@ -406,8 +359,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const s = S();
         const alpha = lineAlphas[lineAlphaId] || 0.2;
         let timeSpeed = 0.022;
-        if (activeStep === 2 && dashScale) timeSpeed = 0.035; // Comms: fast lines
-        if (activeStep === 3 && isPower) timeSpeed = 0.03;  // Power: pulsing energy
+        if (activeStep === 2 && dashScale) timeSpeed = 0.06; // Comms: crazy fast lines
+        if (activeStep === 3 && isPower) timeSpeed = 0.05;  // Power: pulsing energy
 
         if (dashScale) {
             const gap = 5 * s;
@@ -464,7 +417,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ctx.strokeStyle = bbColor;
         ctx.lineWidth   = 1.8 * s;
         ctx.setLineDash([8 * s, 6 * s]);
-        const speedMultiplier = (step === 2) ? 0.04 : 0.022; // Faster when active step 2
+        const speedMultiplier = (step === 2) ? 0.08 : 0.022; // Very fast when active step 2
         
         ctx.beginPath(); ctx.moveTo(cx(0.05), canY - bbGap); ctx.lineTo(cx(0.95), canY - bbGap);
         ctx.lineDashOffset = -time * speedMultiplier; ctx.stroke();
@@ -520,3 +473,8 @@ document.addEventListener("DOMContentLoaded", () => {
     
     renderLoop();
 });
+"""
+
+with open(js_file, 'w', encoding='utf-8') as f:
+    f.write(new_js)
+print("Updated js/diagram.js")

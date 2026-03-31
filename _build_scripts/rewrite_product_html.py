@@ -1,7 +1,8 @@
-<!doctype html>
+html_file = r'd:/eonix_systems/Development/eonix_systems_website/product.html'
+
+new_html = """<!doctype html>
 <html lang="en">
   <head>
-    <link rel="icon" href="assets/EONIX SYSTEMS LOGO.png" type="image/png">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
@@ -22,21 +23,25 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="css/base.css?v=500" />
-    <link rel="stylesheet" href="css/layout.css?v=500" />
-    <link rel="stylesheet" href="css/nav.css?v=500" />
-    <link rel="stylesheet" href="css/animations.css?v=500" />
-    <link rel="stylesheet" href="css/footer.css?v=500" />
-    <link rel="stylesheet" href="css/product.css?v=500" />
-    <link rel="stylesheet" href="css/home.css?v=500" />
-    
+    <link rel="stylesheet" href="css/base.css?v=20" />
+    <link rel="stylesheet" href="css/layout.css?v=20" />
+    <link rel="stylesheet" href="css/nav.css?v=20" />
+    <link rel="stylesheet" href="css/animations.css?v=20" />
+    <link rel="stylesheet" href="css/footer.css?v=20" />
+    <link rel="stylesheet" href="css/product.css?v=20" />
+    <link rel="stylesheet" href="css/home.css?v=20" />
+    <link rel="icon" href="assets/EONIX SYSTEMS LOGO .png" type="image/png" />
   </head>
 
   <body>
     <!-- NAVBAR -->
     <nav class="nav-root">
       <div class="nav-inner">
-        <a class="nav-logo" href="index.html"><img src="assets/EONIX SYSTEMS LOGO.png" alt="Eonix Systems logo"></a>
+        <div class="nav-logo">
+          <a href="index.html">
+            <img src="assets/EONIX%20SYSTEMS%20LOGO.png" alt="Eonix Systems logo" />
+          </a>
+        </div>
         <div class="nav-links">
           <a class="nav-link" href="index.html">Home</a>
           <a class="nav-link" href="ecosystem.html">Ecosystem</a>
@@ -52,11 +57,30 @@
 
     <main class="page-wrapper" style="overflow: visible;">
       
-      <!-- HERO DELETED PER USER REQUEST -->
-
+      <!-- HERO SECTION -->
+      <section class="home-root page-section hero-animated-grid" style="padding-top: 160px; min-height: 50vh; padding-bottom: 60px;">
+        <div class="home-hero-inner reveal reveal-scale">
+          <h1 class="home-title" style="margin-bottom: 24px;">
+            Hardware, As a <span class="text-accent glow-text">System</span>.
+          </h1>
+          <p class="home-subtitle" style="max-width: 900px; margin-bottom: 40px;">
+            Not modules. Not boards. <br />
+            A unified embedded platform where power, sensing, control, and actuation <br/>
+            are engineered to work together from the start.
+          </p>
+          <div class="hero-actions" style="justify-content: center;">
+            <a href="ecosystem.html" class="btn btn-primary btn-glow">
+              Explore Ecosystem <span class="arrow">→</span>
+            </a>
+            <a href="#system-explorer" class="btn btn-secondary">
+              View Architecture
+            </a>
+          </div>
+        </div>
+      </section>
 
       <!-- SYSTEM NAV (SEGMENTED CONTROL) -->
-      <section id="system-explorer" class="page-section" style="padding: 140px 0 0 0; margin-bottom: 40px;">
+      <section id="system-explorer" class="page-section" style="padding: 0; margin-bottom: 40px;">
         <div class="seg-control-container reveal">
             <div class="seg-control">
                 <div class="seg-indicator" id="segIndicator"></div>
@@ -291,7 +315,7 @@
 
       <!-- WHY THIS SYSTEM EXISTS (GAP SECTION REPLACEMENT) -->
       <section class="page-section contrast-section" style="padding: 100px 0;">
-        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+        <div class="container" style="max-width: 1200px; padding: 0 24px;">
             <h2 class="home-section-title text-center mb-64" style="margin-bottom: 64px;">Why Existing Systems Break</h2>
             
             <div class="why-split">
@@ -338,13 +362,13 @@
 
       <!-- FINAL CTA -->
       <section class="page-section cta-grand text-center" style="padding: 140px 24px;">
-        <h2 class="home-title" style="font-size: 3.5rem; margin-bottom: 24px; text-align: center;">Build Systems That Actually Ship</h2>
-        <p class="home-subtitle" style="max-width: 600px; margin: 0 auto 40px; text-align: center;">Stop assembling random fragmented hardware components. Start building unified, scalable systems.</p>
+        <h2 class="home-title" style="font-size: 3.5rem; margin-bottom: 24px;">Build Systems That Actually Ship</h2>
+        <p class="home-subtitle" style="max-width: 600px; margin: 0 auto 40px;">Stop assembling random fragmented hardware components. Start building unified, scalable systems.</p>
         <div class="hero-actions" style="justify-content: center;">
-            <a href="ecosystem.html" class="btn-primary">
-              Explore Ecosystem <span class="btn-arrow">→</span>
+            <a href="ecosystem.html" class="btn btn-primary btn-glow">
+              Explore Ecosystem <span class="arrow">→</span>
             </a>
-            <a href="contact.html" class="btn-secondary">
+            <a href="contact.html" class="btn btn-secondary">
               Contact Sales
             </a>
         </div>
@@ -371,9 +395,9 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="js/scroll-reveal.js?v=500"></script>
-    <script src="js/nav.js?v=500"></script>
-    <script src="js/diagram.js?v=500"></script>
+    <script src="js/scroll-reveal.js?v=20"></script>
+    <script src="js/nav.js?v=20"></script>
+    <script src="js/diagram.js?v=20"></script>
 
     <script>
         // System Explorer Integration Logic
@@ -426,6 +450,8 @@
     </script>
   </body>
 </html>
+"""
 
-
-
+with open(html_file, 'w', encoding='utf-8') as f:
+    f.write(new_html)
+print("Updated product.html")
