@@ -39,8 +39,8 @@ html {
 :root {
     /* SURFACES */
     --surface-0: #ffffff;   /* base */
-    --surface-1: #e9eef3;   /* section contrast (darkened 5%) */
-    --surface-2: #dfe6f0;   /* elevated containers (darkened 5%) */
+    --surface-1: #f2f5f9;   /* section contrast */
+    --surface-2: #ebf0f5;   /* elevated containers */
 
     /* TEXT */
     --text-primary: #0b0f14;
