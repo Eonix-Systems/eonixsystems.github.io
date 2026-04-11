@@ -99,15 +99,16 @@
     /* NO text-shadow */
 }
 
-.nav-active::after {
-    content: "";
+.nav-slider {
     position: absolute;
     bottom: 4px;
-    left: 18px;
-    width: calc(100% - 36px);
+    left: 0;
     height: 3px;
     border-radius: 3px;
     background-color: var(--accent);
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), width 0.3s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.2s ease;
+    pointer-events: none;
+    z-index: 10;
 }
 
 /* =========================
@@ -157,8 +158,8 @@
         color: var(--text-secondary);
     }
 
-    .nav-active::after {
-        display: none;
+    .nav-slider {
+        display: none !important;
     }
 
     .nav-active {

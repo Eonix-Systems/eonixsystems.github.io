@@ -1,17 +1,82 @@
 /* =============================================================================
-   NAV.JS — Mobile Hamburger Menu Toggle
-   =============================================================================
-   Simple script. Toggles the CSS class "open" on the .nav-links element
-   when the hamburger button (.nav-toggle) is clicked.
-
-   The styling for the open/closed state is in css/nav.css.
-   This works on ALL pages — loaded via <script src="js/nav.js"> in every HTML file.
-
-   DEPENDENCY: Requires .nav-toggle and .nav-links elements to exist in the DOM.
+   NAV.JS — Navigation Logic & Animations
    ============================================================================= */
-const toggle = document.querySelector(".nav-toggle");
-const links = document.querySelector(".nav-links");
 
-toggle.addEventListener("click", () => {
-    links.classList.toggle("open");
+document.addEventListener("DOMContentLoaded", () => {
+    /* 1. Mobile Hamburger Menu Toggle */
+    const toggle = document.querySelector(".nav-toggle");
+    const links = document.querySelector(".nav-links");
+
+    if (toggle && links) {
+        toggle.addEventListener("click", () => {
+            links.classList.toggle("open");
+        });
+    }
+
+    /* 2. Desktop Smooth Sliding Active Indicator */
+    const navLinks = document.querySelectorAll('.nav-link');
+    const activeLink = document.querySelector('.nav-link.nav-active');
+
+    if (links && navLinks.length > 0) {
+        // Create the slider element dynamically
+        const slider = document.createElement('div');
+        slider.classList.add('nav-slider');
+        links.appendChild(slider);
+        
+        // Let CSS position it absolutely relative to the flex container
+        links.style.position = 'relative'; 
+
+        // Core positioning function
+        const updateSlider = (linkEl) => {
+            if (!linkEl) {
+                slider.style.opacity = '0';
+                return;
+            }
+            
+            // The nav links have a padding of 0 18px.
+            // We want the slider to visually match the text width.
+            const horizontalPadding = 36; // 18px left + 18px right
+            const width = linkEl.offsetWidth - horizontalPadding;
+            const leftOffset = linkEl.offsetLeft + (horizontalPadding / 2);
+            
+            slider.style.width = width + 'px';
+            slider.style.transform = `translateX(${leftOffset}px)`;
+            slider.style.opacity = '1';
+        };
+
+        // Initialize state without animation
+        if (activeLink) {
+            slider.style.transition = 'none';
+            updateSlider(activeLink);
+            // Force browser reflow so it snaps to position instantly
+            void slider.getBoundingClientRect();
+            // Restore smooth transitions for subsequent clicks
+            setTimeout(() => {
+                slider.style.transition = '';
+            }, 50);
+        }
+
+        // Hover handling to slide to target
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Let it slide to the clicked tab
+                updateSlider(link);
+                
+                // Only delay navigation if it's a standard internal link
+                const href = link.getAttribute('href');
+                if (href && !href.startsWith('#') && href !== window.location.pathname.split('/').pop()) {
+                    e.preventDefault();
+                    // Wait for the CSS sliding transition (0.3s) before jumping pages
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 250);
+                }
+            });
+        });
+
+        // Resize handler to recalculate offset accurately
+        window.addEventListener('resize', () => {
+            updateSlider(activeLink);
+        });
+    }
 });
