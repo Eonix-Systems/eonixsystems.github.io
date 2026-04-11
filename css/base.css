@@ -162,7 +162,7 @@ body::before {
     height: 1px;
     background: linear-gradient(90deg, transparent, #e6eaf0, transparent);
     width: 100%;
-    margin: 60px 0;
+    margin: 45px 0;
 }
 
 /* Base CTA Buttons */

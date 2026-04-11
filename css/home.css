@@ -9,7 +9,7 @@
    ========================= */
 
 .page-section {
-    margin-bottom: 120px;
+    margin-bottom: 90px;
 }
 
 /* =========================
@@ -100,7 +100,7 @@
 .home-tech-divider {
     position: relative;
     width: 100%;
-    margin: 80px 0;
+    margin: 45px 0;
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--border-subtle), transparent);
     display: flex;
