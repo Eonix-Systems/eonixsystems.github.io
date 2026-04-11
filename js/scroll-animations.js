@@ -340,8 +340,8 @@
     initSysLabelType();
     initSectionTracker();
 
-    // Homepage-only
-    if (!document.querySelector('.home-root')) return;
+    // Wait, the rest of these animations should run globally on any page that uses the classes
+    // Removed the home-root early return.
 
     initWordReveal();
     initSubtitleReveal();
