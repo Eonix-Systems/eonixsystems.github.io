@@ -54,7 +54,7 @@
     background: transparent;
     border: none;
     color: var(--text-secondary);
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 0.95rem;
     font-weight: 600;
     letter-spacing: 1px;
@@ -71,7 +71,7 @@
 }
 
 .seg-btn.active {
-    color: #fff;
+    color: var(--text-primary);
 }
 
 /* Sliding Background Indicator */
@@ -142,9 +142,9 @@
 
 .arch-layer-title {
     font-size: 2.8rem;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: 600;
-    color: #fff;
+    color: var(--text-primary);
     margin-bottom: 24px;
     line-height: 1.1;
 }
@@ -206,7 +206,7 @@
 
 .rep-title {
     font-size: 1.1rem;
-    color: #fff;
+    color: var(--text-primary);
     margin-bottom: 24px;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -230,7 +230,7 @@
 }
 
 .rep-list.good li {
-    color: #fff;
+    color: var(--text-primary);
     font-weight: 500;
 }
 .rep-list.good li::before {
@@ -256,16 +256,16 @@
     border-radius: 20px;
     cursor: pointer;
     font-size: 0.95rem;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     transition: all 0.2s ease;
 }
 
-.s-pill:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
+.s-pill:hover { background: rgba(0, 0, 0, 0.08); color: var(--text-primary); }
 
 .s-pill.active {
     background: var(--accent-subtle);
     border-color: var(--accent-border);
-    color: #fff;
+    color: var(--text-primary);
     /* NO box-shadow glow */
 }
 
@@ -280,7 +280,7 @@
 }
 
 .sensor-crd.active { display: block; }
-.sensor-crd h4 { font-size: 1.4rem; color: #fff; margin-bottom: 10px; }
+.sensor-crd h4 { font-size: 1.4rem; color: var(--text-primary); margin-bottom: 10px; }
 .sensor-crd p { color: var(--text-secondary); font-size: 1rem; margin-bottom: 20px; line-height: 1.55; }
 .sensor-crd ul { padding-left: 18px; color: var(--text-secondary); }
 .sensor-crd li { margin-bottom: 8px; font-size: 0.95rem; }
@@ -306,7 +306,7 @@
     border-color: var(--border-strong);
 }
 
-.p-card-mini h5 { font-size: 1.1rem; color: #fff; margin-bottom: 6px; }
+.p-card-mini h5 { font-size: 1.1rem; color: var(--text-primary); margin-bottom: 6px; }
 .p-card-mini span { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.4; display: block; }
 
 /* -- WHY THIS SYSTEM EXISTS MATRIX -- */

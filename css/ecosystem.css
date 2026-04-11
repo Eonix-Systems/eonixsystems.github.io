@@ -114,7 +114,7 @@
 }
 
 .arch-key-points li:hover {
-    color: #fff;
+    color: var(--text-primary);
 }
 
 .arch-key-points li::before {

@@ -1,42 +1,35 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <link rel="icon" href="assets/EONIX SYSTEMS LOGO.png" type="image/png">
+    <link rel="icon" href="assets/New Logo only symbol Transparent Background For Website.png" type="image/png">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Eonix Systems offers professional PCB design and custom embedded hardware development — from schematic to production-ready systems."
-    />
+    <meta name="description" content="Eonix Systems offers professional PCB design and custom embedded hardware development — from schematic to production-ready systems." />
     <meta property="og:title" content="Services | Eonix Systems" />
-    <meta
-      property="og:description"
-      content="Engineering hardware built right. PCB design and custom embedded systems for labs, startups, and real-world deployment."
-    />
+    <meta property="og:description" content="Engineering hardware built right. PCB design and custom embedded systems for labs, startups, and real-world deployment." />
     <title>Services | Eonix Systems</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="css/base.css?v=601" />
-    <link rel="stylesheet" href="css/layout.css?v=601" />
-    <link rel="stylesheet" href="css/nav.css?v=601" />
-    <link rel="stylesheet" href="css/animations.css?v=601" />
-    <link rel="stylesheet" href="css/footer.css?v=601" />
-    <link rel="stylesheet" href="css/home.css?v=601" />
-    <link rel="stylesheet" href="css/services.css?v=601" />
+    <link rel="stylesheet" href="css/base.css?v=602" />
+    <link rel="stylesheet" href="css/layout.css?v=602" />
+    <link rel="stylesheet" href="css/nav.css?v=602" />
+    <link rel="stylesheet" href="css/animations.css?v=602" />
+    <link rel="stylesheet" href="css/footer.css?v=602" />
+    <link rel="stylesheet" href="css/home.css?v=602" />
+    <link rel="stylesheet" href="css/services.css?v=602" />
   </head>
 
   <body>
+    <!-- BACKGROUND GRID -->
+    <div class="super-grid"></div>
 
     <!-- NAVBAR -->
     <nav class="nav-root">
       <div class="nav-inner">
-        <a class="nav-logo" href="index.html"><img src="assets/EONIX SYSTEMS LOGO.png" alt="Eonix Systems logo"></a>
+        <a class="nav-logo" href="index.html"><img src="assets/New Full Name Logo Transparent Background Color Counterpart.png" alt="Eonix Systems logo"></a>
         <div class="nav-links">
           <a class="nav-link" href="index.html">Home</a>
           <a class="nav-link" href="ecosystem.html">Ecosystem</a>
@@ -51,361 +44,116 @@
       </div>
     </nav>
 
-    <main class="page-wrapper" style="overflow: visible;">
+    <main class="page-wrapper blueprint-wrapper">
+      <!-- VERTICAL GUIDE RAILS -->
+      <div class="master-guide left"></div>
+      <div class="master-guide right"></div>
 
-      <!-- =========================================
-           SECTION 1: HERO
-           ========================================= -->
+      <!-- 1. HERO -->
       <section class="svc-hero page-section hero-animated-grid">
         <div class="svc-hero-inner reveal">
-          <span class="svc-label">SERVICES</span>
-          <h1 class="svc-title">Engineering Hardware.<br>Built Right.</h1>
+          <span class="svc-sys-label">SYS_SVC_01 // SERVICES</span>
+          <h1 class="svc-title">Build It Right.</h1>
           <p class="svc-subtitle">
-            From circuit design to production-ready systems, Eonix delivers reliable,
-            scalable hardware for labs, startups, and real-world deployment.
+            We design and deliver reliable embedded hardware for real-world applications.
           </p>
-          <div class="hero-actions">
-            <a href="contact.html" class="btn-primary">
-              Start a Project <span class="btn-arrow">→</span>
-            </a>
-            <a href="#capabilities" class="btn-secondary">
-              View Capabilities <span class="btn-arrow">↓</span>
-            </a>
-          </div>
         </div>
       </section>
 
-      <!-- =========================================
-           SECTION 2: WHAT WE DO (2 PILLARS)
-           ========================================= -->
+      <!-- DIVIDER -->
+      <div class="home-tech-divider reveal"><div class="tech-node"></div></div>
+
+      <!-- 2. CAPABILITIES -->
       <section id="capabilities" class="page-section svc-section">
-        <h2 class="svc-section-title reveal">What We Do</h2>
-        <p class="svc-section-sub reveal" style="--delay:80ms;">Two core service areas. Both focused on getting hardware right.</p>
+        <div class="home-section-header reveal">
+          <span class="home-section-label">SYS_SVC_02 // CAPABILITIES</span>
+          <h2 class="home-section-title">
+            <span class="title-dot"></span>Capabilities
+          </h2>
+        </div>
 
-        <div class="svc-pillar-grid reveal" style="--delay:160ms;">
+        <ul class="capabilities-list reveal">
+          <li class="cap-item">
+            <span class="cap-index">[01]</span>
+            Schematic Design
+          </li>
+          <li class="cap-item">
+            <span class="cap-index">[02]</span>
+            PCB Layout &mdash; High-current, mixed-signal
+          </li>
+          <li class="cap-item">
+            <span class="cap-index">[03]</span>
+            Power Electronics Design
+          </li>
+          <li class="cap-item">
+            <span class="cap-index">[04]</span>
+            Embedded Systems Integration
+          </li>
+          <li class="cap-item">
+            <span class="cap-index">[05]</span>
+            Prototyping &amp; Bring-up Support
+          </li>
+        </ul>
+      </section>
 
-          <div class="svc-pillar-card">
-            <div class="svc-pillar-icon">
-              <!-- PCB icon -->
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="2"/>
-                <path d="M7 7h.01M7 12h.01M7 17h.01M12 7h5M12 12h5M12 17h5"/>
-              </svg>
+      <!-- DIVIDER -->
+      <div class="home-tech-divider reveal"><div class="tech-node"></div></div>
+
+      <!-- 3. STATS -->
+      <section class="page-section stats-section">
+        <div class="home-section-header reveal">
+          <span class="home-section-label">SYS_SVC_03 // OUTPUT</span>
+          <h2 class="home-section-title">
+            <span class="title-dot"></span>Proven Engineering Output
+          </h2>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card reveal" style="--delay: 100ms;">
+            <div class="stat-number-wrapper">
+              <div class="stat-number" data-target="120">0</div>
+              <div class="stat-plus">+</div>
             </div>
-            <h3>PCB Design Services</h3>
-            <p>
-              Professional schematic and PCB design focused on correctness, manufacturability,
-              and long-term reliability. Built for both educational systems and real-world deployment.
-            </p>
-            <a href="#pcb-design" class="svc-card-link">View details →</a>
+            <p>PCBs Designed</p>
           </div>
-
-          <div class="svc-pillar-card">
-            <div class="svc-pillar-icon">
-              <!-- Embedded system icon -->
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/>
-              </svg>
+          <div class="stat-card reveal" style="--delay: 200ms;">
+            <div class="stat-number-wrapper">
+              <div class="stat-number" data-target="15">0</div>
+              <div class="stat-plus">+</div>
             </div>
-            <h3>Custom Hardware Development</h3>
-            <p>
-              End-to-end embedded system development — from concept to functional prototype —
-              including electronics, firmware integration, and system-level architecture.
-            </p>
-            <a href="#custom-hw" class="svc-card-link">View details →</a>
+            <p>Clients Served</p>
           </div>
-
+          <div class="stat-card reveal" style="--delay: 300ms;">
+            <div class="stat-number-wrapper">
+              <div class="stat-number" data-target="3">0</div>
+              <div class="stat-plus">+</div>
+            </div>
+            <p>Industries</p>
+            <span class="stat-sub">Robotics · IoT · Automation</span>
+          </div>
+          <div class="stat-card reveal" style="--delay: 400ms;">
+            <div class="stat-number-wrapper">
+              <div class="stat-number" data-target="5000">0</div>
+              <div class="stat-plus">+</div>
+            </div>
+            <p>Amps Handled</p>
+          </div>
         </div>
       </section>
 
-      <div class="svc-divider"></div>
+      <!-- DIVIDER -->
+      <div class="home-tech-divider reveal"><div class="tech-node"></div></div>
 
-      <!-- =========================================
-           SECTION 3: PCB DESIGN (DETAILED)
-           ========================================= -->
-      <section id="pcb-design" class="page-section svc-section">
-
-        <div class="svc-detail-header reveal">
-          <span class="svc-label">01</span>
-          <h2 class="svc-detail-title">PCB Design Services</h2>
-          <p class="svc-detail-desc">
-            Correct schematics. Clean layouts. Manufacturing-ready outputs.
-            Every design is approached as an engineering document, not just a drawing.
-          </p>
-        </div>
-
-        <div class="svc-detail-grid">
-
-          <div class="svc-detail-card reveal" style="--delay:80ms;">
-            <h4 class="svc-detail-card-title">What's Included</h4>
-            <ul class="svc-list">
-              <li>Circuit design &amp; validation</li>
-              <li>Schematic capture (Altium / KiCad)</li>
-              <li>PCB layout (2-layer / 4-layer)</li>
-              <li>Component selection &amp; optimization</li>
-              <li>Design rule checks (ERC / DRC)</li>
-              <li>Manufacturing-ready outputs (Gerber, BOM, Pick &amp; Place)</li>
-            </ul>
-          </div>
-
-          <div class="svc-detail-card reveal" style="--delay:160ms;">
-            <h4 class="svc-detail-card-title">Design Focus</h4>
-            <ul class="svc-list">
-              <li>Signal integrity for mixed-signal systems</li>
-              <li>Power integrity and thermal considerations</li>
-              <li>EMI-aware layout practices</li>
-              <li>Manufacturability (DFM / DFA compliance)</li>
-              <li>Annotated, version-controlled design files</li>
-            </ul>
-          </div>
-
-          <div class="svc-detail-card reveal" style="--delay:240ms;">
-            <h4 class="svc-detail-card-title">Use Cases</h4>
-            <ul class="svc-list">
-              <li>Educational lab boards</li>
-              <li>Robotics &amp; embedded systems</li>
-              <li>Power electronics modules</li>
-              <li>Sensor &amp; interface boards</li>
-              <li>STM32 / ESP32 / ARM-based designs</li>
-            </ul>
-          </div>
-
-        </div>
-
-        <div class="svc-cta-row reveal">
-          <a href="contact.html" class="btn-primary">
-            Request PCB Design <span class="btn-arrow">→</span>
-          </a>
-        </div>
-
-      </section>
-
-      <div class="svc-divider"></div>
-
-      <!-- =========================================
-           SECTION 4: CUSTOM HARDWARE DEVELOPMENT
-           ========================================= -->
-      <section id="custom-hw" class="page-section svc-section">
-
-        <div class="svc-detail-header reveal">
-          <span class="svc-label">02</span>
-          <h2 class="svc-detail-title">Custom Embedded Systems</h2>
-          <p class="svc-detail-desc">
-            We build complete hardware systems tailored to your application —
-            not just boards, but working systems ready for integration and testing.
-          </p>
-        </div>
-
-        <div class="svc-hw-split">
-
-          <div class="svc-hw-col reveal" style="--delay:80ms;">
-            <h4 class="svc-detail-card-title">Capabilities</h4>
-            <ul class="svc-list">
-              <li>System architecture design</li>
-              <li>Power + control + sensing integration</li>
-              <li>MCU-based systems (STM32, ESP32, etc.)</li>
-              <li>Communication: CAN, UART, I2C, SPI</li>
-              <li>Firmware-hardware integration support</li>
-              <li>Mixed-signal circuit design</li>
-            </ul>
-          </div>
-
-          <div class="svc-hw-col reveal" style="--delay:160ms;">
-            <h4 class="svc-detail-card-title">What You Receive</h4>
-            <ul class="svc-list">
-              <li>Functional prototype (verified)</li>
-              <li>Full design files &amp; schematics</li>
-              <li>BOM with component sources</li>
-              <li>Testing &amp; validation support</li>
-              <li>Clear technical documentation</li>
-            </ul>
-          </div>
-
-        </div>
-
-        <div class="svc-cta-row reveal">
-          <a href="contact.html" class="btn-primary">
-            Discuss Your Project <span class="btn-arrow">→</span>
-          </a>
-        </div>
-
-      </section>
-
-      <div class="svc-divider"></div>
-
-      <!-- =========================================
-           SECTION 5: PROCESS
-           ========================================= -->
-      <section class="page-section svc-section">
-        <h2 class="svc-section-title reveal">How We Work</h2>
-        <p class="svc-section-sub reveal" style="--delay:80ms;">A structured process. No ambiguity, no surprises.</p>
-
-        <div class="svc-process-list">
-
-          <div class="svc-process-step reveal" style="--delay:80ms;">
-            <div class="svc-step-num">01</div>
-            <div class="svc-step-body">
-              <h4>Requirement Definition</h4>
-              <p>Clear technical understanding of your system — what it needs to do, constraints, interface requirements, and environment.</p>
-            </div>
-          </div>
-
-          <div class="svc-process-step reveal" style="--delay:160ms;">
-            <div class="svc-step-num">02</div>
-            <div class="svc-step-body">
-              <h4>Design &amp; Architecture</h4>
-              <p>Schematic capture and system-level decisions — component selection, power architecture, signal routing strategy.</p>
-            </div>
-          </div>
-
-          <div class="svc-process-step reveal" style="--delay:240ms;">
-            <div class="svc-step-num">03</div>
-            <div class="svc-step-body">
-              <h4>PCB Development</h4>
-              <p>Layout optimized for performance and manufacturability, with full DRC/ERC checks and Gerber generation.</p>
-            </div>
-          </div>
-
-          <div class="svc-process-step reveal" style="--delay:320ms;">
-            <div class="svc-step-num">04</div>
-            <div class="svc-step-body">
-              <h4>Manufacturing Support <span class="svc-optional">optional</span></h4>
-              <p>Fabrication coordination, assembly support, and component sourcing guidance.</p>
-            </div>
-          </div>
-
-          <div class="svc-process-step reveal" style="--delay:400ms;">
-            <div class="svc-step-num">05</div>
-            <div class="svc-step-body">
-              <h4>Bring-Up &amp; Testing <span class="svc-optional">optional</span></h4>
-              <p>Hardware bring-up, debugging, and validation. Confirmation that the system behaves as designed.</p>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <div class="svc-divider"></div>
-
-      <!-- =========================================
-           SECTION 6: ENGAGEMENT MODEL
-           ========================================= -->
-      <section class="page-section svc-section">
-        <h2 class="svc-section-title reveal">Engagement Model</h2>
-        <p class="svc-section-sub reveal" style="--delay:80ms;">
-          Flexible engagement based on your project stage and requirements.
-        </p>
-
-        <div class="svc-pricing-grid">
-
-          <div class="svc-pricing-card reveal" style="--delay:80ms;">
-            <h4>Design Only</h4>
-            <p>Schematic + PCB layout. Full design files and manufacturing outputs delivered.</p>
-            <ul class="svc-list compact">
-              <li>Schematic &amp; PCB files</li>
-              <li>Gerber, BOM, Pick &amp; Place</li>
-              <li>DRC/ERC verified</li>
-            </ul>
-          </div>
-
-          <div class="svc-pricing-card reveal" style="--delay:180ms;">
-            <h4>Design + Manufacturing Support</h4>
-            <p>Full design package plus coordination with PCB fabrication and assembly.</p>
-            <ul class="svc-list compact">
-              <li>Everything in Design Only</li>
-              <li>Fabrication file prep</li>
-              <li>Assembly support</li>
-            </ul>
-          </div>
-
-          <div class="svc-pricing-card svc-pricing-highlight reveal" style="--delay:280ms;">
-            <h4>Full Development</h4>
-            <p>End-to-end: architecture, design, assembly, bring-up, and documented delivery.</p>
-            <ul class="svc-list compact">
-              <li>System architecture</li>
-              <li>PCB design + manufacturing</li>
-              <li>Bring-up &amp; validation</li>
-              <li>Full documentation</li>
-            </ul>
-          </div>
-
-        </div>
-
-        <p class="svc-pricing-note reveal">
-          Pricing depends on complexity, layer count, and system requirements.
-          All projects begin with a technical discovery call.
-        </p>
-      </section>
-
-      <div class="svc-divider"></div>
-
-      <!-- =========================================
-           SECTION 7: WHY EONIX
-           ========================================= -->
-      <section class="page-section svc-section">
-        <h2 class="svc-section-title reveal">Why Eonix</h2>
-        <p class="svc-section-sub reveal" style="--delay:80ms;">
-          What separates engineering-grade hardware from hardware that just barely works.
-        </p>
-
-        <div class="svc-why-grid">
-
-          <div class="svc-why-item reveal" style="--delay:80ms;">
-            <div class="svc-why-icon">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2L2 7l8 5 8-5-8-5zM2 12l8 5 8-5M2 17l8 5 8-5"/></svg>
-            </div>
-            <h4>Engineering-first approach</h4>
-            <p>Every decision starts from first principles — not reference designs copied without understanding.</p>
-          </div>
-
-          <div class="svc-why-item reveal" style="--delay:160ms;">
-            <div class="svc-why-icon">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-            </div>
-            <h4>Hardware safety prioritized</h4>
-            <p>Protection circuits, correct current ratings, and fault handling are non-negotiable — not afterthoughts.</p>
-          </div>
-
-          <div class="svc-why-item reveal" style="--delay:240ms;">
-            <div class="svc-why-icon">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="16" height="14" rx="2"/><path d="M8 3v14M2 8h6M2 13h6"/></svg>
-            </div>
-            <h4>Designed for real deployment</h4>
-            <p>Not hobby-grade. Designs are DFM-aware, thermally considered, and validated for the real environment.</p>
-          </div>
-
-          <div class="svc-why-item reveal" style="--delay:320ms;">
-            <div class="svc-why-icon">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
-            </div>
-            <h4>Clear documentation &amp; delivery</h4>
-            <p>Structured, annotated design files — not a black box. You understand exactly what was built and why.</p>
-          </div>
-
-          <div class="svc-why-item reveal" style="--delay:400ms;">
-            <div class="svc-why-icon">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-            </div>
-            <h4>Scalable from lab to production</h4>
-            <p>Designs built with the next step in mind. Moving from prototype to production doesn't require a redesign.</p>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- =========================================
-           SECTION 8: FINAL CTA
-           ========================================= -->
-      <section class="page-section svc-cta-final reveal">
+      <!-- 4. CTA -->
+      <section class="page-section svc-cta-final reveal reveal-scale" style="position: relative;">
+        <div class="corner-cross left-top"></div>
+        <div class="corner-cross right-top"></div>
         <div class="svc-cta-final-inner">
-          <h2>Have a system in mind?</h2>
-          <p>
-            Bring your requirements. We'll define the scope, identify the risks,
-            and design it right the first time.
-          </p>
-          <div class="hero-actions" style="justify-content: center; margin-top: 40px;">
+          <span class="svc-sys-label" style="margin-bottom: 16px;">SYS_SVC_04 // NEXT STEP</span>
+          <h2>Ready to Build?</h2>
+          <div class="hero-actions" style="justify-content: center;">
             <a href="contact.html" class="btn-primary">
-              Start a Project <span class="btn-arrow">→</span>
+              Work With Us <span class="btn-arrow">→</span>
             </a>
             <a href="contact.html" class="btn-secondary">
               Contact Us
@@ -413,7 +161,6 @@
           </div>
         </div>
       </section>
-
     </main>
 
     <footer class="footer-root">
@@ -442,9 +189,8 @@
       </div>
     </footer>
 
-    <script src="js/scroll-reveal.js?v=601"></script>
-    <script src="js/nav.js?v=601"></script>
+    <script src="js/scroll-reveal.js?v=602"></script>
+    <script src="js/nav.js?v=602"></script>
+    <script src="js/stats-counter.js?v=602"></script>
   </body>
 </html>
-
-

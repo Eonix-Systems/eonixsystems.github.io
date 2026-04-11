@@ -11,7 +11,7 @@
     height: var(--nav-height);
 
     /* Solid nav — not glass, not blur */
-    background-color: rgba(11, 15, 20, 0.92);
+    background-color: rgba(255, 255, 255, 0.92);
     border-bottom: 1px solid var(--border-subtle);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -38,8 +38,11 @@
 }
 
 .nav-logo img {
-    height: 40px;
+    height: 70px;
     display: block;
+    transform: scale(2.3);
+    /* Scales the actual pixels up despite transparent borders */
+    transform-origin: left center;
 }
 
 .nav-links {
@@ -94,7 +97,8 @@
 .nav-active::after {
     content: "";
     position: absolute;
-    bottom: -21px;   /* Aligns with nav bottom border */
+    bottom: -21px;
+    /* Aligns with nav bottom border */
     left: 0;
     width: 100%;
     height: 1.5px;
@@ -108,9 +112,20 @@
 
 @media (max-width: 1024px) {
 
-    :root { --nav-height: 60px; }
+    :root {
+        --nav-height: 70px;
+    }
 
-    .nav-inner { padding: 0 24px; }
+    .nav-logo img {
+        content: url("../assets/New Logo only symbol Transparent Background For Website.png");
+        height: 50px;
+        transform: scale(1.5); /* Adjust this scale specifically for the symbol image */
+        transform-origin: left center;
+    }
+
+    .nav-inner {
+        padding: 0 24px;
+    }
 
     .nav-links {
         position: absolute;
@@ -126,7 +141,9 @@
         border-bottom: 1px solid var(--border-subtle);
     }
 
-    .nav-links.open { display: flex; }
+    .nav-links.open {
+        display: flex;
+    }
 
     .nav-link {
         width: 100%;
@@ -135,7 +152,9 @@
         color: var(--text-secondary);
     }
 
-    .nav-active::after { display: none; }
+    .nav-active::after {
+        display: none;
+    }
 
     .nav-active {
         color: var(--accent-hover);
@@ -143,5 +162,7 @@
         padding-left: 22px;
     }
 
-    .nav-toggle { display: block; }
+    .nav-toggle {
+        display: block;
+    }
 }

@@ -27,14 +27,19 @@ document.addEventListener("DOMContentLoaded", () => {
     (entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                // Skip elements managed by scroll-animations.js cascade
+                if (entry.target.classList.contains('cascade-managed')) {
+                    observer.unobserve(entry.target);
+                    return;
+                }
                 entry.target.classList.add("is-visible");
                 observer.unobserve(entry.target);
             }
         });
     },
     {
-        threshold: 0.15,
-        rootMargin: "0px 0px -120px 0px"
+        threshold: 0.08,
+        rootMargin: "0px 0px -40px 0px"
     }
 );
 

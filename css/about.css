@@ -28,8 +28,8 @@
     line-height: 1.1;
     letter-spacing: -0.02em;
     margin-bottom: 24px;
-    color: #fff;
-    font-family: 'Outfit', sans-serif;
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .manifesto-title {
@@ -37,8 +37,8 @@
     font-weight: 700;
     line-height: 1.1;
     margin-bottom: 40px;
-    color: #fff;
-    font-family: 'Outfit', sans-serif;
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', sans-serif;
     position: relative;
     display: inline-block;
 }
@@ -118,7 +118,7 @@
 
 /* Technical Label */
 .tech-label {
-    font-family: 'Space Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     color: var(--accent-primary);
     font-size: 0.9rem;
     letter-spacing: 2px;
@@ -220,7 +220,7 @@
 }
 .tech-word {
     font-size: 1.4rem;
-    font-family: 'Space Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     padding: 8px 16px;
     border-bottom: 2px solid var(--accent-primary);
 }
@@ -255,7 +255,7 @@
     font-size: 1.4rem;
     color: var(--accent-primary);
     margin-bottom: 16px;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     letter-spacing: 1px;
 }
 

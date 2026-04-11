@@ -7,7 +7,6 @@
     font-weight: 500;
     letter-spacing: -0.02em;
     color: var(--accent-primary);
-    text-shadow: 0 0 20px var(--accent-dim);
 }
 
 .contact-intro {
@@ -54,9 +53,7 @@
     transition: all 0.3s ease;
 }
 
-.contact-block:hover .contact-email {
-    text-shadow: 0 0 15px var(--accent-glow);
-}
+
 
 /* Mobile Responsive */
 @media (max-width: 768px) {

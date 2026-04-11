@@ -19,7 +19,7 @@
    GLOBAL RESET
    ========================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
 
 * {
     margin: 0;
@@ -37,40 +37,40 @@ html {
    ========================= */
 
 :root {
-    /* Backgrounds — deep navy, not pure black */
-    --bg-main:  #0B0F14;
-    --bg-soft:  #111827;
-    --bg-card:  #1a2030;
-    --bg-glass: rgba(17, 24, 39, 0.9);
+    /* Backgrounds — light themes */
+    --bg-main: #FFFFFF;
+    --bg-soft: #FAFAFA;
+    --bg-card: #F0F0F0;
+    --bg-glass: rgba(255, 255, 255, 0.95);
 
     /* Text */
-    --text-primary:   #E5E7EB;
-    --text-secondary: #9CA3AF;
-    --text-muted:     #6B7280;
+    --text-primary: #000000;
+    --text-secondary: #1A1A1A;
+    --text-muted: #4D4D4D;
 
-    /* Accent — muted electric blue. NOT neon. NOT cyan. */
-    --accent-primary: #2563EB;
-    --accent-hover:   #3B82F6;
-    --accent-subtle:  rgba(37, 99, 235, 0.12);
-    --accent-border:  rgba(37, 99, 235, 0.35);
+    /* Accent — custom blue */
+    --accent-primary: #38b6ff;
+    --accent-hover: #1ba5f2;
+    --accent-subtle: rgba(56, 182, 255, 0.12);
+    --accent-border: rgba(56, 182, 255, 0.35);
 
     /* UI Elements */
-    --border-subtle: rgba(255, 255, 255, 0.07);
-    --border-strong: rgba(255, 255, 255, 0.14);
+    --border-subtle: rgba(0, 0, 0, 0.1);
+    --border-strong: rgba(0, 0, 0, 0.2);
 
     /* Shadows — soft, directional, no glow */
-    --shadow-sm:  0 1px 3px rgba(0, 0, 0, 0.4);
-    --shadow-md:  0 4px 16px rgba(0, 0, 0, 0.4);
-    --shadow-lg:  0 12px 40px rgba(0, 0, 0, 0.5);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.1);
 
-    /* Spacing */
-    --nav-height:       64px;
-    --section-spacing:  120px;
+    /* Geometry */
+    --nav-height: 80px;
+    --section-spacing: 120px;
 
     /* OLD COMPAT — kept so old var() references don't break visually */
     --accent-glow: transparent;
-    --accent-dim:  rgba(37, 99, 235, 0.08);
-    --border-active: rgba(37, 99, 235, 0.4);
+    --accent-dim: transparent;
+    --border-active: rgba(56, 182, 255, 0.4);
 }
 
 /* =========================
@@ -80,7 +80,7 @@ html {
 body {
     background-color: var(--bg-main);
     color: var(--text-primary);
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     position: relative;
@@ -88,8 +88,13 @@ body {
     width: 100%;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Outfit', sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: 600;
     line-height: 1.2;
     color: var(--text-primary);
@@ -113,8 +118,8 @@ body::before {
     inset: 0;
     z-index: -1;
     background-image:
-        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+        linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
     background-size: 60px 60px;
     mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
     pointer-events: none;
@@ -149,13 +154,19 @@ body::before {
     color: #F87171;
 }
 
-.text-red { color: #F87171; }
-.text-bold { font-weight: 700; }
+.text-red {
+    color: #F87171;
+}
+
+.text-bold {
+    font-weight: 700;
+}
 
 /* Hover border brightening — replaces all glow effects */
 .glow-hover {
     transition: border-color 0.25s ease, background 0.25s ease;
 }
+
 .glow-hover:hover {
     border-color: var(--border-strong);
     background: var(--bg-card);
