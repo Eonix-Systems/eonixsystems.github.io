@@ -8,11 +8,7 @@
    ========================= */
 
 .svc-hero {
-    min-height: 60vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 60px;
+    /* spacing and alignment handled by .page-hero in layout.css */
 }
 
 .svc-hero-inner {
