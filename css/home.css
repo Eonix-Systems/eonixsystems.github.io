@@ -64,9 +64,9 @@
 }
 
 .home-subtitle {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     color: var(--text-secondary);
-    max-width: 540px;
+    max-width: 580px;
     margin: 0 auto 44px;
     font-weight: 400;
     line-height: 1.7;

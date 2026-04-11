@@ -333,20 +333,22 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    // Only run on homepage
+    // Run on ALL pages
+    initScrollProgress();
+    initMagneticButtons();
+    initDividerDrawIn();
+    initSysLabelType();
+    initSectionTracker();
+
+    // Homepage-only
     if (!document.querySelector('.home-root')) return;
 
-    initSysLabelType();
     initWordReveal();
     initSubtitleReveal();
     initHeroButtons();
-    initDividerDrawIn();
     initCardCascade();
     initParallax();
-    initMagneticButtons();
-    initScrollProgress();
     initIndexCounter();
-    initSectionTracker();
   });
 
 })();

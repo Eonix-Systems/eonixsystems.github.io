@@ -16,23 +16,14 @@
 }
 
 .svc-hero-inner {
-    max-width: 1100px;
+    max-width: 860px;
     width: 100%;
     margin: 0 auto;
-    padding: 0 48px;
     position: relative;
     z-index: 2;
 }
 
-.svc-sys-label {
-    display: block;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    color: var(--accent-primary);
-    letter-spacing: 0.18em;
-    margin-bottom: 20px;
-    opacity: 0.8;
-}
+/* label removed since services.html now uses .hero-sys-label */
 
 .svc-title {
     font-size: 4.5rem;
