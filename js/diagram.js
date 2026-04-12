@@ -28,19 +28,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ─── Color constants ─────────────────────────────────── */
   const C = {
-    bg:           '#FAFAFA',
+    bg:           '#F2F7FD',
     nodeFill:     '#FFFFFF',
-    nodeBorder:   'rgba(0,0,0,0.1)',
-    majorFill:    '#F0F7FF',
-    majorBorder:  'rgba(56,182,255,0.45)',
-    powerFill:    'rgba(245,158,11,0.07)',
-    powerBorder:  'rgba(245,158,11,0.45)',
+    nodeBorder:   'rgba(0,0,0,0.22)',
+    majorFill:    '#E6F2FF',
+    majorBorder:  'rgba(56,182,255,0.75)',
+    powerFill:    'rgba(245,158,11,0.11)',
+    powerBorder:  'rgba(245,158,11,0.70)',
     text:         '#111111',
-    textSub:      '#666666',
+    textSub:      '#555555',
     textBlue:     '#38b6ff',
     data:         '#38b6ff',
     power:        '#F59E0B',
-    dimAlpha:     0.1,
+    dimAlpha:     0.18,
   };
 
   /* ─── State ───────────────────────────────────────────── */
@@ -77,8 +77,8 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ─── Layout ──────────────────────────────────────────── */
   const Y_TOP = 0.13, Y_MB = 0.31, Y_CAN = 0.51, Y_MOD = 0.73, Y_BAT = 0.88;
   const X_APP = 0.30, X_MCU = 0.72, X_MB  = 0.50;
-  const X_TEMP = 0.08, X_IMU = 0.20, X_DIST = 0.32;
-  const X_PWR  = 0.52, X_DRV = 0.70, X_MOT  = 0.87;
+  const X_TEMP = 0.17, X_IMU = 0.28, X_DIST = 0.39;
+  const X_PWR  = 0.52, X_DRV = 0.67, X_MOT  = 0.81;
 
   const NODES = [
     { id:'APP',  x:X_APP,  y:Y_TOP, label:'Eonix App',        sub:'Desktop Interface',  type:'std',   w:118, h:44 },
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
     IMU:  'Inertial data delivered as structured CAN frames.',
     DIST: 'LiDAR/distance data with hardware abstraction layer.',
     DRV:  'High-current motor driver with fault protection and CAN control interface.',
-    CAN:  'Deterministic multi-node backbone — 800 kbps, arbitration-free.',
+    CAN:  'Reliable, structured backbone — 800 kbps, collision-free.',
     APP:  'Desktop interface for configuration, telemetry, and system diagnostics.',
     MCU:  'External MCU integration via SPI bridge on the motherboard.',
     BAT:  'System power source — actively monitored and protected by Power Block.',
@@ -238,31 +238,44 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // APP → MB (down then right)
+    // APP ↔ MB bidirectional (app sends commands, MB sends telemetry/status back)
     maybeSpawn('APP_MB',
       [[cx(X_APP), cy(Y_TOP)+22*s], [cx(X_APP), cy(Y_MB)], [cx(X_MB)-105*s, cy(Y_MB)]],
       C.data, 0.007);
+    maybeSpawn('APP_MB',
+      [[cx(X_MB)-105*s, cy(Y_MB)], [cx(X_APP), cy(Y_MB)], [cx(X_APP), cy(Y_TOP)+22*s]],
+      C.data, 0.007);
 
-    // MCU → MB (down then left)
+    // MCU ↔ MB bidirectional (MCU sends logic, MB returns sensor data)
     maybeSpawn('MCU_MB',
       [[cx(X_MCU), cy(Y_TOP)+22*s], [cx(X_MCU), cy(Y_MB)], [cx(X_MB)+105*s, cy(Y_MB)]],
       C.data, 0.007);
+    maybeSpawn('MCU_MB',
+      [[cx(X_MB)+105*s, cy(Y_MB)], [cx(X_MCU), cy(Y_MB)], [cx(X_MCU), cy(Y_TOP)+22*s]],
+      C.data, 0.007);
 
-    // MB → CAN (down)
+    // MB → CAN (commands go down)
     maybeSpawn('MB_CAN',
       [[cx(X_MB), cy(Y_MB)+27*s], [cx(X_MB), cy(Y_CAN)-14*s]],
       C.data, 0.009, 0.03);
 
-    // CAN stubs → modules
-    [X_TEMP, X_IMU, X_DIST, X_PWR, X_DRV].forEach(xn => {
+    // Sensor stubs: data flows UP from sensors to CAN bus
+    [X_TEMP, X_IMU, X_DIST].forEach(xn => {
+      maybeSpawn('STUBS',
+        [[cx(xn), cy(Y_MOD)-20*s], [cx(xn), cy(Y_CAN)+14*s]],
+        C.data, 0.010, 0.020);
+    });
+
+    // Actuator stubs: commands flow DOWN from CAN bus to PWR and DRV
+    [X_PWR, X_DRV].forEach(xn => {
       maybeSpawn('STUBS',
         [[cx(xn), cy(Y_CAN)+14*s], [cx(xn), cy(Y_MOD)-20*s]],
         C.data, 0.010, 0.018);
     });
 
-    // Power: PWR → BAT
+    // Power: BAT → PWR (battery feeds the power block)
     maybeSpawn('PWR_BAT',
-      [[cx(X_PWR), cy(Y_MOD)+23*s], [cx(X_PWR), cy(Y_BAT)-20*s]],
+      [[cx(X_PWR), cy(Y_BAT)-20*s], [cx(X_PWR), cy(Y_MOD)+23*s]],
       C.power, 0.008);
 
     // Power: PWR → DRV
@@ -391,7 +404,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ctx.font         = `600 ${Math.max(8, 10 * s)}px 'JetBrains Mono', monospace`;
     ctx.textAlign    = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('CAN BUS  ·  800 kbps  ·  DETERMINISTIC  ·  ARBITRATION-FREE', x, y);
+    ctx.fillText('CAN BUS  ·  800 kbps  ·  RELIABLE  ·  ARBITRATION-FREE', x, y);
     ctx.globalAlpha = 1.0;
   }
 
@@ -480,7 +493,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ─── Drawing: layer labels ───────────────────────────── */
   function drawLayerLabel(txt, y) {
     const s = S();
-    ctx.globalAlpha  = 0.28;
+    ctx.globalAlpha  = 0.44;
     ctx.fillStyle    = '#888';
     ctx.font         = `400 ${Math.max(7, 9 * s)}px 'JetBrains Mono', monospace`;
     ctx.textAlign    = 'left';
@@ -491,22 +504,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ─── Drawing: legend ─────────────────────────────────── */
   function drawLegend() {
-    const s  = S();
-    const lx = cx(0.985), ly = cy(0.05);
+    const s    = S();
+    const lx   = cx(0.984);
+    const ly   = cy(0.046);
     const items = [
       { color: C.data,  label: 'Data / CAN' },
       { color: C.power, label: 'Power' },
     ];
     ctx.textBaseline = 'middle';
-    ctx.font = `400 ${Math.max(7, 9 * s)}px 'JetBrains Mono', monospace`;
+    ctx.font = `500 ${Math.max(7, 9 * s)}px 'JetBrains Mono', monospace`;
+
     items.forEach(({ color, label }, i) => {
-      const iy = ly + i * 18 * s;
-      ctx.globalAlpha = 0.5;
-      ctx.fillStyle   = color;
-      ctx.beginPath(); ctx.arc(lx - 8*s - (ctx.measureText(label).width + 18*s)*0.5, iy, 4*s, 0, Math.PI*2); ctx.fill();
-      ctx.fillStyle   = '#555';
-      ctx.textAlign   = 'right';
-      ctx.fillText(label, lx, iy);
+      const iy   = ly + i * 20 * s;
+      const tw   = ctx.measureText(label).width;
+      const dotR = 4.5 * s;
+      const gap  = 9 * s;
+      // Layout (left→right): [dot] [gap] [label] — whole block right-aligned at lx
+      const blockW  = dotR * 2 + gap + tw;
+      const dotX    = lx - blockW + dotR;
+      const labelX  = lx - tw;
+
+      ctx.globalAlpha = 0.85;
+
+      // colored dot
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.arc(dotX, iy, dotR, 0, Math.PI * 2);
+      ctx.fill();
+
+      // label text
+      ctx.fillStyle = '#333';
+      ctx.textAlign = 'left';
+      ctx.fillText(label, labelX, iy);
+
       ctx.globalAlpha = 1.0;
     });
   }
