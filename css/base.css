@@ -55,6 +55,8 @@ html {
     --accent: #1a68d1;         /* Slightly darker main blue (was #2f80ed) */
     --accent-light: #3584f2;   /* Lighter hover/glow (was #56a8ff) */
     --accent-dark: #1251a6;    /* Deep strict click-state (was #1c5ed6) */
+    --accent-subtle: #eef4ff;
+    --accent-border: #bfd4f6;
 
     /* SYSTEM STATE COLORS (SEMANTIC) */
     --state-ok: #27ae60;

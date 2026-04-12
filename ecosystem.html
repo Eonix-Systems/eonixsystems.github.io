@@ -74,17 +74,21 @@
 
         <!-- 2. DIAGRAM — FULL WIDTH -->
         <section class="eco-diagram-section page-section">
+            <div class="home-section-shell section-wide">
+                <div class="home-section-header reveal">
+                    <span class="home-section-label">SYS_ARC_01A // SYSTEM MAP</span>
+                    <h2 class="home-section-title">
+                        <span class="title-dot"></span>Layered Architecture Overview
+                    </h2>
+                </div>
 
-
-
-            <!-- Canvas diagram -->
-            <div class="eco-canvas-wrapper reveal">
-                <div class="hero-diagram-container glass-panel" style="width: 100%; border: 1px solid var(--accent-border);">
-                    <canvas id="systemCanvas"></canvas>
-                    <div class="diagram-overlay"></div>
+                <div class="eco-canvas-wrapper reveal">
+                    <div class="hero-diagram-container glass-panel">
+                        <canvas id="systemCanvas"></canvas>
+                        <div class="diagram-overlay"></div>
+                    </div>
                 </div>
             </div>
-
         </section>
 
         <!-- DIVIDER -->
@@ -92,17 +96,17 @@
 
         <!-- 3. ARCHITECTURE LAYERS — FULL WIDTH BELOW DIAGRAM -->
         <section class="eco-layers-section page-section">
-            <div class="home-section-header reveal">
-                <span class="home-section-label">SYS_ARC_02 // LAYER BREAKDOWN</span>
-                <h2 class="home-section-title">
-                    <span class="title-dot"></span>Four Layers. One System.
-                </h2>
-            </div>
+            <div class="home-section-shell section-wide">
+                <div class="home-section-header reveal">
+                    <span class="home-section-label">SYS_ARC_02 // LAYER BREAKDOWN</span>
+                    <h2 class="home-section-title">
+                        <span class="title-dot"></span>Four Layers. One System.
+                    </h2>
+                </div>
 
-            <!-- Layer Cards Grid -->
-            <div class="eco-layers-grid">
+                <div class="eco-layers-grid">
 
-                <div class="eco-layer-card reveal" style="--delay: 100ms;" data-step="1">
+                    <div class="eco-layer-card reveal" style="--delay: 100ms;" data-step="1">
                     <div class="eco-layer-card-header">
                         <span class="eco-layer-index">01 // CONTROL</span>
                         <h3>System Brain</h3>
@@ -118,7 +122,7 @@
                     </ul>
                 </div>
 
-                <div class="eco-layer-card reveal" style="--delay: 200ms;" data-step="2">
+                    <div class="eco-layer-card reveal" style="--delay: 200ms;" data-step="2">
                     <div class="eco-layer-card-header">
                         <span class="eco-layer-index">02 // COMMUNICATION</span>
                         <h3>Unified Interface</h3>
@@ -134,7 +138,7 @@
                     </ul>
                 </div>
 
-                <div class="eco-layer-card reveal" style="--delay: 300ms;" data-step="3">
+                    <div class="eco-layer-card reveal" style="--delay: 300ms;" data-step="3">
                     <div class="eco-layer-card-header">
                         <span class="eco-layer-index">03 // POWER</span>
                         <h3>Programmable Power</h3>
@@ -150,7 +154,7 @@
                     </ul>
                 </div>
 
-                <div class="eco-layer-card reveal" style="--delay: 400ms;" data-step="4">
+                    <div class="eco-layer-card reveal" style="--delay: 400ms;" data-step="4">
                     <div class="eco-layer-card-header">
                         <span class="eco-layer-index">04 // EXECUTION</span>
                         <h3>Sensing &amp; Actuation</h3>
@@ -166,6 +170,7 @@
                     </ul>
                 </div>
 
+                </div>
             </div>
         </section>
 
@@ -174,15 +179,16 @@
 
         <!-- 4. DATA FLOW SECTION -->
         <section class="page-section data-flow-section reveal">
-            <div class="home-section-header reveal">
-                <span class="home-section-label">SYS_ARC_03 // SIGNAL PATH</span>
-                <h2 class="home-section-title">
-                    <span class="title-dot"></span>How the System Operates
-                </h2>
-            </div>
+            <div class="home-section-shell section-wide">
+                <div class="home-section-header reveal">
+                    <span class="home-section-label">SYS_ARC_03 // SIGNAL PATH</span>
+                    <h2 class="home-section-title">
+                        <span class="title-dot"></span>How the System Operates
+                    </h2>
+                </div>
 
-            <div class="data-flow-container glass-panel reveal reveal-scale">
-                <div class="flow-pipeline-wrapper">
+                <div class="data-flow-container glass-panel reveal reveal-scale">
+                    <div class="flow-pipeline-wrapper">
                     <div class="flow-pipeline">
                         <div class="flow-node hover-premium"><strong>Sensors</strong><br /><span
                                 class="flow-detail">Generate structured data</span></div>
@@ -202,6 +208,7 @@
                         <div class="flow-node flow-node-power hover-premium"><strong>Power System</strong><br /><span
                                 class="flow-detail">Supplies stable energy across all stages</span></div>
                     </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -211,14 +218,15 @@
 
         <!-- 5. WHY THIS ARCHITECTURE -->
         <section class="page-section why-arch-section">
-            <div class="home-section-header reveal">
-                <span class="home-section-label">SYS_ARC_04 // RATIONALE</span>
-                <h2 class="home-section-title">
-                    <span class="title-dot"></span>Why This Architecture Exists
-                </h2>
-            </div>
+            <div class="home-section-shell section-wide">
+                <div class="home-section-header reveal">
+                    <span class="home-section-label">SYS_ARC_04 // RATIONALE</span>
+                    <h2 class="home-section-title">
+                        <span class="title-dot"></span>Why This Architecture Exists
+                    </h2>
+                </div>
 
-            <div class="why-grid">
+                <div class="why-grid">
                 <div class="why-card glass-panel hover-premium reveal reveal-left">
                     <h4 class="text-accent">Problem</h4>
                     <p>Module-based systems break at integration. Power is unstable. Communication is unpredictable.</p>
@@ -237,6 +245,7 @@
                     <p style="font-size: 1.25rem; color: var(--text-primary); font-weight: 500;">Systems that scale without breaking.
                     </p>
                 </div>
+                </div>
             </div>
         </section>
 
@@ -244,7 +253,7 @@
         <div class="home-tech-divider"><div class="tech-node"></div></div>
 
         <!-- 6. FINAL CTA -->
-        <section class="home-direction page-section reveal reveal-scale" style="position: relative;">
+        <section class="home-direction page-section home-section-shell section-wide reveal reveal-scale" style="position: relative;">
             <div class="corner-cross left-top"></div>
             <div class="corner-cross right-top"></div>
             <span class="hero-sys-label" style="margin-bottom: 20px;">SYS_ARC_05 // NEXT STEP</span>

@@ -41,7 +41,6 @@
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    padding: 0 24px;
     margin-bottom: 80px;
 }
 
@@ -110,9 +109,10 @@
     width: 100%;
     max-width: 100%;
     position: relative;
-    border-radius: 8px;
+    border-radius: 16px;
     overflow: hidden;
     transition: border-color 0.2s ease;
+    border: 1px solid var(--accent-border);
 }
 
 .diagram-overlay {
@@ -129,7 +129,6 @@
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    padding: 0 24px;
     margin-bottom: 80px;
 }
 
@@ -141,11 +140,11 @@
 }
 
 .eco-layer-card {
-    padding: 36px 32px;
-    background: var(--surface-1);
+    padding: 32px 28px;
+    background: #ffffff;
     border: 1px solid var(--border-subtle);
-    border-left: 3px solid transparent;
-    border-radius: 0 8px 8px 0;
+    border-top: 3px solid transparent;
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -158,14 +157,14 @@
 
 .eco-layer-card:hover {
     border-color: var(--border-strong);
-    border-left-color: var(--accent-primary);
-    transform: translateX(4px);
+    border-top-color: var(--accent-primary);
+    transform: translateY(-3px);
     background: var(--bg-card);
 }
 
 .eco-layer-card.eco-layer-active {
     border-color: var(--accent-border);
-    border-left-color: var(--accent-primary);
+    border-top-color: var(--accent-primary);
     background: var(--accent-subtle);
 }
 
@@ -248,12 +247,11 @@
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    padding: 0 24px;
 }
 
 .data-flow-container {
-    padding: 64px 32px;
-    border-radius: 12px;
+    padding: 40px 32px;
+    border-radius: 16px;
     max-width: 100%;
     margin: 0 auto;
     display: flex;
@@ -281,9 +279,9 @@
 .flow-node {
     flex: 1;
     padding: 24px 16px;
-    background: var(--surface-1);
+    background: #ffffff;
     border: 1px solid var(--border-subtle);
-    border-radius: 8px;
+    border-radius: 12px;
     text-align: center;
     min-width: 140px;
     position: relative;
@@ -360,7 +358,6 @@
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    padding: 0 24px;
 }
 
 .why-grid {
@@ -372,8 +369,8 @@
 }
 
 .why-card {
-    padding: 40px 32px;
-    border-radius: 8px;
+    padding: 36px 28px;
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -409,10 +406,6 @@
 }
 
 @media (max-width: 768px) {
-    .eco-diagram-section,
-    .eco-layers-section,
-    .data-flow-section,
-    .why-arch-section { padding: 0 16px; }
     .flow-pipeline { flex-direction: column; gap: 8px; }
     .flow-arrow { transform: rotate(90deg); margin: 4px 0; }
     .flow-animate-arrow { animation: none; }

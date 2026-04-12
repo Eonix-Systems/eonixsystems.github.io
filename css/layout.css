@@ -10,22 +10,15 @@
     margin-right: auto;
 }
 
+.page-section:not(.page-hero) {
+    margin-bottom: 56px;
+}
+
 @media (max-width: 768px) {
     .page-section {
         padding-left: 16px;
         padding-right: 16px;
     }
-}
-
-/* Alternate Section Backgrounds */
-.page-section:nth-of-type(even) {
-    background-color: var(--bg-secondary);
-    border: 1px solid var(--border-subtle);
-    border-radius: 20px;
-    padding-top: 64px;
-    padding-bottom: 64px;
-    margin-top: 32px;
-    margin-bottom: 32px;
 }
 
 /* =========================
@@ -60,10 +53,30 @@
     padding-bottom: 20px;
     position: relative;
     text-align: center;
+    margin-bottom: 24px;
 }
 
 /* Vertical space between major page sections */
 .page-section+.home-tech-divider {
+    margin-top: -12px;
+    margin-bottom: 44px;
+}
+
+.home-tech-divider + .page-section {
     margin-top: 0;
-    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .page-section:not(.page-hero) {
+        margin-bottom: 40px;
+    }
+
+    .page-hero {
+        margin-bottom: 16px;
+    }
+
+    .page-section+.home-tech-divider {
+        margin-top: -10px;
+        margin-bottom: 28px;
+    }
 }

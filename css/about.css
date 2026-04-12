@@ -4,21 +4,28 @@
 
 /* GLOBAL SPACING overrides */
 .manifesto-section {
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding-top: 40px;
+    padding-bottom: 40px;
     position: relative;
     z-index: 2;
 }
 
 .manifesto-container {
-    max-width: 800px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 48px;
     position: relative;
+    background: #f7f9fa;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 16px;
 }
 
 .manifesto-container.wide {
     max-width: 1200px;
+}
+
+.text-center {
+    text-align: center;
 }
 
 /* TYPOGRAPHY overrides */
@@ -130,10 +137,10 @@
 /* Divider Lines */
 .tech-divider {
     position: relative;
-    width: 100%;
+    width: min(1100px, calc(100% - 96px));
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--border-subtle), transparent);
-    margin: 45px 0;
+    margin: 18px auto 42px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -187,8 +194,8 @@
     margin: 0;
     padding: 16px;
     border: 1px solid rgba(0, 0, 0, 0.08);
-    background: var(--surface-1);
-    border-radius: 4px;
+    background: #ffffff;
+    border-radius: 12px;
 }
 
 /* Realization Stack */
@@ -197,8 +204,8 @@
     color: var(--text-secondary);
     padding: 14px 28px;
     border: 1px solid var(--border-subtle);
-    background: var(--surface-1);
-    border-radius: 4px;
+    background: #ffffff;
+    border-radius: 12px;
     letter-spacing: 0.3px;
 }
 
@@ -230,12 +237,12 @@
 }
 .tech-card {
     position: relative;
-    background: var(--surface-1);
+    background: #ffffff;
     border: 1px solid var(--border-subtle);
     padding: 36px 28px;
     text-align: left;
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: 12px;
     transition: border-color 0.2s ease;
 }
 .tech-card:hover {
@@ -287,18 +294,18 @@
     align-items: center;
     gap: 14px;
     padding: 16px 20px;
-    background: var(--surface-1);
+    background: #ffffff;
     border-left: 2px solid var(--accent-primary);
-    border-radius: 0 4px 4px 0;
+    border-radius: 12px;
 }
 
 .check-item-card {
     font-size: 1rem;
     color: var(--text-secondary);
-    background: var(--surface-1);
+    background: #ffffff;
     border: 1px solid var(--border-subtle);
     padding: 20px 28px;
-    border-radius: 6px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     gap: 14px;
@@ -327,9 +334,9 @@
 
 /* BACKGROUND UTILS */
 .bg-blueprint {
-    background: var(--surface-1);
-    border-top: 1px solid var(--border-subtle);
-    border-bottom: 1px solid var(--border-subtle);
+    background: transparent;
+    border-top: none;
+    border-bottom: none;
 }
 
 .pt-80 { padding-top: 80px; }
@@ -343,8 +350,11 @@
     .feature-trio, .check-grid, .check-grid-wide, .problem-list.symmetrical { 
         grid-template-columns: 1fr; 
     }
+    .manifesto-container,
+    .manifesto-container.wide { padding: 32px 20px; }
     .manifesto-title { font-size: 2.2rem; }
     .manifesto-huge-title { font-size: 3rem; }
     .title-dot { display: none; } /* Hide on mobile to save space */
     .master-guide { display: none; }
+    .tech-divider { width: calc(100% - 32px); margin: 14px auto 28px; }
 }
