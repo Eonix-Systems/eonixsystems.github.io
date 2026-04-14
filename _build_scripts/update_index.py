@@ -31,24 +31,24 @@ new_main = """<main class="page-wrapper">
         </div>
       </section>
 
-      <!-- WHY EONIX EXISTS -->
+      <!-- WHAT EONIX DOES -->
       <section class="home-problem page-section reveal reveal-scale">
-        <h2 class="home-section-title">Why Eonix Exists</h2>
+        <h2 class="home-section-title">What Eonix Does</h2>
 
         <div class="connected-cards-container">
           <div class="audience-item connected-card glass-panel hover-premium reveal" style="--delay: 100ms;">
-             <h3>Power Stage</h3>
-             <p>Controlled, programmable power with hardware-enforced protection. Stable under real loads, not just lab conditions.</p>
+             <h3>Embedded Systems &amp; PCB Design</h3>
+             <p>Custom hardware, firmware, and production-ready boards</p>
           </div>
           <div class="connector-line reveal" style="--delay: 200ms;"></div>
           <div class="audience-item connected-card glass-panel hover-premium reveal" style="--delay: 300ms;">
-             <h3>Sensor Stage</h3>
-             <p>Structured sensing with deterministic communication. No address conflicts, no protocol chaos.</p>
+             <h3>Prototyping &amp; Engineering Services</h3>
+             <p>Rapid builds, testing, debugging, and system integration</p>
           </div>
           <div class="connector-line reveal" style="--delay: 400ms;"></div>
           <div class="audience-item connected-card glass-panel hover-premium reveal" style="--delay: 500ms;">
-             <h3>Actuator Stage</h3>
-             <p>High-current control systems designed for real-world loads. Built for control, not just switching.</p>
+             <h3>Eonix Products</h3>
+             <p>Modular power and embedded systems for deployment-ready builds</p>
           </div>
         </div>
       </section>
@@ -112,13 +112,13 @@ new_main = """<main class="page-wrapper">
           </div>
           <div class="who-list-item who-theme-startups reveal" style="--delay: 200ms;">
             <span class="who-card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4c2.8 1.1 5 3.3 6 6l-5 1-2-2 1-5Z"></path><path d="M10 14 4 20"></path><path d="M8 9c1.8-1.8 4-2.8 6-3"></path><path d="M9 15c-2.2.2-4.1-.1-5.5-1.5"></path><path d="M15 9c1.4 1.4 1.7 3.3 1.5 5.5"></path></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="10" rx="2"></rect><path d="M8 8V6a1 1 0 0 1 1-1h2"></path><path d="M16 8V6a1 1 0 0 0-1-1h-2"></path><path d="M8 13h3"></path><path d="M13.5 12l2.5 2.5"></path><path d="M16 12l-2.5 2.5"></path></svg>
             </span>
             <span class="who-card-title">Hardware Startups</span>
           </div>
           <div class="who-list-item who-theme-automation reveal" style="--delay: 300ms;">
             <span class="who-card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.5"></circle><path d="M12 2v3"></path><path d="M12 19v3"></path><path d="M4.9 4.9l2.1 2.1"></path><path d="M17 17l2.1 2.1"></path><path d="M2 12h3"></path><path d="M19 12h3"></path><path d="M4.9 19.1 7 17"></path><path d="M17 7l2.1-2.1"></path></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="4" rx="2"></rect><path d="M8 10V7"></path><path d="M16 10V7"></path><path d="M8 14v3"></path><path d="M16 14v3"></path><circle cx="12" cy="12" r="1.2"></circle><path d="M12 7V4"></path><path d="M12 20v-3"></path></svg>
             </span>
             <span class="who-card-title">Automation Engineers</span>
           </div>

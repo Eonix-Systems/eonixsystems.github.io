@@ -19,11 +19,11 @@
     rel="stylesheet" />
 
   <link rel="stylesheet" href="css/base.css?v=608" />
-  <link rel="stylesheet" href="css/layout.css?v=608" />
+  <link rel="stylesheet" href="css/layout.css?v=612" />
   <link rel="stylesheet" href="css/nav.css?v=609" />
-  <link rel="stylesheet" href="css/animations.css?v=608" />
+  <link rel="stylesheet" href="css/animations.css?v=610" />
   <link rel="stylesheet" href="css/footer.css?v=608" />
-  <link rel="stylesheet" href="css/home.css?v=608" />
+  <link rel="stylesheet" href="css/home.css?v=612" />
 </head>
 
 <body>
@@ -66,7 +66,7 @@
         </h1>
 
         <p class="home-subtitle subtitle-animate">
-          a ONE STOP solution for all your embedded needs.
+          a ONE STOP solution for all your system needs.
         </p>
 
         <div class="hero-actions hero-actions-animate">
@@ -80,30 +80,29 @@
       </div>
     </section>
 
-    <!-- 2. WHAT EONIX PROVIDES -->
+    <!-- 2. WHAT EONIX DOES -->
     <section class="sys-section">
       <div class="sys-container">
         <div class="sys-header reveal">
           <span class="sys-eyebrow">SYS_ARC_02 // INFRASTRUCTURE</span>
-          <h2 class="sys-title">What Eonix Provides</h2>
+          <h2 class="sys-title">What Eonix Does</h2>
         </div>
 
         <div class="sys-content provides-grid">
-          <div class="sys-card reveal" style="--delay: 100ms;">
-            <span class="sys-eyebrow">01 // PWR</span>
-            <h3>Smart Power Systems</h3>
-            <p>Hardware-enforced OCP, SCP, and real-time V/I telemetry. Not just a regulator on a breakout.</p>
-          </div>
-          <div class="sys-card reveal" style="--delay: 200ms;">
-            <span class="sys-eyebrow">02 // SNS</span>
-            <h3>Modular Sensor Infrastructure</h3>
-            <p>Every sensor outputs structured data over CAN. No address collisions, no driver rewrites.</p>
-          </div>
-          <div class="sys-card reveal" style="--delay: 300ms;">
+          <div class="sys-card provides-card provides-card-products reveal" style="--delay: 300ms;">
             <span class="sys-eyebrow">03 // CTL</span>
-            <h3>Deployment Ready Control</h3>
-            <p>One motherboard coordinates everything. Request-response, reliable timing, zero manual logic development.
-            </p>
+            <h3>Eonix Products</h3>
+            <p>Modular power and embedded systems for deployment-ready builds</p>
+          </div>
+          <div class="sys-card provides-card provides-card-prototyping reveal" style="--delay: 200ms;">
+            <span class="sys-eyebrow">02 // SNS</span>
+            <h3>Prototyping &amp; Engineering Services</h3>
+            <p>Rapid builds, testing, debugging, and system integration</p>
+          </div>
+          <div class="sys-card provides-card provides-card-design reveal" style="--delay: 100ms;">
+            <span class="sys-eyebrow">01 // PWR</span>
+            <h3>Embedded Systems &amp; PCB Design</h3>
+            <p>Custom hardware, firmware, and production-ready boards</p>
           </div>
         </div>
       </div>
@@ -113,10 +112,10 @@
     <section class="sys-section reveal">
       <div class="sys-container" style="text-align: center;">
         <h2 class="sys-title" style="font-size: 2rem; margin-bottom: 16px;">
-          Your system shouldn't fail because two boards disagree on a protocol.
+          Your system shouldn’t fail because two boards can’t talk.
         </h2>
         <p class="sys-subtitle">
-          Eonix is the hardware layer that makes everything else predictable.
+          Eonix makes every module communicate, behave, and recover predictably.
         </p>
       </div>
     </section>
@@ -219,11 +218,12 @@
             <span class="who-card-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
                 stroke-linejoin="round">
-                <path d="M14 4c2.8 1.1 5 3.3 6 6l-5 1-2-2 1-5Z"></path>
-                <path d="M10 14 4 20"></path>
-                <path d="M8 9c1.8-1.8 4-2.8 6-3"></path>
-                <path d="M9 15c-2.2.2-4.1-.1-5.5-1.5"></path>
-                <path d="M15 9c1.4 1.4 1.7 3.3 1.5 5.5"></path>
+                <rect x="4" y="8" width="16" height="10" rx="2"></rect>
+                <path d="M8 8V6a1 1 0 0 1 1-1h2"></path>
+                <path d="M16 8V6a1 1 0 0 0-1-1h-2"></path>
+                <path d="M8 13h3"></path>
+                <path d="M13.5 12l2.5 2.5"></path>
+                <path d="M16 12l-2.5 2.5"></path>
               </svg>
             </span>
             <span class="who-card-title">Hardware Startups</span>
@@ -232,15 +232,14 @@
             <span class="who-card-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
                 stroke-linejoin="round">
-                <circle cx="12" cy="12" r="3.5"></circle>
-                <path d="M12 2v3"></path>
-                <path d="M12 19v3"></path>
-                <path d="M4.9 4.9l2.1 2.1"></path>
-                <path d="M17 17l2.1 2.1"></path>
-                <path d="M2 12h3"></path>
-                <path d="M19 12h3"></path>
-                <path d="M4.9 19.1 7 17"></path>
-                <path d="M17 7l2.1-2.1"></path>
+                <rect x="4" y="10" width="16" height="4" rx="2"></rect>
+                <path d="M8 10V7"></path>
+                <path d="M16 10V7"></path>
+                <path d="M8 14v3"></path>
+                <path d="M16 14v3"></path>
+                <circle cx="12" cy="12" r="1.2"></circle>
+                <path d="M12 7V4"></path>
+                <path d="M12 20v-3"></path>
               </svg>
             </span>
             <span class="who-card-title">Automation Engineers</span>
@@ -314,7 +313,7 @@
     </div>
   </footer>
 
-  <script src="js/scroll-reveal.js?v=604"></script>
+  <script src="js/scroll-reveal.js?v=611"></script>
   <script src="js/scroll-animations.js?v=604"></script>
   <script src="js/nav.js?v=609"></script>
 </body>

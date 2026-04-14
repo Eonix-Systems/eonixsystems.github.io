@@ -11,7 +11,7 @@
 }
 
 .page-section:not(.page-hero) {
-    margin-bottom: 56px;
+    margin-bottom: 64px;
 }
 
 @media (max-width: 768px) {
@@ -53,13 +53,13 @@
     padding-bottom: 20px;
     position: relative;
     text-align: center;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
 }
 
 /* Vertical space between major page sections */
 .page-section+.home-tech-divider {
     margin-top: -12px;
-    margin-bottom: 44px;
+    margin-bottom: 51px;
 }
 
 .home-tech-divider + .page-section {
@@ -68,15 +68,15 @@
 
 @media (max-width: 768px) {
     .page-section:not(.page-hero) {
-        margin-bottom: 40px;
+        margin-bottom: 46px;
     }
 
     .page-hero {
-        margin-bottom: 16px;
+        margin-bottom: 18px;
     }
 
     .page-section+.home-tech-divider {
         margin-top: -10px;
-        margin-bottom: 28px;
+        margin-bottom: 32px;
     }
 }

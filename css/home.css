@@ -116,6 +116,19 @@
     border-radius: 16px;
 }
 
+/* Containers that are NOT themselves a reveal element start hidden and
+   animate in as a whole unit when they enter the viewport. */
+.home-section-shell:not(.reveal) {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.75s ease-out, transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.home-section-shell.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .home-section-shell.section-wide {
     max-width: 1200px;
 }
@@ -192,7 +205,7 @@
 
 .sys-section {
     padding: 0 48px;
-    margin-bottom: 56px;
+    margin-bottom: 64px;
 }
 
 .sys-container {
@@ -202,6 +215,14 @@
     background: #f7f9fa;
     border: 1px solid rgba(0, 0, 0, 0.05);
     border-radius: 16px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.75s ease-out, transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sys-container.is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Base structural layout for inner standard layout limits */
@@ -245,13 +266,99 @@
 
 /* Card Standarization */
 .sys-card {
+    position: relative;
     background: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.06);
     border-radius: 12px;
     padding: 32px 24px;
     transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.3s ease;
     box-shadow: none; /* Flat standard unless hovered minimally */
+    overflow: hidden;
 }
+
+.sys-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0) 100%);
+    pointer-events: none;
+}
+
+.provides-card {
+    padding-top: 38px;
+    background: var(--provides-bg);
+    box-shadow: var(--provides-shadow);
+    border-color: var(--provides-border);
+}
+
+.provides-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    border-radius: 12px 12px 0 0;
+    background: var(--provides-accent);
+}
+
+.provides-card::before {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.provides-card h3,
+.provides-card p {
+    position: relative;
+    z-index: 1;
+}
+
+.provides-card h3 {
+    font-size: 1rem;
+}
+
+.provides-card p {
+    font-size: 0.92rem;
+}
+
+.provides-card-design {
+    --provides-accent: #1f6feb;
+    --provides-bg:
+        linear-gradient(180deg, rgba(31, 111, 235, 0.22) 0%, rgba(255, 255, 255, 0) 60%),
+        #ffffff;
+    --provides-border: rgba(47, 128, 255, 0.18);
+    --provides-shadow: inset 0 1px 0 rgba(47, 128, 255, 0.07);
+}
+
+.provides-card-prototyping {
+    --provides-accent: #ea7b2c;
+    --provides-bg:
+        linear-gradient(180deg, rgba(234, 123, 44, 0.22) 0%, rgba(255, 255, 255, 0) 60%),
+        #ffffff;
+    --provides-border: rgba(234, 123, 44, 0.18);
+    --provides-shadow: inset 0 1px 0 rgba(234, 123, 44, 0.07);
+}
+
+.provides-card-products {
+    --provides-accent: #179a6a;
+    --provides-bg:
+        linear-gradient(180deg, rgba(23, 154, 106, 0.22) 0%, rgba(255, 255, 255, 0) 60%),
+        #ffffff;
+    --provides-border: rgba(23, 154, 106, 0.18);
+    --provides-shadow: inset 0 1px 0 rgba(23, 154, 106, 0.07);
+}
+
+.deployment-grid .sys-card:nth-child(4) {
+    border-color: rgba(255, 138, 61, 0.22);
+    box-shadow: inset 0 1px 0 rgba(255, 138, 61, 0.08);
+}
+
+.provides-card:hover {
+    transform: none;
+    background: var(--provides-bg);
+    border-color: var(--provides-border);
+    box-shadow: var(--provides-shadow);
+}
+
 .sys-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
@@ -372,7 +479,7 @@
 .premium-gap-section {
     position: relative;
     padding: 100px 24px;
-    margin-bottom: 90px;
+    margin-bottom: 104px;
     z-index: 1;
     background-color: #f7f9fa; /* Slightly darker than pure white for card separation */
     border-top: 1px solid var(--border-subtle);
@@ -437,7 +544,7 @@
     padding: 56px 40px;
     text-align: center;
     border-radius: 16px;
-    background: #ffffff; /* Pure white card for separation */
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, #ffffff 100%); /* Pure white card for separation */
     border: 1px solid rgba(0, 0, 0, 0.06);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04),
                 0 16px 32px rgba(0, 0, 0, 0.08); /* Tight, crisp shadow */
@@ -639,5 +746,5 @@
     }
     .who-card-title { max-width: none; }
     .home-section-title .title-dot { display: none; }
-    .sys-section { padding: 0 16px; margin-bottom: 40px; }
+    .sys-section { padding: 0 16px; margin-bottom: 46px; }
 }
