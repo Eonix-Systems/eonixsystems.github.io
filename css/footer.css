@@ -33,6 +33,13 @@
 
 .footer-right {
     display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 16px;
+}
+
+.footer-links {
+    display: flex;
     gap: 32px;
 }
 
@@ -54,7 +61,7 @@
     border-top: 1px solid var(--border-subtle);
 
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
 
     font-size: 0.85rem;
@@ -96,13 +103,21 @@
 
     .footer-right {
         flex-direction: column;
+        gap: 24px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-links {
+        display: flex;
+        flex-direction: column;
         gap: 16px;
         align-items: center;
         text-align: center;
     }
 
     .footer-bottom {
-        flex-direction: column;
-        gap: 16px;
+        justify-content: center;
+        text-align: center;
     }
 }

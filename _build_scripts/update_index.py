@@ -103,22 +103,30 @@ new_main = """<main class="page-wrapper">
       <section class="home-who page-section reveal">
         <h2 class="home-section-title">Who It’s For</h2>
 
-        <div class="who-grid">
-          <div class="who-item glass-panel hover-premium reveal" style="--delay: 100ms;">
-            <svg class="who-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-            <h4>Robotics Teams</h4>
+        <div class="sys-content who-list">
+          <div class="who-list-item who-theme-robotics reveal" style="--delay: 100ms;">
+            <span class="who-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="9" rx="2"></rect><path d="M12 4v3"></path><path d="M9 20v-4"></path><path d="M15 20v-4"></path><path d="M4 10h3"></path><path d="M17 10h3"></path><circle cx="10" cy="11" r="1"></circle><circle cx="14" cy="11" r="1"></circle><path d="M10 14h4"></path></svg>
+            </span>
+            <span class="who-card-title">Robotics Teams</span>
           </div>
-          <div class="who-item glass-panel hover-premium reveal" style="--delay: 200ms;">
-            <svg class="who-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg>
-            <h4>Hardware Startups</h4>
+          <div class="who-list-item who-theme-startups reveal" style="--delay: 200ms;">
+            <span class="who-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4c2.8 1.1 5 3.3 6 6l-5 1-2-2 1-5Z"></path><path d="M10 14 4 20"></path><path d="M8 9c1.8-1.8 4-2.8 6-3"></path><path d="M9 15c-2.2.2-4.1-.1-5.5-1.5"></path><path d="M15 9c1.4 1.4 1.7 3.3 1.5 5.5"></path></svg>
+            </span>
+            <span class="who-card-title">Hardware Startups</span>
           </div>
-          <div class="who-item glass-panel hover-premium reveal" style="--delay: 300ms;">
-            <svg class="who-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v6"/><path d="M12 18v4"/><path d="M4.93 4.93l4.24 4.24"/><path d="M14.83 14.83l4.24 4.24"/><path d="M2 12h6"/><path d="M18 12h4"/><path d="M4.93 19.07l4.24-4.24"/><path d="M14.83 9.17l4.24-4.24"/></svg>
-            <h4>Automation Engineers</h4>
+          <div class="who-list-item who-theme-automation reveal" style="--delay: 300ms;">
+            <span class="who-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.5"></circle><path d="M12 2v3"></path><path d="M12 19v3"></path><path d="M4.9 4.9l2.1 2.1"></path><path d="M17 17l2.1 2.1"></path><path d="M2 12h3"></path><path d="M19 12h3"></path><path d="M4.9 19.1 7 17"></path><path d="M17 7l2.1-2.1"></path></svg>
+            </span>
+            <span class="who-card-title">Automation Engineers</span>
           </div>
-          <div class="who-item glass-panel hover-premium reveal" style="--delay: 400ms;">
-            <svg class="who-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-            <h4>R&D Labs</h4>
+          <div class="who-list-item who-theme-labs reveal" style="--delay: 400ms;">
+            <span class="who-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v5l-5.5 9.2A2.2 2.2 0 0 0 6.4 21h11.2a2.2 2.2 0 0 0 1.9-3.3L14 8V3"></path><path d="M9 13h6"></path><path d="M8 17h8"></path></svg>
+            </span>
+            <span class="who-card-title">R&amp;D Labs</span>
           </div>
         </div>
 

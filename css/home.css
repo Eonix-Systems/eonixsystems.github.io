@@ -512,38 +512,80 @@
 
 .who-list {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-    max-width: 680px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    max-width: 1120px;
     margin: 0 auto;
 }
 
 .who-list-item {
-    padding: 22px 28px;
+    position: relative;
+    min-height: 180px;
+    padding: 28px 20px 24px;
     border: 1px solid var(--border-subtle);
-    border-left: 3px solid var(--accent-primary);
-    border-radius: 0 8px 8px 0;
+    border-radius: 18px;
     background: var(--surface-1);
-    font-size: 1.05rem;
-    font-weight: 500;
     color: var(--text-primary);
     display: flex;
-    align-items: center;
-    gap: 12px;
-    transition: border-color 0.2s ease, background 0.2s ease;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    overflow: hidden;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
+
+.who-list-item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at top right, color-mix(in srgb, var(--who-accent) 22%, transparent) 0%, transparent 58%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0) 100%);
+    pointer-events: none;
+}
+
 .who-list-item:hover {
     background: var(--bg-card);
     border-color: var(--border-strong);
-    border-left-color: var(--accent-hover);
+    box-shadow: 0 18px 40px rgba(5, 18, 33, 0.08);
+    transform: translateY(-4px);
 }
 
-.who-list-item .who-index {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.6rem;
-    color: var(--accent-primary);
-    opacity: 0.7;
+.who-theme-robotics { --who-accent: #2f80ff; }
+.who-theme-startups { --who-accent: #ff8a3d; }
+.who-theme-automation { --who-accent: #17b26a; }
+.who-theme-labs { --who-accent: #0f9fb8; }
+
+.who-card-icon,
+.who-card-title {
+    position: relative;
+    z-index: 1;
+}
+
+.who-card-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--who-accent);
+    background: color-mix(in srgb, var(--who-accent) 12%, white);
+    border: 1px solid color-mix(in srgb, var(--who-accent) 26%, white);
     flex-shrink: 0;
+}
+
+.who-card-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.who-card-title {
+    font-size: 1.08rem;
+    font-weight: 600;
+    line-height: 1.35;
+    max-width: 12ch;
 }
 
 /* =========================
@@ -573,6 +615,7 @@
     .home-title { font-size: 3.8rem; }
     .provides-grid { grid-template-columns: 1fr; }
     .deployment-grid { grid-template-columns: 1fr; }
+    .who-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .home-section-shell,
     .home-section-shell.section-wide { padding: 40px 32px; }
     .sys-section { padding: 0 32px; }
@@ -590,6 +633,11 @@
     .home-section-subtitle { font-size: 1rem; }
     .premium-gap-grid { grid-template-columns: 1fr; gap: 24px; }
     .who-list { grid-template-columns: 1fr; }
+    .who-list-item {
+        min-height: 0;
+        padding: 22px 18px;
+    }
+    .who-card-title { max-width: none; }
     .home-section-title .title-dot { display: none; }
     .sys-section { padding: 0 16px; margin-bottom: 40px; }
 }
